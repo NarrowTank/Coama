@@ -1,4 +1,7 @@
 from django.shortcuts import render
 
-# def loginHandler(request):
-#     return render(request, 'index.html')
+def registerHandler(request):
+    return render(request, 'cadastro.html')
+
+def loginHandler(request):
+    return render(request, 'login.html')
