@@ -1,17 +1,17 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" href="/src/icon_fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'src/icon_fav.png' %}" type="image/x-icon">
     <title>III COAMA - CONGRESSO AMAZÔNICO DE MINERAÇÃO, METALURGIA E MATERIAIS</title>
 </head>
 
@@ -22,26 +22,25 @@
             <nav class="menu-login">
                 <div class="menu-login-esquerda">
                     <a href="mailto:contato@coama.com" target="_blank">
-                        <img src="/src/envelope.png" alt="" class="icon">
+                        <img src="{% static 'src/envelope.png' %}" alt="" class="icon">
                         <span>contato@coama.com</span>
                     </a>
                     <a href="https://api.whatsapp.com/send?phone=559491419412" target="_blank">
-                        <img src="/src/whatsapp.png" alt="" class="icon">
+                        <img src="{% static 'src/whatsapp.png' %}" alt="" class="icon">
                         <span>(94)99141-9412</span>
                     </a>
                 </div>
                 <div class="menu-login-direita">
                     <a href="#login" target="_blank">
-                        <img src="/src/user.png" alt="" class="icon-login">
+                        <img src="{% static 'src/user.png' %}" alt="" class="icon-login">
                         <span>Entre ou Registre-se</span>
                     </a>
                 </div>
                 <div class="redes">
                     <a href="https://www.linkedin.com/in/congresso-amazonico-de-mineracao-metalurgia-e-materiais/?originalSubdomain=br"
-                        target="_blank"><img src="/src/linkedin.png" alt="" class="icon"></a>
-                    <a href="#tiktik" target="_blank"><img src="/src/tiktok.png" alt="" class="icon"></a>
-                    <a href="https://www.instagram.com/eventocoama/" target="_blank"><img src="/src/instagram.png"
-                            alt="" class="icon"></a>
+                        target="_blank"><img src="{% static 'src/linkedin.png' %}" alt="" class="icon"></a>
+                    <a href="#tiktik" target="_blank"><img src="{% static 'src/tiktok.png' %}" alt="" class="icon"></a>
+                    <a href="https://www.instagram.com/eventocoama/" target="_blank"><img src="{% static 'src/instagram.png' %}" alt="" class="icon"></a>
                 </div>
             </nav>
         </div>
@@ -52,7 +51,7 @@
         <div class="container">
             <nav class="menu-principal">
                 <div class="menu-logo">
-                    <a href="#inicio"><img src="/src/logo_geral.png" alt="Logo"></a>
+                    <a href="#inicio"><img src="{% static 'src/logo_geral.png' %}" alt="Logo"></a>
                 </div>
                 <ul class="menu-principal-ul">
                     <li><a href="#inicio">Início</a></li>
@@ -80,21 +79,21 @@
             <input type="radio" name="radio-btn" id="radio3">
 
             <div class="slide first">
-                <img src="/src/mining_01.jpg" alt="">
+                <img src="{% static 'src/mining_01.jpg' %}" alt="">
                 <div class="slide-text">
                     <h2>Lorem ipsum dolor sit amet.</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, vel?</p>
                 </div>
             </div>
             <div class="slide">
-                <img src="/src/mining_02.jpg" alt="">
+                <img src="{% static 'src/mining_02.jpg' %}" alt="">
                 <div class="slide-text">
                     <h2>Lorem ipsum dolor sit amet.</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, vel?</p>
                 </div>
             </div>
             <div class="slide">
-                <img src="/src/mining_03.jpg" alt="">
+                <img src="{% static 'src/mining_03.jpg' %}" alt="">
                 <div class="slide-text">
                     <h2>Lorem ipsum dolor sit amet.</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, vel?</p>
@@ -114,7 +113,7 @@
             <label for="radio3" class="manual-btn"></label>
         </div>
     </div>
-    <script src="/js/script.js"></script>
+    <script src="{% static '/js/script.js' %}"></script>
     <!--fim carrossel-->
     <main>
         <div class="main-container">
@@ -169,10 +168,10 @@
             <span>Patrocinadores</span>
         </div>
         <div class="patrocinadores">
-            <img src="/src/servdrill.png" alt="">
-            <img src="/src/geprospecto.png" alt="">
-            <img src="/src/hidraulica-federal.png" alt="">
-            <img src="/src/enaex.png" alt="">
+            <img src="{% static 'src/servdrill.png' %}" alt="">
+            <img src="{% static 'src/geprospecto.png' %}" alt="">
+            <img src="{% static 'src/hidraulica-federal.png' %}" alt="">
+            <img src="{% static 'src/enaex.png' %}" alt="">
         </div>
     </main>
     <footer>
@@ -188,13 +187,13 @@
                 </div>
             </div>
             <div class="icone-footer">
-                <img src="/src/icon_footer.png" alt="">
+                <img src="{% static 'src/icon_footer.png' %}" alt="">
             </div>
         </div>        
         <div class="tj">
             <span>2024 © COAMA - Congresso Amazônico de Mineração, Metalurgia e Materiais. Desenvolvido por: BITS
                 Jr.</span>
-            <img src="/src/bits-logo.png" alt="">
+            <img src="{% static 'src/bits-logo.png' %}" alt="">
         </div>
     </footer>
 </body>
