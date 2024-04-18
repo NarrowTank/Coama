@@ -24,7 +24,7 @@ body {
 }
 
 .container {
-    max-width: 1440px;
+    max-width: 100%;
     padding: 0 5%;
     margin: 0 auto;
 }
@@ -68,20 +68,6 @@ nav a {
     display: inline-block;
 }
 
-/*media query 768px */
-@media only screen and (max-width: 768px) {
-    .menu-login-esquerda {
-        display: none; 
-    }
-    
-    .menu-login-direita a {
-        margin: 0; 
-    }
-    
-    .menu-login-direita span {
-        display: none; 
-    }
-}
 /* fim menu login */
 
 /* menu geral */
@@ -492,4 +478,23 @@ nav a {
     color: var(--branco);
     text-align: center;
     padding: 10px;
+}
+
+/*media query 768px */
+@media only screen and (max-width: 768px) {
+    .menu-login-esquerda {
+        display: none; 
+    }
+    
+    .menu-login-direita a {
+        margin: 0; 
+    }
+    
+    .menu-login-direita span {
+        display: none; 
+    }
+
+    .menu-logo{
+        display: none; 
+    }
 }
