@@ -128,6 +128,10 @@ nav a {
     color: var(--amarelo);
 }
 
+.logo{
+    width: 450px;
+}
+
 .dropdown {
     text-align: center;
 }
@@ -474,4 +478,15 @@ nav a {
     color: var(--branco);
     text-align: center;
     padding: 10px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.sticky + .content {
+padding-top: 102px;
 }
