@@ -184,6 +184,20 @@ nav a {
     color: var(--branco);
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.33);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.33);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.33);
+}
+
+.sticky + .content {
+    margin-top: 122px;
+}
+
 /* fim menu geral */
 
 /* início carrossel */
@@ -217,7 +231,7 @@ nav a {
 
 .manual-navigation {
     position: absolute;
-    width: 1500px;
+    width: 100%;
     margin-top: 50px;
     display: flex;
     justify-content: center;
@@ -261,7 +275,7 @@ nav a {
 
 .navigation-auto {
     position: absolute;
-    width: 1500px;
+    width: 100%;
     margin-top: 450px;
     display: flex;
     justify-content: center;
@@ -478,18 +492,4 @@ nav a {
     color: var(--branco);
     text-align: center;
     padding: 10px;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.33);
-    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.33);
-    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.33);
-}
-
-.sticky + .content {
-padding-top: 122px;
 }
