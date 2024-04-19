@@ -11,6 +11,14 @@ Aqui cobrimos os seguintes tópicos:
 * Instalação dasdependências necessárias para executar o projeto;
 * Comandos utilizados para executar o projeto;
 * Localização de arquivos importantes para o front-end.
+* Comandos git importantes
+
+
+## Stack utilizada
+
+**Front-end:** Html, Css, Js
+
+**Back-end:** Django
 
 
 ## Variáveis de Ambiente
@@ -87,13 +95,67 @@ Cada app tem sua própria pasta `templates` e `static`. A pasta `template` é re
   |             |-> src
   |       |-> templates
 ```
-## Stack utilizada
+## Comandos git
 
-**Front-end:** Html, Css, Js
+Antes de começar tudo, verifique se está na branch correta. Caso contrário crie sua branch no GitHub ou com os seguintes comandos:
 
-**Back-end:** Django
+```bash
+  git branch <branch_name>
+  git push <remote_name> <branch_name>
+```
+
+#### Enviar commit das mudanças realizadas:
+
+```bash
+  git add .
+  git commit -m "<your_commit_message>"
+  git push
+```
+
+#### Padrão de nomeclatura nos commits:
+
+```bash
+  <type>: <description>
+```
+
+types:
+
+**`feat`** : a new feature is introduced with the changes;
+
+**`fix`** : a bug fix has occurred;
+
+**`chore`** : changes that do not relate to a fix or feature and don't modify src or test files (for example updating dependencies);
+
+**`refactor`** : refactored code that neither fixes a bug nor adds a feature;
+
+**`docs`** : updates to documentation such as a the README or other markdown files;
+
+**`style`** : changes that do not affect the meaning of the code, likely related to code formatting such as white-space, missing semi-colons, and so on;
+
+**`test`** : including new or correcting previous tests;
+
+**`perf`** : performance improvements;
+
+**`ci`** :  continuous integration related;
+
+**`build`** : changes that affect the build system or external dependencies;
+
+**`revert`** : reverts a previous commit.
+
+- **Referência:** [Freecodecamp.org](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/#conventional-commits)
+
+---
+
+#### Alterar sua branch atual no seu ambiente de desenvolvimento:
+
+```bash
+  git checkout <branch-name>
+```
 
 
+
+
+Qualquer dúvida entre em contato com [@PedroDanesvara](https://github.com/PedroDanesvara).
 ## FAQ
 
 #### Meus comandos não estão funcionando.
@@ -113,4 +175,11 @@ Qualquer dúvida entre em contato com [@PedroDanesvara](https://github.com/Pedro
 ## Autores do README.md
 
 - [@PedroDanesvara](https://github.com/PedroDanesvara)
+
+
+## Referência
+
+ - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+ - [Awesome README](https://github.com/matiassingers/awesome-readme)
+ - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
