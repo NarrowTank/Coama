@@ -397,6 +397,19 @@ nav a {
 
 
 /* fim sobre nós */
+
+/* inicio video */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-container iframe {
+    width: 700px;
+    height: 500px;
+}
+/* fim video */
+
 /* maps */
 .maps-container {
     display: flex;
@@ -711,7 +724,7 @@ nav a {
 
 /* Media query 768px O congresso */
 
-@media (max-width: 1040px) {
+@media (max-width: 768px) {
     .inner-box {
         display: none;
     }
@@ -739,6 +752,13 @@ nav a {
     
 }
 
+/*media query video*/
+@media (max-width: 768px) {
+    .video-container iframe {
+        width: 400px;
+        height: 300px;
+    }
+}
 
 /*media query Maps*/
 @media screen and (max-width: 430px) {
