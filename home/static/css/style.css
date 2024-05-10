@@ -237,8 +237,8 @@ nav a {
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.33);
 }
 
-.sticky+.content {
-    margin-top: 122px;
+.content {
+    margin-top: 160px;
 }
 
 /* fim menu geral */
@@ -397,6 +397,19 @@ nav a {
 
 
 /* fim sobre nós */
+
+/* inicio video */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-container iframe {
+    width: 700px;
+    height: 500px;
+}
+/* fim video */
+
 /* maps */
 .maps-container {
     display: flex;
@@ -610,12 +623,14 @@ nav a {
     }
 
     .logo-mobile-only {
-        margin-right: auto;
-        display: block;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
     }
 
     .logo-mobile-only img {
-        width: 60%;
+        width: 100%;
         max-width: 100px;
         height: auto;
     }
@@ -624,16 +639,9 @@ nav a {
 }
 
 @media screen and (max-width: 768px) {
-    .menu-principal-container .logo-mobile-only {
-        position: relative; /* Adiciona posição relativa à div pai */
-    }
-
     .menu-principal-container .logo-mobile-only .logo-text {
         font-size: 12px;
-        margin-left: 10px;
-        position: absolute; /* Adiciona posição absoluta ao texto */
-        top: 50%; /* Alinha o topo do texto ao centro vertical */
-        transform: translateY(-50%); /* Ajusta a posição vertical do texto */
+        text-align: center;
     }
 }
 
@@ -711,7 +719,7 @@ nav a {
 
 /* Media query 768px O congresso */
 
-@media (max-width: 1040px) {
+@media (max-width: 768px) {
     .inner-box {
         display: none;
     }
@@ -731,6 +739,10 @@ nav a {
         margin: 10px 0;
         text-align: justify;
     }
+
+    .content {
+        margin-top: 94px;
+    }
 }
 
 /* Media query 768px polygon */
@@ -739,6 +751,13 @@ nav a {
     
 }
 
+/*media query video*/
+@media (max-width: 768px) {
+    .video-container iframe {
+        width: 400px;
+        height: 300px;
+    }
+}
 
 /*media query Maps*/
 @media screen and (max-width: 430px) {
