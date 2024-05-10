@@ -237,8 +237,8 @@ nav a {
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.33);
 }
 
-.sticky+.content {
-    margin-top: 122px;
+.content {
+    margin-top: 160px;
 }
 
 /* fim menu geral */
@@ -623,12 +623,14 @@ nav a {
     }
 
     .logo-mobile-only {
-        margin-right: auto;
-        display: block;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
     }
 
     .logo-mobile-only img {
-        width: 60%;
+        width: 100%;
         max-width: 100px;
         height: auto;
     }
@@ -637,16 +639,9 @@ nav a {
 }
 
 @media screen and (max-width: 768px) {
-    .menu-principal-container .logo-mobile-only {
-        position: relative; /* Adiciona posição relativa à div pai */
-    }
-
     .menu-principal-container .logo-mobile-only .logo-text {
         font-size: 12px;
-        margin-left: 10px;
-        position: absolute; /* Adiciona posição absoluta ao texto */
-        top: 50%; /* Alinha o topo do texto ao centro vertical */
-        transform: translateY(-50%); /* Ajusta a posição vertical do texto */
+        text-align: center;
     }
 }
 
@@ -743,6 +738,10 @@ nav a {
         font-size: 16px;
         margin: 10px 0;
         text-align: justify;
+    }
+
+    .content {
+        margin-top: 94px;
     }
 }
 
