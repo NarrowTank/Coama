@@ -1,1 +1,19 @@
 <h1>Login</h1>
+
+<form action="{% url 'login' %}" method="POST"> 
+
+    {% csrf_token %}
+    <input type="text" placeholder="Username..." name="username">
+    <br>
+    <br>
+    <input type="password" placeholder="Senha..." name="senha">
+    <br>
+    <br>
+    <input type="submit" value="logar">
+    <br>
+    
+</form>
+<p>{{ error }}</p>
+<br>
+<br>
+<a href="{% url 'alterar-senha' %}">Esqueci minha senha</a>
