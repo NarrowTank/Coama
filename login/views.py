@@ -38,7 +38,7 @@ def registerHandler(request):
                 user = user,
                 cpf = cpf,
                 complete_name = complete_name.capitalize(),
-                id_name = id_name.complete_name.capitalize(),
+                id_name = id_name.capitalize(),
                 phone = phone,
                 city = city,
                 state = state,
@@ -80,7 +80,7 @@ def loginHandler(request):
         return redirect('/auth/area-do-usuario/')
     
     if request.method == 'GET':
-        return render(request, 'login2.html')       
+        return render(request, 'login.html')       
     if request.method == 'POST':
         username = request.POST.get('login-username')      
         senha = request.POST.get('login-senha')
@@ -92,7 +92,7 @@ def loginHandler(request):
             
             return redirect('/auth/area-do-usuario/')
         
-        return render(request, 'login2.html', {'error': 'Senha ou nome incorretos'})
+        return render(request, 'login.html', {'error': 'Senha ou nome incorretos'})
 
 def logoutHandler(request):
     django_logout(request)
@@ -113,6 +113,7 @@ def userArea(request):
         'telefone' : user_data.phone,
         'cidade' : user_data.city,
         'estado' : user_data.state,
+        'user_type' : user_data.person_type, 
     }
     
     if user_data.person_type == 1:
@@ -127,7 +128,6 @@ def userArea(request):
         context.update({
             'area' : user_type.area,
             'instituicao' : user_type.institution,
-            'matricula': user_type.course_id,
         })
     if user_data.person_type == 3:
         user_type = Professional.objects.get(data=user_data)

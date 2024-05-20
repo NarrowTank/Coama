@@ -122,11 +122,12 @@
                             <p>{{estado}}</p>
                         </div>
                         
+                        {% if user_type == 1 %}
                         <div class="box">
-                            <h2>Área de atuação/Curso:</h2>
+                            <h2>Curso:</h2>
                             <p>{{curso}}</p>
                         </div>
-                        
+
                         <div class="box">
                             <h2>Instituição:</h2>
                             <p>{{instituicao}}</p>
@@ -136,6 +137,27 @@
                             <h2>Matrícula:</h2>
                             <p>{{matricula}}</p>
                         </div>
+                        {% endif %}
+
+                        {% if user_type == 2 %}
+                        <div class="box">
+                            <h2>Área de atuação:</h2>
+                            <p>{{area}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Instituição:</h2>
+                            <p>{{instituicao}}</p>
+                        </div>
+                        {% endif %}
+
+                        {% if user_type == 3 %}
+                        <div class="box">
+                            <h2>Empresa:</h2>
+                            <p>{{empresa}}</p>
+                        </div>
+                        {% endif %}
+
                     </div>
                     <div class="mini-cursos" style="display: none;">
                         <div class="card">
