@@ -38,12 +38,12 @@
                         <span>(94)98444-9527</span>
                     </a>
                 </div>
-                <!--<div class="menu-login-direita">
-                    <a href="#login" target="_blank">
+                <div class="menu-login-direita">
+                    <a href="{% url "login" %}" target="_blank">
                         <img src="{% static 'src/user.png' %}" alt="" class="icon-login">
                         <span>Área do Participante</span>
                     </a>
-                </div>-->
+                </div>
                 <div class="redes">
                     <a href="https://www.linkedin.com/in/congresso-amazonico-de-mineracao-metalurgia-e-materiais/?originalSubdomain=br"
                         target="_blank"><img src="{% static 'src/linkedin.png' %}" alt="Icone Linkedin"
@@ -74,12 +74,13 @@
                     <!--<li id="btnInicio"><a href="#" id="inicio">Início</a></li>
                     <li><a href="#profissionais">Profissionais</a></li>
                     <li><a href="#cronograma">Cronograma</a></li>
+                    -->
                     <li><li class="dropdown">
-                        <a href="#inscreva-se" class="botao-cursos">Inscreva-se</a>
-                    </li>-->
-                    <button class="botao-inscreva-se" disabled>Inscreva-se <img
+                        <a href="{% url "login" %}" class="botao-cursos">Inscreva-se</a>
+                    </li>
+                    {% comment %} <button class="botao-inscreva-se" disabled>Inscreva-se <img
                             src="{% static 'src/cadeado_preto.svg' %}" alt="Botão Inscreva-se"
-                            class="icone-cadeado"></button>
+                            class="icone-cadeado"></button> {% endcomment %}
                 </ul>
             </nav>
         </div>
@@ -127,10 +128,10 @@
             <span>segundos</span>
         </div>
     </div>
-    <h1 class="contador">Para o início das inscrições</h1>
-    <!--<div class="button-container">
-        <button class="custom-button">Inscreva-se</button>
-    </div>-->
+    <h1 class="contador">Para o fim das inscrições</h1>
+    <div class="button-container">
+        <button class="custom-button"><a href="{% url "login" %}" class="botao-cursos">Inscreva-se</a></button>
+    </div>
     <script src="{% static '/js/countdown.js' %}"></script>
     <!--fim countdown-->
     <main>

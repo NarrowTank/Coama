@@ -1,1 +1,50 @@
-<h1>Login</h1>
+{% extends "login_base.html" %}
+{% block content %}
+{% load static %}
+        <form id="login-form" class="form-container" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
+            <h2>Login</h2>
+            <label for="login-username">Nome de Usuário:</label>
+            <input type="text" id="login-username" name="login-username" required>
+            <label for="login-senha">Senha:</label>
+            <div class="password-input-container">
+                <input type="password" id="login-senha" name="login-senha" required>
+                <i class="toggle-password fas fa-eye-slash"></i>
+            </div>
+            <div id="senha-feedback"></div>
+            <div id="senha-validation-message" style="color: red;"></div>
+            <p>{{ error }}</p>
+            <input type="submit" value="Entrar">
+            <a href="{% url "new-user" %}" type="button" id="toggle-cadastro" class="cadastro-btn">Cadastre-se</a>
+        </form>
+        <script>
+            
+        document.getElementById("login-senha").addEventListener("input", function() {
+            // var senha = this.value;
+            // var forca = zxcvbn(senha);
+            // var feedbackElement = document.getElementById("senha-feedback");
+            
+            // var senhaValida = senha.length >= 6 && /[A-Z]/.test(senha) && /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senha);
+            
+            // if (forca.score >= 3 && senhaValida) {
+            //     feedbackElement.innerHTML = "Força da senha: Forte";
+            // } else {
+            //     feedbackElement.innerHTML = "Força da senha: Fraca";
+            // }
+        });
+        
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            // var senha = document.getElementById("login-senha").value;
+            // var senhaValida = senha.length >= 6 && /[A-Z]/.test(senha) && /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senha);
+            
+            // var validationMessageElement = document.getElementById("senha-validation-message");
+            // if (!senhaValida) {
+            //     validationMessageElement.textContent = "A senha deve ter pelo menos 6 caracteres, incluindo um caractere especial e uma letra maiúscula.";
+            //     event.preventDefault(); 
+            // } else {
+            //     validationMessageElement.textContent = ""; 
+            // }
+        });
+        </script>
+{% endblock %}

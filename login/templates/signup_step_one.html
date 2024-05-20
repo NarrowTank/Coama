@@ -1,0 +1,68 @@
+{% extends "login_base.html" %}
+{% block content %}
+{% load static %}
+        <form id="cadastro-email-senha-form" class="form-container" action="{% url 'new-user' %}" method="POST">
+            {% csrf_token %}
+            <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
+            <h2>Cadastro</h2>
+            <label for="nome">Nome de Usuário:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="cadastro-email">Email:</label>
+            <input type="email" id="cadastro-email" name="cadastro-email" required>
+            <label for="cadastro-senha">Senha:</label>
+            <div class="password-input-container">
+                <input type="password" id="cadastro-senha" name="cadastro-senha" required>
+                <i class="toggle-password fas fa-eye-slash"></i>
+            </div>
+            <div id="senha-feedback-cadastro"></div>
+            <div id="senha-validation-message-cadastro" style="color: red;"></div>
+            <p>{{error}}</p>
+            <input type="submit" id="proximo-cadastro" class="cadastro-btn" value="Próximo"></input>
+        </form>
+        <script>
+            document.getElementById("proximo-cadastro").addEventListener("click", function(event) {
+    
+                // Verificar se o formulário de e-mail e senha é válido
+                var cadastroEmailSenhaForm = document.getElementById("cadastro-email-senha-form");
+                if (!cadastroEmailSenhaForm.checkValidity()) {
+                    // Se o formulário não for válido, exibir mensagem de erro e impedir o envio
+                    cadastroEmailSenhaForm.reportValidity();
+                    event.preventDefault();
+                    return false;
+                }
+            
+                // Validar a senha
+                var cadastroSenha = document.getElementById("cadastro-senha").value;
+                var senhaValida = cadastroSenha.length >= 6 && /[A-Z]/.test(cadastroSenha) && /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(cadastroSenha);
+            
+                var validationMessageElement = document.getElementById("senha-validation-message-cadastro");
+                if (!senhaValida) {
+                    // Se a senha não for válida, exibir mensagem de erro
+                    validationMessageElement.textContent = "A senha deve ter pelo menos 6 caracteres, incluindo um caractere especial e uma letra maiúscula.";
+                    event.preventDefault();
+                    return false;
+                }
+            
+                // Limpar qualquer mensagem de erro anterior da senha
+                validationMessageElement.textContent = ""; 
+            
+                // Evitar que o formulário de login seja ativado
+                event.stopPropagation();
+                return false;
+            });
+
+            document.getElementById("cadastro-senha").addEventListener("input", function() {
+                var senha = this.value;
+                var forca = zxcvbn(senha);
+                var feedbackElement = document.getElementById("senha-feedback-cadastro");
+                
+                var senhaValida = senha.length >= 6 && /[A-Z]/.test(senha) && /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senha);
+                
+                if (forca.score >= 3 && senhaValida) {
+                    feedbackElement.innerHTML = "Força da senha: Forte";
+                } else {
+                    feedbackElement.innerHTML = "Força da senha: Fraca";
+                }
+            });
+        </script>
+{% endblock %}

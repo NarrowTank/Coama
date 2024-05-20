@@ -1,17 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Person(models.Model):
     """Clase que define uma pessoa em geral"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     cpf = models.CharField("CPF", max_length=30, primary_key=True)
-    date_added = models.DateTimeField(verbose_name="Dia em que foi cadastrado", auto_now_add=True)
     complete_name = models.CharField(verbose_name="Nome completo", max_length=100)
     id_name = models.CharField(verbose_name="Nome no crachá", max_length=30)
     email = models.EmailField(verbose_name="E-mail", max_length=254)
     phone = models.CharField(verbose_name="Telefone", max_length=30)
     city = models.CharField(verbose_name="Cidade", max_length=30)
     state = models.CharField(verbose_name="UF", max_length=30)
-    is_deficient = models.BooleanField(verbose_name="Tem deficiência?", default=False)
+    is_deficient = models.BooleanField(verbose_name="Tem deficiência?", default=False, null=True)
     deficiency = models.CharField(verbose_name="Qual a deficiência?", max_length=50, default="", blank=True)
+    person_type = models.IntegerField(verbose_name="Tipo de Pessoa")
+    date_added = models.DateTimeField(verbose_name="Dia em que foi cadastrado", auto_now_add=True, null=True)
+    payed = models.BooleanField(verbose_name="Pago", default=False)
     
     def __str__(self) -> str:
         """Retorna um representação em string do modelo."""
@@ -42,5 +46,6 @@ class Professional(models.Model):
         ("OUT", "Outros"),
     ]
     data = models.ForeignKey(Person, on_delete=models.CASCADE)
+    enterprise_name = models.CharField(verbose_name="Nome da Empresa", max_length=100)
     enterprise = models.CharField(verbose_name="Empresa", max_length=3, choices=ENTERPRISE_TYPE)
     

@@ -73,6 +73,8 @@ cover/
 
 # Django stuff:
 
+*/migrations/
+
 # Flask stuff:
 instance/
 .webassets-cache
