@@ -13,8 +13,8 @@ def registerHandler(request):
         return render(request, 'cadastro.html')
     
     if request.method == 'POST':
-        username = request.POST.get('username')
-        user = User.objects.filter(username=username).first()
+        username = request.POST.get('login-username')
+        user = User.objects.filter(username=username.lower()).first()
         if user:
             return render(request, 'cadastro.html', {'error': 'Já existe um usuário com esse nome'})
         
@@ -80,19 +80,19 @@ def loginHandler(request):
         return redirect('/auth/area-do-usuario/')
     
     if request.method == 'GET':
-        return render(request, 'login.html')
+        return render(request, 'login2.html')       
     if request.method == 'POST':
-        username = request.POST.get('username')
-        senha = request.POST.get('senha')
+        username = request.POST.get('login-username')      
+        senha = request.POST.get('login-senha')
         
-        user = authenticate(username=username, password=senha)
+        user = authenticate(username=username.lower(), password=senha)
         
         if user:
             django_login(request, user)
             
             return redirect('/auth/area-do-usuario/')
         
-        return render(request, 'login.html', {'error': 'Senha ou nome incorretos'})
+        return render(request, 'login2.html', {'error': 'Senha ou nome incorretos'})
 
 def logoutHandler(request):
     django_logout(request)
@@ -103,7 +103,36 @@ def newPassword(request):
 
 @login_required(login_url='/auth/login/')
 def userArea(request):
+    
+    user_data = Person.objects.get(user = request.user)
+    
     context= {
-        'username': request.user.username
+        'nomecracha' : user_data.id_name,
+        'cpf' : user_data.cpf,
+        'email' : user_data.email,
+        'telefone' : user_data.phone,
+        'cidade' : user_data.city,
+        'estado' : user_data.state,
     }
-    return render(request, 'user_area.html', context)
+    
+    if user_data.person_type == 1:
+        user_type = Student.objects.get(data=user_data)
+        context.update({
+            'curso' : user_type.course,
+            'instituicao' : user_type.institution,
+            'matricula': user_type.course_id,
+        })
+    if user_data.person_type == 2:
+        user_type = PosGradStudent.objects.get(data=user_data)
+        context.update({
+            'area' : user_type.area,
+            'instituicao' : user_type.institution,
+            'matricula': user_type.course_id,
+        })
+    if user_data.person_type == 3:
+        user_type = Professional.objects.get(data=user_data)
+        context.update({
+            'empresa' : user_type.enterprise,
+        })
+    
+    return render(request, 'user_space.html', context)

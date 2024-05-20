@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/user_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
+    <link rel="shortcut icon" href='{% static "src/icon_fav.png" %}' type="image/x-icon">
+    <title>III COAMA - CONGRESSO AMAZÔNICO DE MINERAÇÃO, METALURGIA E MATERIAIS</title>
+</head>
+
+<body>
+    <!--inicio menu login-->
+    <div class="background-menu-login">
+        <div class="container">
+            <nav class="menu-login">
+                <div class="menu-login-esquerda">
+                    <a href="mailto:coama.event@gmail.com" target="_blank">
+                        <img src='{% static "src/envelope.png" %}' alt="Icone e-mail" class="icon">
+                        <span>coama.event@gmail.com</span>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5594984449527" target="_blank">
+                        <img src='{% static "src/whatsapp.png" %}' alt="Icone Whatsapp" class="icon">
+                        <span>(94)98444-9527</span>
+                    </a>
+                </div>
+                <div class="redes">
+                    <a href="https://www.linkedin.com/in/congresso-amazonico-de-mineracao-metalurgia-e-materiais/?originalSubdomain=br"
+                        target="_blank"><img src='{% static "src/linkedin.png" %}' alt="Icone Linkedin"
+                            class="icon"></a>
+                    <a href="https://www.tiktok.com/@evento.coama?_t=8lr5zr2LhiP&_r=1" target="_blank"><img
+                            src='{% static "src/tiktok.png" %}' alt="Icone Tiktok" class="icon"></a>
+                    <a href="https://www.instagram.com/eventocoama/" target="_blank"><img
+                            src='{% static "src/instagram.png" %}' alt="Icone Instagram" class="icon"></a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!--fim menu login-->
+
+    <!--início menu principal-->
+    <div id="main-heather" class="menu-principal-container" style="margin-bottom: 20px">
+        <div class="container">
+            <nav class="menu-principal">
+                <div class="titulo">
+                    <h1>Página do Participante</h1>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div id="main-heather" class="menu-principal-container-mobile">
+        <div class="container">
+            <nav class="menu-principal-mobile">
+                <div class="titulo">
+                    <ul>
+                        <input type='checkbox' id='check' />
+                        <span class="menu">
+                            <li class="nav-item" data-target="dados-pessoais">Dados Pessoais</li>
+                            <li class="nav-item" data-target="mini-cursos">Mini-Cursos</li>
+                            <li class="nav-item" data-target="submissao-trabalho">Submissão de Trabalho</li>
+                            <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
+                        </span>
+                        <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
+                    </ul>
+                    <h1>Página do Participante</h1>
+                </div>
+            </nav>
+        </div>
+    </div>
+    
+    <main>
+        
+        <div class="container-main">
+            <div class="content first-content">
+                <div class="first-column">
+                    <h2 class="title title-primary">Bem-Vindo!</h2>
+                    <ul class="first-column-ul">
+                        <li class="nav-item" data-target="dados-pessoais"><i class="fas fa-user icon"></i>Dados Pessoais</li>
+                        <li class="nav-item" data-target="mini-cursos"><i class="fas fa-book icon"></i>Mini-Cursos</li>
+                        <li class="nav-item" data-target="submissao-trabalho"><i class="fas fa-file-alt icon"></i>Submissão de Trabalho</li>
+                    </ul> 
+                </div>    
+                <div class="second-column">
+                    <div class="dados-pessoais">
+                        
+                        <div class="box">
+                            <h2>Nome Crachá:</h2>
+                            <p>{{nomecracha}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>CPF:</h2>
+                            <p>{{cpf}}</p>
+                        </div>
+                           
+                        <div class="box">
+                            <h2>E-mail:</h2>
+                            <p>{{email}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Telefone:</h2>
+                            <p>{{telefone}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Cidade:</h2>
+                            <p>{{cidade}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Estado:</h2>
+                            <p>{{estado}}</p>
+                        </div>
+                        
+                        <div class="box">
+                            <h2>Área de atuação/Curso:</h2>
+                            <p>{{curso}}</p>
+                        </div>
+                        
+                        <div class="box">
+                            <h2>Instituição:</h2>
+                            <p>{{instituicao}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Matrícula:</h2>
+                            <p>{{matricula}}</p>
+                        </div>
+                    </div>
+                    <div class="mini-cursos" style="display: none;">
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+
+                        <button id="pagamentoBtn" class="button">Realizar Pagamento</button>
+                    </div>
+                    <div class="submissao-trabalho" style="display: none;">
+                        <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
+                        <a href="src/Modelo de Apresentação (Palestras).pptx" download class="button">
+                            <i class="fas fa-download"></i> Baixar Modelo de Apresentação
+                        </a>
+                        <a href="src/Modelo de Banner III COAMA.pptx" download class="button">
+                            <i class="fas fa-download"></i> Baixar Modelo de Banner
+                        </a>
+                        <a href="src/Modelo_de_artigo_Coama.docx" download class="button">
+                            <i class="fas fa-download"></i> Baixar Modelo de Artigo
+                        </a>
+                    
+                        <p>Selecione o arquivo que deseja enviar para avaliação:</p>
+                        <label class="label-input" for="comprovante-vinculo">
+                            <i class="fas fa-file-alt icon-modify"></i>
+                            <input type="file" id="fileUpload" accept=".pdf,.doc,.docx" multiple>
+                        </label>
+                    
+                        <button id="submitBtn" class="button">Enviar</button>
+                    </div>
+                </div>
+    
+                
+                    
+        </div>
+        </div>
+        <div class="container-main-mobile">  
+                <div class="second-column">
+                    <div class="dados-pessoais">
+                        
+                        <div class="box">
+                            <h2>Nome Crachá:</h2>
+                            <p>{{nomecracha}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>CPF:</h2>
+                            <p>{{cpf}}</p>
+                        </div>
+                           
+                        <div class="box">
+                            <h2>E-mail:</h2>
+                            <p>{{email}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Telefone:</h2>
+                            <p>{{telefone}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Cidade:</h2>
+                            <p>{{cidade}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Estado:</h2>
+                            <p>{{estado}}</p>
+                        </div>
+                        
+                        <div class="box">
+                            <h2>Área de atuação:</h2>
+                            <p>{{curso}}</p>
+                        </div>
+                        
+                        <div class="box">
+                            <h2>Instituição:</h2>
+                            <p>{{instituicao}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Matrícula:</h2>
+                            <p>{{matricula}}</p>
+                        </div>
+                    </div>
+                    <div class="mini-cursos" style="display: none;">
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Mini-Curso de Engenharia de Materiais</h5>
+                                <span>Descrição do Mini-Curso</span>
+                            </label>
+                        </div>
+
+                        <button id="pagamentoBtn" class="button">Realizar Pagamento</button>
+                    </div>
+                    <div class="submissao-trabalho" style="display: none;">
+                        <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
+                        <a href="{% static "src/Modelo de Apresentação (Palestras).pptx" %}" download class="button">
+                            <i class="fas fa-download"></i> Baixar Modelo de Apresentação
+                        </a>
+                        <a href="{% static "src/Modelo de Banner III COAMA.pptx" %}" download class="button">
+                            <i class="fas fa-download"></i> Baixar Modelo de Banner
+                        </a>
+                        <a href="{% static "src/Modelo_de_artigo_Coama.docx" %}" download class="button">
+                            <i class="fas fa-download"></i> Baixar Modelo de Artigo
+                        </a>
+                    
+                        <p>Selecione o arquivo que deseja enviar para avaliação:</p>
+                        <label class="label-input" for="comprovante-vinculo">
+                            <i class="fas fa-file-alt icon-modify"></i>
+                            <input type="file" id="fileUploadMobile" accept=".pdf,.doc,.docx" multiple>
+                        </label>
+                    
+                        <button id="submitBtnMobile" class="button">Enviar</button>
+                    </div>
+                </div>
+        </div>
+    </main>
+    <footer>
+        
+        <div class="tj">
+            <span>2024 © COAMA - Congresso Amazônico de Mineração, Metalurgia e Materiais. Desenvolvido por: BITS
+                Jr.</span>
+            <img src='{% static "src/bits-logo.png" %}' alt="Icone BITS JR. do Curso de Engenharia da Computação">
+        </div>
+        <div class="tj-media-query">
+            <span>2024 © COAMA - Desenvolvido por: BITS
+                Jr.</span>
+            <img src='{% static "src/bits-logo.png" %}' alt="Icone BITS JR. do Curso de Engenharia da Computação">
+        </div>
+    </footer>
+
+    <div class="dialog-container">
+        <div class="dialog">
+            <h2>Atenção</h2>
+            <p>Preencha todos os campos obrigatórios.</p>
+            <button onclick="fecharDialog()">Fechar</button>
+        </div>
+    </div>
+    <script src="{% static "js/script.js" %}"></script>
+</body>
+
+
+</html>

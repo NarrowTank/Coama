@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Isso garante que a div ocupe toda a altura da tela */
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --amarelo: #FEB609;
+    --laranja: #D44501;
+    --vinho: #630C03;
+    --preto: #000;
+    --branco: #FFFFFF;
+}
+
+/* Ocultar o ícone padrão de alternância de senha */
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.password-input-container {
+    position: relative;
+}
+
+.password-input-container input[type="password"] {
+    padding-right: 30px; /* Adicione um espaço para o ícone */
+}
+
+img {
+    display: block; /* Isso garante que a margem automática funcione corretamente */
+    margin: 0 auto 5% auto; /* 0 para o topo e inferior, auto para os lados */
+    width: 15%; /* Essa porcentagem pode ser ajustada conforme necessário */
+    height: auto; /* Isso garante que a altura seja ajustada automaticamente para manter a proporção */
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-container input[type="file"]{
+    margin-bottom: 15px;
+}
+
+.form-container input[type="text"]{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    text-transform: capitalize;
+}
+
+
+.form-container input[type="password"],
+.form-container input[type="email"],
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.form-container input[type="submit"],
+.cadastro-btn, .voltar-cadastro-btn {
+    background-color: var(--amarelo);
+    color: var(--preto);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover,
+.cadastro-btn:hover, .voltar-cadastro-btn:hover {
+    background-color: var(--preto);
+    color: var(--amarelo);
+}
+
+.cadastro-btn, #next-btn {
+    background-color: var(--amarelo);
+    color: var(--preto);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cadastro-btn:hover, #next-btn:hover {
+    background-color: var(--preto);
+    color: var(--amarelo);
+}
+
+
+#voltar-login {
+    background-color: var(--amarelo);
+    color: var(--preto);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#voltar-login:hover {
+    background-color: var(--preto);
+    color: var(--amarelo);
+}
+
+.cadastro-btn, #next-btn {
+    background-color: var(--amarelo);
+    color: var(--preto);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cadastro-btn:hover, #next-btn:hover {
+    background-color: var(--preto);
+    color: var(--amarelo);
+}
+
+@media screen and (max-width: 1040px) {
+.form-container {
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    max-height: 90%;
+    overflow-y: auto;
+}
+}
