@@ -37,6 +37,7 @@ def newPassword(request):
 
 @login_required(login_url='/auth/login/')
 def userArea(request):
+    check_completion(request)
     
     user_data = Person.objects.get(user = request.user)
     
@@ -72,27 +73,31 @@ def userArea(request):
     return render(request, 'user_space.html', context)
 
 def register_user_step(request):
-    username = request.POST.get('nome')
-    user = User.objects.filter(username=username.lower()).first()
-    
-    if user:
-        render(request, 'signup_step_one.html', {'error' : 'Já existe um usuário com esse nome'})
-    
-    email = request.POST.get('cadastro-email')
-    senha = request.POST.get('cadastro-senha')
-    
-    try:
-        user = User.objects.create_user(username=username.lower(), email=email, password=senha)
-        user.save()
-        
-        user = authenticate(username=username.lower(), password=senha)
-        django_login(request, user)
-        
-        render(request, 'signup_step_two.html')
-        
-    except:
-        render(request, 'signup_step_one.html', {'error' : 'Erro no cadastro do usuário'})
-        
+    if request.method == 'GET':
+        return render(request, 'signup_step_one.html')
+    if request.method == 'POST':
+        username = request.POST.get('nome')
+        user = User.objects.filter(username=username.lower()).first()
+
+        if user:
+            render(request, 'signup_step_one.html', {'error' : 'Já existe um usuário com esse nome'})
+
+        email = request.POST.get('cadastro-email')
+        senha = request.POST.get('cadastro-senha')
+
+        try:
+            user = User.objects.create_user(username=username.lower(), email=email, password=senha)
+            user.save()
+            
+            user = authenticate(username=username.lower(), password=senha)
+            django_login(request, user)
+            
+            return redirect('new-person')
+            
+        except:
+            return render(request, 'signup_step_one.html', {'error' : 'Erro no cadastro do usuário'})
+      
+@login_required(login_url='/auth/login/')
 def register_person_step(request):
     try:
         cpf = request.POST.get('cpf')
@@ -101,10 +106,16 @@ def register_person_step(request):
         phone = request.POST.get('celular')
         city = request.POST.get('cidade')
         state = request.POST.get('estado')
-        is_deficient = request.POST.get('deficiencia')
+        if request.POST.get('deficiencia') == 'on':
+            is_deficient = 1
+        else:
+            is_deficient = 0
         deficiency = request.POST.get('descricao-deficiencia')
         person_type = request.POST.get('categoria')
+        email = request.user.email
         
+        print(is_deficient)
+        print(deficiency)
         new_user = Person(
                     user = request.user,
                     cpf = cpf,
@@ -116,46 +127,52 @@ def register_person_step(request):
                     is_deficient = is_deficient,
                     deficiency = deficiency,
                     person_type = person_type,
+                    email = email,
                 )
         new_user.save()
-        render(request, 'signup_step_three.html', {'person_type': person_type})
+        return redirect('new-person-type')
     except:
-        render(request, 'signup_step_two.html', {'error' : 'Erro no cadastro do usuário'})
+        print()
+        return render(request, 'signup_step_two.html', {'error' : 'Erro no cadastro do usuário'})
     
+@login_required(login_url='/auth/login/')
 def register_person_type_step(request):
-    
     user_data = Person.objects.get(user = request.user)
-    try:
-        if user_data.person_type == 1:
-            new_user = Student(
-                data= user_data,
-                course = request.POST.get('curso'),
-                institution = request.POST.get('instituicao'),
-                course_id = request.POST.get('matricula'),
-            )
-            new_user.save()
-
-        if user_data.person_type == 2:
-            new_user = PosGradStudent(
-                data= user_data,
-                area = request.POST.get('area-atuacao'),
-                institution = request.POST.get('instituicao-pos'),
-                course_id = request.POST.get('comprovante-matricula'),
-            )
-            new_user.save()
-
-        if user_data.person_type == 3:
-            new_user = Professional(
-                data= user_data,
-                enterprise_name = request.POST.get('empresa'),
-                enterprise = request.POST.get('classificacao-empresa'),
-            )
-            new_user.save()
-            
-        render(request, 'signup_step_three.html', {'error' : 'Erro no cadastro do usuário'})
-    except:
-        render(request, 'signup_step_three.html', {'error' : 'Erro no cadastro do usuário'})
+    if request.method == 'GET':
+        return render(request, 'signup_step_three.html', {'person_type' : user_data.person_type})
+    if request.method == 'POST':
         
+        try:
+            if user_data.person_type == 1:
+                new_user = Student(
+                    data= user_data,
+                    course = request.POST.get('curso'),
+                    institution = request.POST.get('instituicao'),
+                    course_id = request.POST.get('matricula'),
+                )
+                new_user.save()
+
+            if user_data.person_type == 2:
+                new_user = PosGradStudent(
+                    data= user_data,
+                    area = request.POST.get('area-atuacao'),
+                    institution = request.POST.get('instituicao-pos'),
+                    course_id = request.POST.get('comprovante-matricula'),
+                )
+                new_user.save()
+
+            if user_data.person_type == 3:
+                new_user = Professional(
+                    data= user_data,
+                    enterprise_name = request.POST.get('empresa'),
+                    enterprise = request.POST.get('classificacao-empresa'),
+                )
+                new_user.save()
+                
+            return redirect('login')
+        except:
+            return render(request, 'signup_step_three.html', {'error' : 'Erro no cadastro do usuário'})
+            
 def check_completion(request):
     try:
         data = Person.objects.get(user = request.user)

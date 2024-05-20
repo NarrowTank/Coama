@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
             
-    <form id="cadastro-form" class="form-container" style="display: none;" action="{% url 'new-person' %}" method="POST">
+    <form id="cadastro-form" class="form-container" action="{% url 'new-person' %}" method="POST">
         {% csrf_token %}
         <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
         <h2>Cadastro</h2>
@@ -54,12 +54,57 @@
             <option value="2">Estudante Pós-graduação</option>
             <option value="3">Profissional</option>
         </select>
-        <label for="deficiencia">Possui deficiência? <input type="checkbox" id="deficiencia" name="deficiencia"></label>
+        <label for="deficiencia">Possui deficiência?</label>
+        <input type="checkbox" id="deficiencia" name="deficiencia">
         <div id="descricao-deficiencia-container" style="display: none;">
             <label for="descricao-deficiencia">Descrição da Deficiência:</label>
             <input type="text" id="descricao-deficiencia" name="descricao-deficiencia">
         </div>
-        <button type="button" class="voltar-cadastro-btn">Voltar</button>
-        <input type="button" id="next-btn" class="cadastro-btn" value="Próximo">
+        <p>{{error}}</p>
+        <input type="submit" id="next-btn" class="cadastro-btn" value="Próximo">
     </form>
+
+    <script>
+        document.getElementById("deficiencia").addEventListener("change", function() {
+            var descricaoDeficienciaContainer = document.getElementById("descricao-deficiencia-container");
+            var descricaoDeficienciaInput = document.getElementById("descricao-deficiencia");
+        
+            if (this.checked) {
+                descricaoDeficienciaContainer.style.display = "block";
+                descricaoDeficienciaInput.value = ""; 
+            } else {
+                descricaoDeficienciaContainer.style.display = "none";
+                descricaoDeficienciaInput.value = ""; 
+            }
+        });
+        
+        document.getElementById("cpf").addEventListener("input", function() {
+            var cpfInput = this.value.replace(/\D/g, ''); 
+            if (cpfInput.length > 11) {
+                cpfInput = cpfInput.slice(0, 11); 
+            }
+            cpfInput = cpfInput.replace(/(\d{3})(\d)/, '$1.$2'); 
+            cpfInput = cpfInput.replace(/(\d{3})(\d)/, '$1.$2'); 
+            cpfInput = cpfInput.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
+            this.value = cpfInput; 
+        });
+        
+        document.getElementById("celular").addEventListener("input", function() {
+            var celularInput = this.value.replace(/\D/g, ''); 
+            if (celularInput.length > 11) {
+                celularInput = celularInput.slice(0, 11); 
+            }
+            celularInput = celularInput.replace(/^(\d{2})(\d)/g, '($1) $2'); 
+            celularInput = celularInput.replace(/(\d{5})(\d)/, '$1-$2'); 
+            this.value = celularInput; 
+        });
+
+        document.getElementById("descricao-deficiencia").addEventListener('input', function() {
+            var valorAnterior = this.value;
+            var valorAtual = valorAnterior.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ\s]/g, ''); 
+            if (valorAnterior !== valorAtual) {
+                this.value = valorAtual;
+            }
+        });
+    </script>
 {% endblock %}

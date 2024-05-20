@@ -11,11 +11,11 @@ class Person(models.Model):
     phone = models.CharField(verbose_name="Telefone", max_length=30)
     city = models.CharField(verbose_name="Cidade", max_length=30)
     state = models.CharField(verbose_name="UF", max_length=30)
-    is_deficient = models.BooleanField(verbose_name="Tem deficiência?", default=False)
+    is_deficient = models.BooleanField(verbose_name="Tem deficiência?", default=False, null=True)
     deficiency = models.CharField(verbose_name="Qual a deficiência?", max_length=50, default="", blank=True)
     person_type = models.IntegerField(verbose_name="Tipo de Pessoa")
-    date_added = models.DateTimeField(verbose_name="Dia em que foi cadastrado", auto_now_add=True)
-    payed= models.BooleanField(verbose_name="Pago", default=False)
+    date_added = models.DateTimeField(verbose_name="Dia em que foi cadastrado", auto_now_add=True, null=True)
+    payed = models.BooleanField(verbose_name="Pago", default=False)
     
     def __str__(self) -> str:
         """Retorna um representação em string do modelo."""

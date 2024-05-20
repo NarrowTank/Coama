@@ -1,7 +1,8 @@
 {% extends "login_base.html" %}
 {% block content %}
 {% load static %}
-    <form id="estudante-form" class="form-container animated-form" style="display: none;" action="{% url 'new-person-type' %}" method="POST">
+    {% if person_type == 1 %}
+    <form id="estudante-form" class="form-container animated-form" action="{% url 'new-person-type' %}" method="POST">
         {% csrf_token %}
         <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
         <h2>Informações do Estudante</h2>
@@ -11,10 +12,17 @@
         <input type="text" id="instituicao" name="instituicao" required>
         <label for="matricula">Matrícula:</label>
         <input type="text" id="matricula" name="matricula" required>
-        <button type="button" class="voltar-cadastro-btn">Voltar</button>
         <input type="submit" value="Cadastrar">
     </form>
+    <script>
+        document.getElementById("matricula").addEventListener("input", function() {
+            this.value = this.value.replace(/\D/g, '');
+        });
+        
+    </script>
+    {% endif %}
 
+    {% if person_type == 2 %}
     <form id="pos-graduacao-form" class="form-container animated-form" style="display: none;" action="{% url 'new-person-type' %}" method="POST">
         {% csrf_token %}
         <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
@@ -28,7 +36,9 @@
         <button type="button" class="voltar-cadastro-btn">Voltar</button>
         <input type="submit" value="Cadastrar">
     </form>
+    {% endif %}
 
+    {% if person_type == 3 %}
     <form id="profissional-form" class="form-container animated-form" style="display: none;" action="{% url 'new-person-type' %}" method="POST">
         {% csrf_token %}
         <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
@@ -48,7 +58,7 @@
             <option value="AUT">Autônomo</option>
             <option value="OUT">Outros</option>
         </select>
-        <button type="button" class="voltar-cadastro-btn">Voltar</button>
         <input type="submit" value="Cadastrar" class="cadastro-btn">
     </form>
+    {% endif %}
 {% endblock %}
