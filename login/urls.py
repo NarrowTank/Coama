@@ -9,4 +9,7 @@ urlpatterns = [
     path('logout/', views.logoutHandler, name="logout"),
     path('alterar-senha/', views.newPassword, name="alterar-senha"),
     path('area-do-usuario/', views.userArea, name="area-do-usuario"),
+    path('success/', views.paymentSuccess, name="payment-success"),
+    path('failure/', views.paymentFailure, name="payment-failure"),
+    path('pendings/', views.paymentPendings, name="payment-pendings"),
 ]

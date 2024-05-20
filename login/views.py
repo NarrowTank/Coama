@@ -72,15 +72,12 @@ def userArea(request):
             'empresa' : user_type.enterprise,
         })
     
-    print(user_data.payed)
     if user_data.payed == False:
-        preferenceId = attPrefferences()
-        print(preferenceId)
+        preferenceId = attPrefferences(user_data.person_type)
         context.update({
             'payed' : 'False',
             'preferenceId' : preferenceId,
         })
-        print(context.get('payed'))
     
     return render(request, 'user_space.html', context)
 
@@ -126,8 +123,6 @@ def register_person_step(request):
         person_type = request.POST.get('categoria')
         email = request.user.email
         
-        print(is_deficient)
-        print(deficiency)
         new_user = Person(
                     user = request.user,
                     cpf = cpf,
@@ -202,3 +197,14 @@ def check_completion(request):
         django_logout(request)
         user.delete()
     
+def paymentSuccess(request):
+    person = Person.objects.get(user = request.user)
+    person.payed = True
+    person.save()
+    return redirect('login')
+
+def paymentFailure():
+    return redirect('login')
+
+def paymentPendings():
+    return redirect('login')

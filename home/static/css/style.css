@@ -598,8 +598,16 @@ nav a {
         display: none;
     }
 
+    .menu-login-direita {
+        display: flex;
+        justify-content: flex-start; /* Alinha o ícone à esquerda */
+    }
+
     .menu-login-direita a {
+        display: flex;
+        align-items: center;
         margin: 0;
+        padding: 0; /* Opcional, para remover qualquer padding */
     }
 
     .menu-login-direita span {
@@ -608,10 +616,6 @@ nav a {
 
     .menu-logo {
         display: none;
-    }
-
-    nav {
-        justify-content: flex-end;
     }
 }
 

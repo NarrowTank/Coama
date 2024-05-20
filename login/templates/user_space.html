@@ -73,7 +73,7 @@
                         <input type='checkbox' id='check' />
                         <span class="menu">
                             <li class="nav-item" data-target="dados-pessoais">Dados Pessoais</li>
-                            <li class="nav-item" data-target="mini-cursos">Mini-Cursos</li>
+                            {% comment %} <li class="nav-item" data-target="mini-cursos">Mini-Cursos</li> {% endcomment %}
                             <li class="nav-item" data-target="submissao-trabalho">Submissão de Trabalho</li>
                             <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
                         </span>
@@ -93,7 +93,7 @@
                     <h2 class="title title-primary">Bem-Vindo!</h2>
                     <ul class="first-column-ul">
                         <li class="nav-item" data-target="dados-pessoais"><i class="fas fa-user icon"></i>Dados Pessoais</li>
-                        <li class="nav-item" data-target="mini-cursos"><i class="fas fa-book icon"></i>Mini-Cursos</li>
+                        {% comment %} <li class="nav-item" data-target="mini-cursos"><i class="fas fa-book icon"></i>Mini-Cursos</li> {% endcomment %}
                         <li class="nav-item" data-target="submissao-trabalho"><i class="fas fa-file-alt icon"></i>Submissão de Trabalho</li>
                     </ul> 
                 </div>    
@@ -166,7 +166,7 @@
                         </div>
                         {% endif %}                    
                     </div>
-                    <div class="mini-cursos" style="display: none;">
+                    {% comment %} <div class="mini-cursos" style="display: none;">
                         <div class="card">
                             <input type="checkbox" name="pricing" id="card1">
                             <label for="card1">
@@ -218,7 +218,7 @@
                         </div>
 
                         <button id="pagamentoBtn" class="button">Realizar Pagamento</button>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="submissao-trabalho" style="display: none;">
                         <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
                         <a href="src/Modelo de Apresentação (Palestras).pptx" download class="button">
@@ -315,7 +315,7 @@
                         </div>
                         {% endif %}
                     </div>
-                    <div class="mini-cursos" style="display: none;">
+                    {% comment %} <div class="mini-cursos" style="display: none;">
                         <div class="card">
                             <input type="checkbox" name="pricing" id="card1">
                             <label for="card1">
@@ -367,7 +367,7 @@
                         </div>
 
                         <button id="pagamentoBtn" class="button">Realizar Pagamento</button>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="submissao-trabalho" style="display: none;">
                         <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
                         <a href="{% static "src/Modelo de Apresentação (Palestras).pptx" %}" download class="button">
@@ -422,12 +422,18 @@
             initialization: {
                 preferenceId: "{{ preferenceId }}",
             },
-         customization: {
-          texts: {
-           valueProp: 'smart_option',
-          },
-          },
-         });
+            customization: {
+                texts: {
+                    valueProp: 'security_safety',
+                },
+                checkout: {
+                    theme: {
+                        elementsColor: "#FEB609",
+                        headerColor: "#FEB609",
+                    },
+                },         
+            },
+        });
     </script>
     {% endif %}
 </body>
