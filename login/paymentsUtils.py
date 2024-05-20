@@ -1,7 +1,11 @@
 import mercadopago
+from dotenv import load_dotenv
+from pathlib import os
 
 def attPrefferences():
-    sdk = mercadopago.SDK("APP_USR-5859714400275253-050710-e6ede001af555236613cfc606515b533-813143227")
+    load_dotenv()
+    
+    sdk = mercadopago.SDK(str(os.getenv('MP_ACCESS_TOKEN')))
          
     preference_data = {
         "items": [

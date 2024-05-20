@@ -7,6 +7,7 @@ from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
 
 from login.models import Person, Student, PosGradStudent, Professional
+from login.paymentsUtils import attPrefferences
 
 def loginHandler(request):
     if request.user.is_authenticated:
@@ -48,7 +49,8 @@ def userArea(request):
         'telefone' : user_data.phone,
         'cidade' : user_data.city,
         'estado' : user_data.state,
-        'user_type' : user_data.person_type, 
+        'user_type' : user_data.person_type,
+        'payed' : 'True',
     }
     
     if user_data.person_type == 1:
@@ -69,6 +71,16 @@ def userArea(request):
         context.update({
             'empresa' : user_type.enterprise,
         })
+    
+    print(user_data.payed)
+    if user_data.payed == False:
+        preferenceId = attPrefferences()
+        print(preferenceId)
+        context.update({
+            'payed' : 'False',
+            'preferenceId' : preferenceId,
+        })
+        print(context.get('payed'))
     
     return render(request, 'user_space.html', context)
 

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
     <link rel="shortcut icon" href='{% static "src/icon_fav.png" %}' type="image/x-icon">
     <title>III COAMA - CONGRESSO AMAZÔNICO DE MINERAÇÃO, METALURGIA E MATERIAIS</title>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
 
 <body>
@@ -45,6 +46,13 @@
         </div>
     </div>
     <!--fim menu login-->
+
+    {% if payed == 'False' %}
+    <div class="payment-box">
+        <h2>Finalize seu cadastro reservando sua vaga!</h2>
+        <div id="wallet_container"></div>
+    </div>
+    {% endif %}
 
     <!--início menu principal-->
     <div id="main-heather" class="menu-principal-container" style="margin-bottom: 20px">
@@ -156,8 +164,7 @@
                             <h2>Empresa:</h2>
                             <p>{{empresa}}</p>
                         </div>
-                        {% endif %}
-
+                        {% endif %}                    
                     </div>
                     <div class="mini-cursos" style="display: none;">
                         <div class="card">
@@ -271,12 +278,13 @@
                             <h2>Estado:</h2>
                             <p>{{estado}}</p>
                         </div>
-                        
+
+                        {% if user_type == 1 %}
                         <div class="box">
-                            <h2>Área de atuação:</h2>
+                            <h2>Curso:</h2>
                             <p>{{curso}}</p>
                         </div>
-                        
+
                         <div class="box">
                             <h2>Instituição:</h2>
                             <p>{{instituicao}}</p>
@@ -286,6 +294,26 @@
                             <h2>Matrícula:</h2>
                             <p>{{matricula}}</p>
                         </div>
+                        {% endif %}
+
+                        {% if user_type == 2 %}
+                        <div class="box">
+                            <h2>Área de atuação:</h2>
+                            <p>{{area}}</p>
+                        </div>
+
+                        <div class="box">
+                            <h2>Instituição:</h2>
+                            <p>{{instituicao}}</p>
+                        </div>
+                        {% endif %}
+
+                        {% if user_type == 3 %}
+                        <div class="box">
+                            <h2>Empresa:</h2>
+                            <p>{{empresa}}</p>
+                        </div>
+                        {% endif %}
                     </div>
                     <div class="mini-cursos" style="display: none;">
                         <div class="card">
@@ -385,6 +413,23 @@
         </div>
     </div>
     <script src="{% static "js/script.js" %}"></script>
+    {% if payed == 'False' %}
+    <script>
+        const mp = new MercadoPago('APP_USR-52210169-dc3c-4707-9b39-7d935200d689');
+        const bricksBuilder = mp.bricks();
+    
+        mp.bricks().create("wallet", "wallet_container", {
+            initialization: {
+                preferenceId: "{{ preferenceId }}",
+            },
+         customization: {
+          texts: {
+           valueProp: 'smart_option',
+          },
+          },
+         });
+    </script>
+    {% endif %}
 </body>
 
 

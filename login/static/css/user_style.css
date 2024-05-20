@@ -766,4 +766,27 @@ i {
     }
 }
 
+.payment-box{
+    width: 45%;
+    padding: 1rem;
+    margin-bottom: 20px;
+    position: fixed;
+    background-color: #f3f3f3;
+    z-index: 999;
+    top: 76%;
+    left: 73%;
+    border-radius: 10px;
+    max-width: 500px;
+}
 
+@media screen and (max-width: 1040px) {
+    .payment-box{
+        padding: 1rem;
+        margin-bottom: 20px;
+        position: fixed;
+        background-color: #f3f3f3;
+        width: 100%;
+        top: 76%;
+        left: 0%;
+    }
+}
