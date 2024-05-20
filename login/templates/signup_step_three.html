@@ -1,0 +1,54 @@
+{% extends "login_base.html" %}
+{% block content %}
+{% load static %}
+    <form id="estudante-form" class="form-container animated-form" style="display: none;" action="{% url 'new-person-type' %}" method="POST">
+        {% csrf_token %}
+        <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
+        <h2>Informações do Estudante</h2>
+        <label for="curso">Curso:</label>
+        <input type="text" id="curso" name="curso" required>
+        <label for="instituicao">Instituição:</label>
+        <input type="text" id="instituicao" name="instituicao" required>
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" name="matricula" required>
+        <button type="button" class="voltar-cadastro-btn">Voltar</button>
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <form id="pos-graduacao-form" class="form-container animated-form" style="display: none;" action="{% url 'new-person-type' %}" method="POST">
+        {% csrf_token %}
+        <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
+        <h2>Informações do Estudante Pós-graduação</h2>
+        <label for="area-atuacao">Área de atuação:</label>
+        <input type="text" id="area-atuacao" name="area-atuacao" required>
+        <label for="instituicao-pos">Instituição:</label>
+        <input type="text" id="instituicao-pos" name="instituicao-pos" required>
+        <label for="comprovante-matricula">Comprovante de Matrícula:</label>
+        <input type="file" id="comprovante-matricula" name="comprovante-matricula" accept=".pdf,.jpg,.png" required>
+        <button type="button" class="voltar-cadastro-btn">Voltar</button>
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <form id="profissional-form" class="form-container animated-form" style="display: none;" action="{% url 'new-person-type' %}" method="POST">
+        {% csrf_token %}
+        <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
+        <h2>Informações do Profissional</h2>
+        <label for="empresa">Empresa:</label>
+        <input type="text" id="empresa" name="empresa" required>
+        <label for="classificacao-empresa">Classificação da Empresa:</label>
+        <select id="classificacao-empresa" name="classificacao-empresa" required>
+            <option value="">Selecione...</option>
+            <option value="MIN">Mineradora</option>
+            <option value="FOR">Fornecedora do Setor Mineral</option>
+            <option value="ACA">Academia</option>
+            <option value="ONG">ONG / Terceiro Setor</option>
+            <option value="POD">Poder Público</option>
+            <option value="ENT">Entidades</option>
+            <option value="CON">Consultoria</option>
+            <option value="AUT">Autônomo</option>
+            <option value="OUT">Outros</option>
+        </select>
+        <button type="button" class="voltar-cadastro-btn">Voltar</button>
+        <input type="submit" value="Cadastrar" class="cadastro-btn">
+    </form>
+{% endblock %}

@@ -46,5 +46,6 @@ class Professional(models.Model):
         ("OUT", "Outros"),
     ]
     data = models.ForeignKey(Person, on_delete=models.CASCADE)
+    enterprise_name = models.CharField(verbose_name="Nome da Empresa", max_length=100)
     enterprise = models.CharField(verbose_name="Empresa", max_length=3, choices=ENTERPRISE_TYPE)
     

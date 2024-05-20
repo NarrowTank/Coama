@@ -1,0 +1,22 @@
+{% extends "login_base.html" %}
+{% block content %}
+{% load static %}
+        <form id="cadastro-email-senha-form" class="form-container" style="display: none;" action="{% url 'new-user' %}" method="POST">
+            {% csrf_token %}
+            <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
+            <h2>Cadastro</h2>
+            <label for="nome">Nome de Usuário:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="cadastro-email">Email:</label>
+            <input type="email" id="cadastro-email" name="cadastro-email" required>
+            <label for="cadastro-senha">Senha:</label>
+            <div class="password-input-container">
+                <input type="password" id="cadastro-senha" name="cadastro-senha" required>
+                <i class="toggle-password fas fa-eye-slash"></i>
+            </div>
+            <div id="senha-feedback-cadastro"></div>
+            <div id="senha-validation-message-cadastro" style="color: red;"></div>
+            <button type="button" id="voltar-login" class="cadastro-btn">Voltar para login</button>
+            <button type="button" id="proximo-cadastro" class="cadastro-btn">Próximo</button>
+        </form>
+{% endblock %}
