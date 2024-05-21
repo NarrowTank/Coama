@@ -3,7 +3,7 @@
 {% load static %}
         <form id="login-form" class="form-container" action="{% url 'login' %}" method="POST">
             {% csrf_token %}
-            <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
+            <a href="{% url 'index' %}"><img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento"></a>
             <h2>Login</h2>
             <label for="login-username">Nome de Usuário:</label>
             <input type="text" id="login-username" name="login-username" required>

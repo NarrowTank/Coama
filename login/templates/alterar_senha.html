@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Senha COAMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'src/icon_fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/alterar_senha.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+
+<body>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js'></script>
+
+    <div class="container">
+        <form id="alterar-senha-form" class="form-container">
+            <img src="{% static 'src/icon_fav.png' %}" alt="logo oficial do evento">
+            <h2>Alterar Senha</h2>
+            <label for="nova-senha">Nova senha:</label>
+            <div class="password-input-container">
+                <input type="password" id="nova-senha" name="nova-senha" required>
+                <i class="toggle-password fas fa-eye-slash"></i>
+            </div>
+            <div id="senha-feedback"></div>
+            <div id="senha-validation-message" style="color: red;"></div>
+            <label for="repita-senha">Repita a senha:</label>
+            <div class="password-input-container">
+                <input type="password" id="repita-senha" name="repita-senha" required>
+                <i class="toggle-password-dois fas fa-eye-slash"></i>
+            </div>
+            <div id="senha-mismatch-message" style="color: red;"></div>
+            <a href="#volta-para-pagina-participante"><button type="button" id="toggle-cadastro" class="alterar-senha-btn">Cancelar</button></a>
+            <a href="#altera-senha-volta-para-pagina-participante"><button type="submit" class="alterar-senha-btn">Confirmar</button></a>
+        </form>
+    </div>
+    
+    <script src="/js/alterar_senha.js"></script>
+
+</body>
+
+</html>

@@ -72,10 +72,13 @@
                     <ul>
                         <input type='checkbox' id='check' />
                         <span class="menu">
+                            <li><a href="{% url 'index' %}"
+                                target="_blank"><h2 class="title title-primary">Página principal</h2></a></li>
                             <li class="nav-item" data-target="dados-pessoais">Dados Pessoais</li>
                             {% comment %} <li class="nav-item" data-target="mini-cursos">Mini-Cursos</li> {% endcomment %}
                             <li class="nav-item" data-target="submissao-trabalho">Submissão de Trabalho</li>
                             <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
+                            <li><a href="{% url 'logout' %}"><button class="button-sair button-sair-mobile">Sair</button></a></li>
                         </span>
                         <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
                     </ul>
@@ -92,79 +95,168 @@
                 <div class="first-column">
                     <h2 class="title title-primary">Bem-Vindo!</h2>
                     <ul class="first-column-ul">
+                        <li><a href="{% url 'index' %}"
+                            target="_blank"><h2 class="title title-primary">Página principal</h2></a></li>
                         <li class="nav-item" data-target="dados-pessoais"><i class="fas fa-user icon"></i>Dados Pessoais</li>
                         {% comment %} <li class="nav-item" data-target="mini-cursos"><i class="fas fa-book icon"></i>Mini-Cursos</li> {% endcomment %}
                         <li class="nav-item" data-target="submissao-trabalho"><i class="fas fa-file-alt icon"></i>Submissão de Trabalho</li>
+                        <li><a href="{% url 'logout' %}"><button class="button-sair button-sair-mobile">Sair</button></a></li>
                     </ul> 
                 </div>    
                 <div class="second-column">
                     <div class="dados-pessoais">
-                        
-                        <div class="box">
-                            <h2>Nome Crachá:</h2>
-                            <p>{{nomecracha}}</p>
+                        <div class="exibicao-dados-pessoais">
+                            <div class="box">
+                                <h2>Nome Crachá:</h2>
+                                <p id="p-nome">{{nomecracha}}</p>
+                                <button id="editar-nome" class="button-editar disabled">Editar</button>
+                                <input type="text" id="nome-cracha" name="nome-cracha" required style="display: none;">
+                                <button id="cancelar-nome" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-nome" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>CPF:</h2>
+                                <p>{{cpf}}</p>
+                            </div>
+                               
+                            <div class="box">
+                                <h2>E-mail:</h2>
+                                <p id="p-email">{{email}}</p>
+                                <button id="editar-email" class="button-editar disabled">Editar</button>
+                                <input type="email" id="cadastro-email" name="cadastro-email" required style="display: none;">
+                                <button id="cancelar-email" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-email" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Telefone:</h2>
+                                <p id="p-celular">{{telefone}}</p>
+                                <button id="editar-telefone" class="button-editar disabled">Editar</button>
+                                <input type="text" id="celular" name="celular" required pattern="\(\d{2}\)\s\d{4,5}-\d{4}" title="Formato: (XX) XXXXX-XXXX" style="display: none;">
+                                <button id="cancelar-telefone" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-telefone" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Cidade:</h2>
+                                <p id="p-cidade">{{cidade}}</p>
+                                <button id="editar-cidade" class="button-editar disabled">Editar</button>
+                                <input type="text" id="cidade" name="cidade" required style="display: none;">
+                                <button id="cancelar-cidade" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-cidade" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Estado:</h2>
+                                <p id="p-estado">{{estado}}</p>
+                                <button id="editar-estado" class="button-editar disabled">Editar</button>
+                                <select id="estado" name="estado" required style="display: none;">
+                                    <option value="">Selecione...</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                                <button id="cancelar-estado" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-estado" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+                            
+                            {% if user_type == 1 %}
+                            <div class="box">
+                                <h2>Curso:</h2>
+                                <p id="p-curso">{{curso}}</p>
+                                <button id="editar-curso" class="button-editar disabled">Editar</button>
+                                <input type="text" id="curso" name="curso" required style="display: none;">
+                                <button id="cancelar-curso" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-curso" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Instituição:</h2>
+                                <p id="p-instituicao">{{instituicao}}</p>
+                                <button id="editar-instituicao" class="button-editar disabled">Editar</button>
+                                <input type="text" id="instituicao" name="instituicao" required style="display: none;">
+                                <button id="cancelar-instituicao" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-instituicao" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Matrícula:</h2>
+                                <p id="p-matricula">{{matricula}}</p>
+                                <button id="editar-matricula" class="button-editar disabled">Editar</button>
+                                <input type="text" id="matricula" name="matricula" required style="display: none;">
+                                <button id="cadastro-matricula" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-matricula" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+                            {% endif %}
+    
+                            {% if user_type == 2 %}
+                            <div class="box">
+                                <h2>Área de atuação:</h2>
+                                <p id="p-area">{{area}}</p>
+                                <button id="editar-area" class="button-editar disabled">Editar</button>
+                                <input type="text" id="area" name="matricula" required style="display: none;">
+                                <button id="cadastro-area" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-area" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Instituição:</h2>
+                                <p id="p-instituicao-pos" >{{instituicao}}</p>
+                                <button id="editar-instituicao-pos" class="button-editar disabled">Editar</button>
+                                <input type="text" id="instituicao-pos" name="matricula" required style="display: none;">
+                                <button id="cadastro-instituicao-pos" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-instituicao-pos" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+                            {% endif %}
+    
+                            {% if user_type == 3 %}
+                            <div class="box">
+                                <h2>Empresa:</h2>
+                                <p id="p-empresa" >{{empresa}}</p>
+                                <button id="editar-empresa" class="button-editar disabled">Editar</button>
+                                <select id="empresa" name="empresa" required style="display: none;">
+                                    <option value="">Selecione...</option>
+                                    <option value="MIN">Mineradora</option>
+                                    <option value="FOR">Fornecedora do Setor Mineral</option>
+                                    <option value="ACA">Academia</option>
+                                    <option value="ONG">ONG / Terceiro Setor</option>
+                                    <option value="POD">Poder Público</option>
+                                    <option value="ENT">Entidades</option>
+                                    <option value="CON">Consultoria</option>
+                                    <option value="AUT">Autônomo</option>
+                                    <option value="OUT">Outros</option>
+                                </select>
+                                <button id="cadastro-empresa" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-empresa" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+                            {% endif %}       
                         </div>
-
-                        <div class="box">
-                            <h2>CPF:</h2>
-                            <p>{{cpf}}</p>
-                        </div>
-                           
-                        <div class="box">
-                            <h2>E-mail:</h2>
-                            <p>{{email}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Telefone:</h2>
-                            <p>{{telefone}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Cidade:</h2>
-                            <p>{{cidade}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Estado:</h2>
-                            <p>{{estado}}</p>
-                        </div>
-                        
-                        {% if user_type == 1 %}
-                        <div class="box">
-                            <h2>Curso:</h2>
-                            <p>{{curso}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Instituição:</h2>
-                            <p>{{instituicao}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Matrícula:</h2>
-                            <p>{{matricula}}</p>
-                        </div>
-                        {% endif %}
-
-                        {% if user_type == 2 %}
-                        <div class="box">
-                            <h2>Área de atuação:</h2>
-                            <p>{{area}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Instituição:</h2>
-                            <p>{{instituicao}}</p>
-                        </div>
-                        {% endif %}
-
-                        {% if user_type == 3 %}
-                        <div class="box">
-                            <h2>Empresa:</h2>
-                            <p>{{empresa}}</p>
-                        </div>
-                        {% endif %}                    
+                        <a href="#ir-para-tela-de-alterar-senha"><button id="alterarSenhaBtn" class="button">Alterar Senha</button></a>         
                     </div>
                     {% comment %} <div class="mini-cursos" style="display: none;">
                         <div class="card">
@@ -221,13 +313,13 @@
                     </div> {% endcomment %}
                     <div class="submissao-trabalho" style="display: none;">
                         <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
-                        <a href="src/Modelo de Apresentação (Palestras).pptx" download class="button">
+                        <a href="{% static "src/Modelo de Apresentação (Palestras).pptx" %}" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Apresentação
                         </a>
-                        <a href="src/Modelo de Banner III COAMA.pptx" download class="button">
+                        <a href="{% static "src/Modelo de Banner III COAMA.pptx" %}" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Banner
                         </a>
-                        <a href="src/Modelo_de_artigo_Coama.docx" download class="button">
+                        <a href="{% static "src/Modelo_de_artigo_Coama.docx" %}" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Artigo
                         </a>
                     
@@ -248,72 +340,158 @@
         <div class="container-main-mobile">  
                 <div class="second-column">
                     <div class="dados-pessoais">
-                        
-                        <div class="box">
-                            <h2>Nome Crachá:</h2>
-                            <p>{{nomecracha}}</p>
+                        <div class="exibicao-dados-pessoais">
+                            <div class="box">
+                                <h2>Nome Crachá:</h2>
+                                <p id="p-nome-mobile">{{nomecracha}}</p>
+                                <button id="editar-nome-mobile" class="button-editar disabled">Editar</button>
+                                <input type="text" id="nome-cracha-mobile" name="nome-cracha" required style="display: none;">
+                                <button id="cancelar-nome-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-nome-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>CPF:</h2>
+                                <p>{{cpf}}</p>
+                            </div>
+                               
+                            <div class="box">
+                                <h2>E-mail:</h2>
+                                <p id="p-email-mobile">{{email}}</p>
+                                <button id="editar-email-mobile" class="button-editar disabled">Editar</button>
+                                <input type="email" id="cadastro-email-mobile" name="cadastro-email" required style="display: none;">
+                                <button id="cancelar-email-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-email-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Telefone:</h2>
+                                <p id="p-celular-mobile">{{telefone}}</p>
+                                <button id="editar-telefone-mobile" class="button-editar disabled">Editar</button>
+                                <input type="text" id="celular-mobile" name="celular" required pattern="\(\d{2}\)\s\d{4,5}-\d{4}" title="Formato: (XX) XXXXX-XXXX" style="display: none;">
+                                <button id="cancelar-telefone-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-telefone-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Cidade:</h2>
+                                <p id="p-cidade-mobile">{{cidade}}</p>
+                                <button id="editar-cidade-mobile" class="button-editar disabled">Editar</button>
+                                <input type="text" id="cidade-mobile" name="cidade" required style="display: none;">
+                                <button id="cancelar-cidade-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-cidade-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Estado:</h2>
+                                <p id="p-estado-mobile">{{estado}}</p>
+                                <button id="editar-estado-mobile" class="button-editar disabled">Editar</button>
+                                <select id="estado-mobile" name="estado" required style="display: none;">
+                                    <option value="">Selecione...</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                                <button id="cancelar-estado-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-estado-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+                            
+                            {% if user_type == 1 %}
+                            <div class="box">
+                                <h2>Curso:</h2>
+                                <p id="p-curso-mobile">{{curso}}</p>
+                                <button id="editar-curso-mobile" class="button-editar disabled">Editar</button>
+                                <input type="text" id="curso-mobile" name="curso" required style="display: none;">
+                                <button id="cancelar-curso-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-curso-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Instituição:</h2>
+                                <p id="p-instituicao-mobile">{{instituicao}}</p>
+                                <button id="editar-instituicao-mobile" class="button-editar disabled">Editar</button>
+                                <input type="text" id="instituicao-mobile" name="instituicao" required style="display: none;">
+                                <button id="cancelar-instituicao-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-instituicao-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Matrícula:</h2>
+                                <p id="p-matricula-mobile">{{matricula}}</p>
+                                <button id="editar-matricula-mobile" class="button-editar disabled">Editar</button>
+                                <input type="text" id="matricula-mobile" name="matricula" required style="display: none;">
+                                <button id="cadastro-matricula-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-matricula-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+                            {% endif %}
+    
+                            {% if user_type == 2 %}
+                            <div class="box">
+                                <h2>Área de atuação:</h2>
+                                <p id="p-area-mobile">{{area}}</p>
+                                <button id="editar-area-mobile" class="button-editar disabled">Editar</button>
+                                <input type="text" id="area-mobile" name="area-atuacao" required style="display: none;">
+                                <button id="cadastro-area-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-area-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+    
+                            <div class="box">
+                                <h2>Instituição:</h2>
+                                <p id="p-instituicao-pos-mobile" >{{instituicao}}</p>
+                                <button id="editar-instituicao-pos-mobile" class="button-editar disabled">Editar</button>
+                                <input type="text" id="instituicao-pos-mobile" name="instituicao-pos" required style="display: none;">
+                                <button id="cadastro-instituicao-pos-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-instituicao-pos-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+                            {% endif %}
+    
+                            {% if user_type == 3 %}
+                            <div class="box">
+                                <h2>Empresa:</h2>
+                                <p id="p-empresa-mobile" >{{empresa}}</p>
+                                <button id="editar-empresa-mobile" class="button-editar disabled">Editar</button>
+                                <select id="empresa-mobile" name="empresa" required style="display: none;">
+                                    <option value="">Selecione...</option>
+                                    <option value="MIN">Mineradora</option>
+                                    <option value="FOR">Fornecedora do Setor Mineral</option>
+                                    <option value="ACA">Academia</option>
+                                    <option value="ONG">ONG / Terceiro Setor</option>
+                                    <option value="POD">Poder Público</option>
+                                    <option value="ENT">Entidades</option>
+                                    <option value="CON">Consultoria</option>
+                                    <option value="AUT">Autônomo</option>
+                                    <option value="OUT">Outros</option>
+                                </select>
+                                <button id="cadastro-empresa-mobile" class="button-editar button-cancelar" style="display: none;">Cancelar</button>
+                                <button id="confirmar-empresa-mobile" class="button-editar button-confirmar" style="display: none;">Confirmar</button>
+                            </div>
+                            {% endif %}       
                         </div>
-
-                        <div class="box">
-                            <h2>CPF:</h2>
-                            <p>{{cpf}}</p>
-                        </div>
-                           
-                        <div class="box">
-                            <h2>E-mail:</h2>
-                            <p>{{email}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Telefone:</h2>
-                            <p>{{telefone}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Cidade:</h2>
-                            <p>{{cidade}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Estado:</h2>
-                            <p>{{estado}}</p>
-                        </div>
-
-                        {% if user_type == 1 %}
-                        <div class="box">
-                            <h2>Curso:</h2>
-                            <p>{{curso}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Instituição:</h2>
-                            <p>{{instituicao}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Matrícula:</h2>
-                            <p>{{matricula}}</p>
-                        </div>
-                        {% endif %}
-
-                        {% if user_type == 2 %}
-                        <div class="box">
-                            <h2>Área de atuação:</h2>
-                            <p>{{area}}</p>
-                        </div>
-
-                        <div class="box">
-                            <h2>Instituição:</h2>
-                            <p>{{instituicao}}</p>
-                        </div>
-                        {% endif %}
-
-                        {% if user_type == 3 %}
-                        <div class="box">
-                            <h2>Empresa:</h2>
-                            <p>{{empresa}}</p>
-                        </div>
-                        {% endif %}
+                        <a href="#ir-para-tela-de-alterar-senha"><button id="alterarSenhaBtn" class="button">Alterar Senha</button></a>         
                     </div>
                     {% comment %} <div class="mini-cursos" style="display: none;">
                         <div class="card">

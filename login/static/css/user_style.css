@@ -136,6 +136,64 @@ nav a {
 
 /* fim menu login */
 
+.button-sair {
+    background-color: transparent;
+    border: 1px solid black;
+    transition: background-color .5s;
+    width: 180px;
+
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: black;
+    font-size: 10px;
+    padding: 10px 50px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-left: 15%;
+    margin-bottom: 5%;
+}
+.button-sair:hover {
+    background-color: black;
+    color: #FEB609;
+}
+
+.button-sair-mobile{
+    margin-left: 0;
+}
+
+.button-editar{
+    background-color: var(--amarelo);
+    border: 1px solid black;
+    transition: background-color .5s;
+    width: 70px;
+    height: 20px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: black;
+    font-size: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.button-editar:hover{
+    background-color: black;
+    color: #FEB609;
+}
+
+button:disabled {
+    display: none;
+}
+
+a{
+    color:var(--preto);
+}
+
+a:hover{
+    color: var(--branco);
+}
+
 /* menu geral */
 .menu {display: flex;}
 .menu li {padding-left: 30px;}
@@ -238,6 +296,15 @@ nav a {
     color: whitesmoke; /* Altere a cor conforme necessário */
 }
 
+.menu-principal-container-mobile li{
+    cursor: pointer;
+}
+
+/* Estilo de hover para o <li> */
+.menu-principal-container-mobile li:hover {
+    color: whitesmoke; /* Altere a cor conforme necessário */
+}
+
 /* Estilo de hover para o ícone dentro do <li> */
 .first-column-ul li:hover i {
     color: whitesmoke; /* Altere a cor conforme necessário */
@@ -247,9 +314,18 @@ nav a {
 .dados-pessoais {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1rem 0;
     max-height: 100vh; /* Defina a altura máxima desejada */
+    overflow-y: auto; /* Adicione uma barra de rolagem vertical caso o conteúdo ultrapasse a altura máxima */
+}
+
+.exibicao-dados-pessoais{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+    max-height: 1000px; /* Defina a altura máxima desejada */
     overflow-y: auto; /* Adicione uma barra de rolagem vertical caso o conteúdo ultrapasse a altura máxima */
 }
 
@@ -265,6 +341,26 @@ nav a {
     border-radius: 10px;
     background-color: #f9f9f9; /* Cor de fundo para destacar as informações */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar os elementos */
+}
+
+input[type="text"]{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    text-transform: capitalize;
+}
+
+input[type="email"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
 }
 
 /* fim dados pessoais*/
@@ -348,7 +444,7 @@ input[type="checkbox"]:checked:after{
     background-color: var(--amarelo);
 }
 
-.mini-cursos .button {
+.mini-cursos .button, .dados-pessoais .button {
     background-color: #FEB609;
     border: 1px solid #FEB609;
     transition: background-color .5s;
@@ -364,7 +460,7 @@ input[type="checkbox"]:checked:after{
     align-self: center;
 }
 
-.mini-cursos .button:hover {
+.mini-cursos .button:hover, .dados-pessoais .button:hover {
     background-color: black;
     border: 1px solid #FEB609;
     color: #FEB609;
@@ -509,6 +605,26 @@ i {
 }
 
 @media screen and (max-width: 1040px) {
+    .button-editar{
+        background-color: var(--amarelo);
+        border: 1px solid black;
+        transition: background-color .5s;
+        width: 57px;
+        height: 20px;
+        border-radius: 15px;
+        text-transform: uppercase;
+        color: black;
+        font-size: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+    
+    .button-editar:hover{
+        background-color: black;
+        color: #FEB609;
+    }
+
     .menu-principal-container {
         display: none;
     }
@@ -544,6 +660,10 @@ i {
         margin-left: 20%;
         font-size: medium;
         min-width: 100%;
+    }
+
+    .menu-principal-mobile .titulo h2{
+        text-align: center;
     }
 
     .container-main{
@@ -766,27 +886,4 @@ i {
     }
 }
 
-.payment-box{
-    width: 45%;
-    padding: 1rem;
-    margin-bottom: 20px;
-    position: fixed;
-    background-color: #f3f3f3;
-    z-index: 999;
-    top: 76%;
-    left: 73%;
-    border-radius: 10px;
-    max-width: 500px;
-}
 
-@media screen and (max-width: 1040px) {
-    .payment-box{
-        padding: 1rem;
-        margin-bottom: 20px;
-        position: fixed;
-        background-color: #f3f3f3;
-        width: 100%;
-        top: 76%;
-        left: 0%;
-    }
-}
