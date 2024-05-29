@@ -6,7 +6,7 @@ class Person(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cpf = models.CharField("CPF", max_length=30, primary_key=True)
     complete_name = models.CharField(verbose_name="Nome completo", max_length=100)
-    id_name = models.CharField(verbose_name="Nome no crachá", max_length=30)
+    id_name = models.CharField(verbose_name="Nome no crachá", max_length=100)
     email = models.EmailField(verbose_name="E-mail", max_length=254)
     phone = models.CharField(verbose_name="Telefone", max_length=30)
     city = models.CharField(verbose_name="Cidade", max_length=30)
@@ -16,6 +16,7 @@ class Person(models.Model):
     person_type = models.IntegerField(verbose_name="Tipo de Pessoa")
     date_added = models.DateTimeField(verbose_name="Dia em que foi cadastrado", auto_now_add=True, null=True)
     payed = models.BooleanField(verbose_name="Pago", default=False)
+    work = models.FileField(verbose_name="Trabalho Submetido", upload_to="uploads/work/%Y/%m/%d/", blank=True, null=True)
     
     def __str__(self) -> str:
         """Retorna um representação em string do modelo."""

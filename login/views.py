@@ -8,10 +8,11 @@ from django.contrib.auth.decorators import login_required
 
 from login.models import Person, Student, PosGradStudent, Professional
 from login.paymentsUtils import attPrefferences
+from .forms import uploadFileForm
 
 def loginHandler(request):
     if request.user.is_authenticated:
-        check_completion(request)
+        check_completion(request)           
         return redirect('/auth/area-do-usuario/')
     
     if request.method == 'GET':
@@ -42,7 +43,10 @@ def userArea(request):
     
     user_data = Person.objects.get(user = request.user)
     
+    form = uploadFileForm()
+    
     context= {
+        'form' : form,
         'nomecracha' : user_data.id_name,
         'cpf' : user_data.cpf,
         'email' : user_data.email,
@@ -69,7 +73,7 @@ def userArea(request):
     if user_data.person_type == 3:
         user_type = Professional.objects.get(data=user_data)
         context.update({
-            'empresa' : user_type.enterprise,
+            'empresa' : user_type.enterprise_name,
         })
     
     if user_data.payed == False:
@@ -108,40 +112,42 @@ def register_user_step(request):
       
 @login_required(login_url='/auth/login/')
 def register_person_step(request):
-    try:
-        cpf = request.POST.get('cpf')
-        complete_name = request.POST.get('nome-completo')
-        id_name = request.POST.get('nome-cracha')
-        phone = request.POST.get('celular')
-        city = request.POST.get('cidade')
-        state = request.POST.get('estado')
-        if request.POST.get('deficiencia') == 'on':
-            is_deficient = 1
-        else:
-            is_deficient = 0
-        deficiency = request.POST.get('descricao-deficiencia')
-        person_type = request.POST.get('categoria')
-        email = request.user.email
+    if request.method == 'GET':
+        return render(request, 'signup_step_two.html')
+    if request.method == 'POST':
+        try:
+            cpf = request.POST.get('cpf')
+            complete_name = request.POST.get('nome-completo')
+            id_name = request.POST.get('nome-cracha')
+            phone = request.POST.get('celular')
+            city = request.POST.get('cidade')
+            state = request.POST.get('estado')
+            if request.POST.get('deficiencia') == 'on':
+                is_deficient = 1
+            else:
+                is_deficient = 0
+            deficiency = request.POST.get('descricao-deficiencia')
+            person_type = request.POST.get('categoria')
+            email = request.user.email
+            
+            new_user = Person(
+                        user = request.user,
+                        cpf = cpf,
+                        complete_name = complete_name.capitalize(),
+                        id_name = id_name.capitalize(),
+                        phone = phone,
+                        city = city,
+                        state = state,
+                        is_deficient = is_deficient,
+                        deficiency = deficiency,
+                        person_type = person_type,
+                        email = email,
+                    )
+            new_user.save()
+            return redirect('new-person-type')
+        except:
+            return render(request, 'signup_step_two.html', {'error' : 'Erro no cadastro do usuário'})
         
-        new_user = Person(
-                    user = request.user,
-                    cpf = cpf,
-                    complete_name = complete_name.capitalize(),
-                    id_name = id_name.capitalize(),
-                    phone = phone,
-                    city = city,
-                    state = state,
-                    is_deficient = is_deficient,
-                    deficiency = deficiency,
-                    person_type = person_type,
-                    email = email,
-                )
-        new_user.save()
-        return redirect('new-person-type')
-    except:
-        print()
-        return render(request, 'signup_step_two.html', {'error' : 'Erro no cadastro do usuário'})
-    
 @login_required(login_url='/auth/login/')
 def register_person_type_step(request):
     user_data = Person.objects.get(user = request.user)
@@ -203,8 +209,17 @@ def paymentSuccess(request):
     person.save()
     return redirect('login')
 
-def paymentFailure():
+def paymentFailure(request):
     return redirect('login')
 
-def paymentPendings():
+def paymentPendings(request):
     return redirect('login')
+
+def updateWork(request):
+    if request.method == 'POST':
+        form = uploadFileForm(request.POST, request.FILES)
+        file = request.FILES['file']
+        person = Person.objects.get(user = request.user)
+        person.work = file
+        person.save()
+        return redirect('login')

@@ -75,8 +75,8 @@
                     <li><a href="#profissionais">Profissionais</a></li>
                     <li><a href="#cronograma">Cronograma</a></li>
                     -->
-                    <li><li class="dropdown">
-                        <a href="{% url "login" %}" class="botao-cursos">Inscreva-se</a>
+                    <li><li class="dropdown" style="max-width: 200px;">
+                        <a href="{% url "login" %}" class="botao-cursos" style="max-height: 100px; text-wrap: nowrap;">Inscreva-se</a>
                     </li>
                     {% comment %} <button class="botao-inscreva-se" disabled>Inscreva-se <img
                             src="{% static 'src/cadeado_preto.svg' %}" alt="Botão Inscreva-se"
@@ -128,7 +128,7 @@
             <span>segundos</span>
         </div>
     </div>
-    <h1 class="contador">Para o fim das inscrições</h1>
+    <h1 class="contador">Para o fim do primeiro lote</h1>
     <div class="button-container">
         <button class="custom-button"><a href="{% url "login" %}" class="botao-cursos">Inscreva-se</a></button>
     </div>

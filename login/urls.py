@@ -12,4 +12,5 @@ urlpatterns = [
     path('success/', views.paymentSuccess, name="payment-success"),
     path('failure/', views.paymentFailure, name="payment-failure"),
     path('pendings/', views.paymentPendings, name="payment-pendings"),
+    path('send-work/', views.updateWork, name='send-work')
 ]

@@ -12,7 +12,7 @@ def attPrefferences(person_type):
     if person_type == 3:
         value = 100.0
     
-    sdk = mercadopago.SDK(str(os.getenv('MP_ACCESS_TOKEN')))
+    sdk = mercadopago.SDK('APP_USR-3755386082060312-050219-532f45efc4eacac399ab6713407966b5-1792061375')
          
     preference_data = {
         "items": [

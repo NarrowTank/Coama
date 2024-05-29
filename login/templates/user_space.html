@@ -49,7 +49,7 @@
 
     {% if payed == 'False' %}
     <div class="payment-box">
-        <h2>Finalize seu cadastro reservando sua vaga!</h2>
+        <h2>Realize o pagamento para garantir sua vaga!</h2>
         <div id="wallet_container"></div>
     </div>
     {% endif %}
@@ -74,7 +74,7 @@
                         <span class="menu">
                             <li class="nav-item" data-target="dados-pessoais">Dados Pessoais</li>
                             {% comment %} <li class="nav-item" data-target="mini-cursos">Mini-Cursos</li> {% endcomment %}
-                            <li class="nav-item" data-target="submissao-trabalho">Submissão de Trabalho</li>
+                            {% comment %} <li class="nav-item" data-target="submissao-trabalho">Submissão de Trabalho</li> {% endcomment %}
                             <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
                         </span>
                         <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
@@ -230,14 +230,16 @@
                         <a href="src/Modelo_de_artigo_Coama.docx" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Artigo
                         </a>
-                    
-                        <p>Selecione o arquivo que deseja enviar para avaliação:</p>
-                        <label class="label-input" for="comprovante-vinculo">
-                            <i class="fas fa-file-alt icon-modify"></i>
-                            <input type="file" id="fileUpload" accept=".pdf,.doc,.docx" multiple>
-                        </label>
-                    
-                        <button id="submitBtn" class="button">Enviar</button>
+                        <form action="{% url 'send-work' %}" method="POST">
+                            {% csrf_token %}
+                            <p>Selecione o arquivo que deseja enviar para avaliação:</p>
+                            <label class="label-input" for="comprovante-vinculo">
+                                <i class="fas fa-file-alt icon-modify"></i>
+                                {{ form.file }}
+                            </label>
+                            
+                            <input type="submit" value="Enviar" id="submitBtn" class="button">
+                        </form>
                     </div>
                 </div>
     
@@ -368,7 +370,7 @@
 
                         <button id="pagamentoBtn" class="button">Realizar Pagamento</button>
                     </div> {% endcomment %}
-                    <div class="submissao-trabalho" style="display: none;">
+                    {% comment %} <div class="submissao-trabalho" style="display: none;">
                         <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
                         <a href="{% static "src/Modelo de Apresentação (Palestras).pptx" %}" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Apresentação
@@ -387,7 +389,7 @@
                         </label>
                     
                         <button id="submitBtnMobile" class="button">Enviar</button>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
         </div>
     </main>
@@ -415,7 +417,7 @@
     <script src="{% static "js/script.js" %}"></script>
     {% if payed == 'False' %}
     <script>
-        const mp = new MercadoPago('APP_USR-52210169-dc3c-4707-9b39-7d935200d689');
+        const mp = new MercadoPago('APP_USR-52210169-dc3c-4707-9b39-7d935200d689', {locale: 'pt-BR'});
         const bricksBuilder = mp.bricks();
     
         mp.bricks().create("wallet", "wallet_container", {

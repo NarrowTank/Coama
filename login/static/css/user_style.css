@@ -773,8 +773,8 @@ i {
     position: fixed;
     background-color: #f3f3f3;
     z-index: 999;
-    top: 76%;
-    left: 73%;
+    bottom: 0px;
+    right: 20px;
     border-radius: 10px;
     max-width: 500px;
 }
@@ -786,7 +786,7 @@ i {
         position: fixed;
         background-color: #f3f3f3;
         width: 100%;
-        top: 76%;
-        left: 0%;
+        bottom: 0px;
+        left: 0px;
     }
 }

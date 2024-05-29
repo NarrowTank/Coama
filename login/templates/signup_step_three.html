@@ -23,7 +23,7 @@
     {% endif %}
 
     {% if person_type == 2 %}
-    <form id="pos-graduacao-form" class="form-container animated-form" style="display: none;" action="{% url 'new-person-type' %}" method="POST">
+    <form id="pos-graduacao-form" class="form-container animated-form" action="{% url 'new-person-type' %}" method="POST">
         {% csrf_token %}
         <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
         <h2>Informações do Estudante Pós-graduação</h2>
@@ -39,7 +39,7 @@
     {% endif %}
 
     {% if person_type == 3 %}
-    <form id="profissional-form" class="form-container animated-form" style="display: none;" action="{% url 'new-person-type' %}" method="POST">
+    <form id="profissional-form" class="form-container animated-form" action="{% url 'new-person-type' %}" method="POST">
         {% csrf_token %}
         <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
         <h2>Informações do Profissional</h2>
