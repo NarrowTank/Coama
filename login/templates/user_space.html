@@ -230,7 +230,7 @@
                         <a href="src/Modelo_de_artigo_Coama.docx" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Artigo
                         </a>
-                        <form action="{% url 'send-work' %}" method="POST">
+                        <form action="{% url 'send-work' %}" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <p>Selecione o arquivo que deseja enviar para avaliação:</p>
                             <label class="label-input" for="comprovante-vinculo">

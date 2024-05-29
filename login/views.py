@@ -170,7 +170,7 @@ def register_person_type_step(request):
                     data= user_data,
                     area = request.POST.get('area-atuacao'),
                     institution = request.POST.get('instituicao-pos'),
-                    course_id = request.POST.get('comprovante-matricula'),
+                    course_id = request.FILES['comprovante-matricula'],
                 )
                 new_user.save()
 
@@ -207,7 +207,7 @@ def paymentSuccess(request):
     person = Person.objects.get(user = request.user)
     person.payed = True
     person.save()
-    return redirect('login')
+    return redirect('area-do-usuario')
 
 def paymentFailure(request):
     return redirect('login')
@@ -218,8 +218,9 @@ def paymentPendings(request):
 def updateWork(request):
     if request.method == 'POST':
         form = uploadFileForm(request.POST, request.FILES)
-        file = request.FILES['file']
-        person = Person.objects.get(user = request.user)
-        person.work = file
-        person.save()
-        return redirect('login')
+        if form.is_valid:
+            file = request.FILES['file']
+            person = Person.objects.get(user = request.user)
+            person.work = file
+            person.save()
+        return redirect('area-do-usuario')
