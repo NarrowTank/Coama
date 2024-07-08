@@ -49,7 +49,7 @@
 
     {% if payed == 'False' %}
     <div class="payment-box">
-        <h2>Realize o pagamento para garantir sua vaga!</h2>
+        <h2 style="font-size: 22px">Realize o pagamento para garantir sua vaga!</h2>
         <div id="wallet_container"></div>
     </div>
     {% endif %}
@@ -221,13 +221,13 @@
                     </div> {% endcomment %}
                     <div class="submissao-trabalho" style="display: none;">
                         <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
-                        <a href="src/Modelo de Apresentação (Palestras).pptx" download class="button">
+                        <a href="https://download1500.mediafire.com/ixfk96yxyiag5y55sxq6Wig_32vKO7VmxYLpbseJzIxFNjFjfmGV89Jf7y0gb5pEun6VCIvDMl5FjMDIYFjOm9SBSzaPWFIateQXdrQGABscEaaBPT7rw6hHGqXrJfY5zDr6W6IiL_l5QrZo1MdrrzLNtsHB7wqjDMeyzKqiGuWEg-M/fp6zgbsntbe3ynr/Modelo+de+Apresenta%C3%A7%C3%A3o+%28Palestras%29.pptx" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Apresentação
                         </a>
-                        <a href="src/Modelo de Banner III COAMA.pptx" download class="button">
+                        <a href="https://download1523.mediafire.com/gn6p1x26jjbgya5VWUvTLPD3Jn5plB4DLv9pFhaf13TIG8YsmjkSHBURJ2Hkalz6r6rQCBFRKe6EBnwnYBnVRxsfWyM20AmyXo2PkNPPyJoB3uezfOGMsNOF0pqOcYvJxr9CdumnYeJnQdecsEFGswxk42R5e2QH3506gzDYXYYPYdI/ni6lv4feuh068tk/Modelo+de+Banner+III+COAMA.pptx" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Banner
                         </a>
-                        <a href="src/Modelo_de_artigo_Coama.docx" download class="button">
+                        <a href="https://download854.mediafire.com/j4j9ysx9udegHXMO-UPQOCGDKzRX57bg3eI1gZ9vGmCPrUwp526Wn6HxYsLcmgBHG7cD1c7YaFoWnKRFzSP7BtI6qx_qO5oOr9bjPAprIlE9IGqY0ACclDiniGe_FMNI32p7HsNOZgiQrNvfHnqZdaDLI3-pxVxx80rvXgojJtXgnl8/o88kny95cara0lh/Modelo_de_artigo_Coama.docx" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Artigo
                         </a>
                         <form action="{% url 'send-work' %}" method="POST" enctype="multipart/form-data">
@@ -370,26 +370,30 @@
 
                         <button id="pagamentoBtn" class="button">Realizar Pagamento</button>
                     </div> {% endcomment %}
-                    {% comment %} <div class="submissao-trabalho" style="display: none;">
+                    <div class="submissao-trabalho" style="display: none;">
                         <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
-                        <a href="{% static "src/Modelo de Apresentação (Palestras).pptx" %}" download class="button">
+                        <a href="https://download1500.mediafire.com/ixfk96yxyiag5y55sxq6Wig_32vKO7VmxYLpbseJzIxFNjFjfmGV89Jf7y0gb5pEun6VCIvDMl5FjMDIYFjOm9SBSzaPWFIateQXdrQGABscEaaBPT7rw6hHGqXrJfY5zDr6W6IiL_l5QrZo1MdrrzLNtsHB7wqjDMeyzKqiGuWEg-M/fp6zgbsntbe3ynr/Modelo+de+Apresenta%C3%A7%C3%A3o+%28Palestras%29.pptx" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Apresentação
                         </a>
-                        <a href="{% static "src/Modelo de Banner III COAMA.pptx" %}" download class="button">
+                        <a href="https://download1523.mediafire.com/gn6p1x26jjbgya5VWUvTLPD3Jn5plB4DLv9pFhaf13TIG8YsmjkSHBURJ2Hkalz6r6rQCBFRKe6EBnwnYBnVRxsfWyM20AmyXo2PkNPPyJoB3uezfOGMsNOF0pqOcYvJxr9CdumnYeJnQdecsEFGswxk42R5e2QH3506gzDYXYYPYdI/ni6lv4feuh068tk/Modelo+de+Banner+III+COAMA.pptx" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Banner
                         </a>
-                        <a href="{% static "src/Modelo_de_artigo_Coama.docx" %}" download class="button">
+                        <a href="https://download854.mediafire.com/j4j9ysx9udegHXMO-UPQOCGDKzRX57bg3eI1gZ9vGmCPrUwp526Wn6HxYsLcmgBHG7cD1c7YaFoWnKRFzSP7BtI6qx_qO5oOr9bjPAprIlE9IGqY0ACclDiniGe_FMNI32p7HsNOZgiQrNvfHnqZdaDLI3-pxVxx80rvXgojJtXgnl8/o88kny95cara0lh/Modelo_de_artigo_Coama.docx" download class="button">
                             <i class="fas fa-download"></i> Baixar Modelo de Artigo
                         </a>
                     
-                        <p>Selecione o arquivo que deseja enviar para avaliação:</p>
-                        <label class="label-input" for="comprovante-vinculo">
-                            <i class="fas fa-file-alt icon-modify"></i>
-                            <input type="file" id="fileUploadMobile" accept=".pdf,.doc,.docx" multiple>
-                        </label>
-                    
-                        <button id="submitBtnMobile" class="button">Enviar</button>
-                    </div> {% endcomment %}
+
+                        <form action="{% url 'send-work' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <p>Selecione o arquivo que deseja enviar para avaliação:</p>
+                            <label class="label-input" for="comprovante-vinculo">
+                                <i class="fas fa-file-alt icon-modify"></i>
+                                {{ form.file }}
+                            </label>
+                        
+                            <button id="submitBtnMobile" class="button">Enviar</button>
+                        </form>
+                    </div>
                 </div>
         </div>
     </main>

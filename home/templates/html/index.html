@@ -158,6 +158,124 @@
                 como o Coama são fundamentais para promover o debate e estimular o avanço científico, essenciais para o
                 futuro da mineração sustentável.
             </div>
+            <style>
+                table {
+                 border-collapse: collapse;
+                 width: 700px;
+                 margin: 20px 0;
+                 font-family: Arial, sans-serif;
+             }
+             th, td {
+                 border: 1px solid black;
+                 text-align: center;
+                 padding: 8px;
+             }
+             thead th {
+                 background-color: whitesmoke;
+                 color: black;
+                 font-weight: bold;
+             }
+             tbody td {
+                 background-color: whitesmoke;
+                 color: black;
+             }
+             tbody tr:nth-child(odd) td {
+                 background-color: whitesmoke;
+             }
+             tbody th {
+                 background-color: whitesmoke;
+                 color: black;
+                 font-weight: bold;
+             }
+             .limite, .combo, .autor {
+                 background-color: whitesmoke;
+                 color: black;
+                 font-weight: lighter;
+             }
+
+             @media only screen and (max-width: 1040px){
+                table {
+                    width: fit-content;
+                }
+             }
+         </style>
+         <div style="display: flex; flex-direction: column; align-items: center;">
+            <table border="1" width="700">
+                <thead><th colspan="5">VALORES DOS INGRESSOS POR LOTE</th></thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="2">Lote</th>
+                        <th rowspan="2">Período</th>
+                        <th colspan="3">Valores</th>
+                        <tr>
+                            <td>Estudante</td>
+                            <td>Estudante de Pós-graduação</td>
+                            <td>Profissional</td>
+                        </tr>
+                    </tr>
+                    <tr>
+                        <td>1° Lote</td>
+                        <td>20/05 a 08/07</td>
+                        <td> R$ 50,00</td>
+                        <td> R$ 70,00</td>
+                        <td> R$ 100,00</td>
+                    </tr>
+                    <tr>
+                        <td>2° Lote</td>
+                        <td>09/07 a 28/08</td>
+                        <td> R$ 70,00</td>
+                        <td> R$ 90,00</td>
+                        <td> R$ 120,00</td>
+                    </tr>
+                    <tr>
+                        <td>3° Lote</td>
+                        <td>29/08 a 24/09</td>
+                        <td> R$ 90,00</td>
+                        <td> R$ 110,00</td>
+                        <td> R$ 140,00</td>
+                    </tr>
+                </tbody>
+                </table>
+                <table  border="1" width="700">
+                <thead >
+                    <tr>
+                        <th colspan="3">INFORMAÇÕES IMPORTANTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Submissão de trabalhos</td>
+                        <td>Até 09/09</td>
+                        <td>15 dias antes do congresso</td>
+                    </tr>
+                    <tr>
+                        <td>Resposta de aceite dos trabalhos</td>
+                        <td>Até 17/09</td>
+                        <td>7 dias antes do congresso</td>
+                    </tr>
+                    <tr>
+                        <th class="limite" rowspan="2">Limite de submissão/tipo de autor</th>
+                        <td>Autor principal</td>
+                        <td>Até 4 trabalhos</td>
+                    </tr>
+                    <tr>
+                        <td>Coautor</td>
+                        <td>sem limite</td>
+                    </tr>
+                    <tr >
+                        <td>Limite de autores/artigo</td>
+                        <th class="autor" colspan="2">1 Autor principal + 6 coautores</th>
+                    </tr>
+                    <tr >
+                        <th class="combo" rowspan="3">Combos</th>
+                        <td  colspan="2">5 inscrições = 10% de desconto/inscrição</td>
+                    </tr>
+                    <tr>
+                        <td  colspan="2">inscrição + minicurso = 10% de desconto</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         </div>
         <div class="imagem-container">
             <img src="{% static 'src/polygon.png' %}" alt="Imagem Poligonal">
