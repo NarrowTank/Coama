@@ -224,3 +224,16 @@ def updateWork(request):
             person.work = file
             person.save()
         return redirect('area-do-usuario')
+
+@login_required(login_url='/auth/login/')
+def promotion(request):
+    if request.method == 'POST':
+        user_data = Person.objects.get(user = request.user)
+        preferenceId = attPrefferences(user_data.person_type, True, request.POST.get('new_quantity'))
+    pass
+
+@login_required(login_url='/auth/login/')
+def subscriptions(request):
+    if request.method == 'POST':
+        return HttpResponse(request.POST)
+    return HttpResponse('Nenhum selecionado')

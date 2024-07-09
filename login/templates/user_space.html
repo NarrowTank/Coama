@@ -93,7 +93,7 @@
                     <h2 class="title title-primary">Bem-Vindo!</h2>
                     <ul class="first-column-ul">
                         <li class="nav-item" data-target="dados-pessoais"><i class="fas fa-user icon"></i>Dados Pessoais</li>
-                        {% comment %} <li class="nav-item" data-target="mini-cursos"><i class="fas fa-book icon"></i>Mini-Cursos</li> {% endcomment %}
+                        <li class="nav-item" data-target="mini-cursos"><i class="fas fa-book icon"></i>Mini-Cursos</li>
                         <li class="nav-item" data-target="submissao-trabalho"><i class="fas fa-file-alt icon"></i>Submissão de Trabalho</li>
                     </ul> 
                 </div>    
@@ -166,59 +166,90 @@
                         </div>
                         {% endif %}                    
                     </div>
-                    {% comment %} <div class="mini-cursos" style="display: none;">
-                        <div class="card">
-                            <input type="checkbox" name="pricing" id="card1">
-                            <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
-                            </label>
-                        </div>
-                        <div class="card">
-                            <input type="checkbox" name="pricing" id="card1">
-                            <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
-                            </label>
-                        </div>
-                        <div class="card">
-                            <input type="checkbox" name="pricing" id="card1">
-                            <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
-                            </label>
-                        </div>
-                        <div class="card">
-                            <input type="checkbox" name="pricing" id="card1">
-                            <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
-                            </label>
-                        </div>
-                        <div class="card">
-                            <input type="checkbox" name="pricing" id="card1">
-                            <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
-                            </label>
-                        </div>
-                        <div class="card">
-                            <input type="checkbox" name="pricing" id="card1">
-                            <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
-                            </label>
-                        </div>
-                        <div class="card">
-                            <input type="checkbox" name="pricing" id="card1">
-                            <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
-                            </label>
-                        </div>
+                    <div class="mini-cursos" style="display: none;">
+                        <form action="{% url 'subscription' %}" method="POST" style="width: 100%;display: inherit;flex-direction: inherit;">
+                                {% csrf_token %}
+                            <div class="card">
+                                <input type="checkbox" name="Consultoria mineral e ambiental" id="card1">
+                                <label for="card1">
+                                    <h5>Consultoria mineral e ambiental. </h5>
+                                    <span>Cassiane</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Planejamento" id="card1">
+                                <label for="card1">
+                                    <h5>Planejamento</h5>
+                                    <span>Ludmylla Bezerra/André Branches</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Reologia" id="card1">
+                                <label for="card1">
+                                    <h5>Reologia</h5>
+                                    <span>Jean Louzada/Neres Almeida/Henrique Gonçalves</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Análise de Dados: Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs" id="card1">
+                                <label for="card1">
+                                    <h5>Análise de Dados: Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs </h5>
+                                    <span>Lucas Resende</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Fadiga de materiais utilizando o ANSYS Workbench." id="card1">
+                                <label for="card1">
+                                    <h5>Fadiga de materiais utilizando o ANSYS Workbench.</h5>
+                                    <span>Márcio Mafra</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Simulação de metamateriais." id="card1">
+                                <label for="card1">
+                                    <h5>Simulação de metamateriais.</h5>
+                                    <span>Luiz Fernando</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Nanotecnologia" id="card1">
+                                <label for="card1">
+                                    <h5>Nanotecnologia</h5>
+                                    <span>Tatiana Mazzo</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos" id="card1">
+                                <label for="card1">
+                                    <h5>Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos</h5>
+                                    <span>Allex Raiol</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Procedimento de Outorga de Recursos Hídricos: Um Guia prático" id="card1">
+                                <label for="card1">
+                                    <h5>Procedimento de Outorga de Recursos Hídricos: Um Guia prático</h5>
+                                    <span>Brenda Barros</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Introdução ao ArcGis Pro Aplicado à Exploração Mineral" id="card1">
+                                <label for="card1">
+                                    <h5>Introdução ao ArcGis Pro Aplicado à Exploração Mineral</h5>
+                                    <span>Gabriel Amorim</span>
+                                </label>
+                            </div>
+                            <div class="card">
+                                <input type="checkbox" name="Aspectos Gerais da Sondagem desde ferramental, planejamento, execução até a validação." id="card1">
+                                <label for="card1">
+                                    <h5>Aspectos Gerais da Sondagem desde ferramental, planejamento, execução até a validação.</h5>
+                                    <span>Nattânia Santos/ Bruno Mateus/Milton Carvalho</span>
+                                </label>
+                            </div>
 
-                        <button id="pagamentoBtn" class="button">Realizar Pagamento</button>
-                    </div> {% endcomment %}
+                            <input type="submit" value="Inscrever-se" id="submitBtn" class="button">
+                        </form>
+                    </div>
                     <div class="submissao-trabalho" style="display: none;">
                         <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
                         <a href="https://download1500.mediafire.com/ixfk96yxyiag5y55sxq6Wig_32vKO7VmxYLpbseJzIxFNjFjfmGV89Jf7y0gb5pEun6VCIvDMl5FjMDIYFjOm9SBSzaPWFIateQXdrQGABscEaaBPT7rw6hHGqXrJfY5zDr6W6IiL_l5QrZo1MdrrzLNtsHB7wqjDMeyzKqiGuWEg-M/fp6zgbsntbe3ynr/Modelo+de+Apresenta%C3%A7%C3%A3o+%28Palestras%29.pptx" download class="button">
@@ -317,59 +348,87 @@
                         </div>
                         {% endif %}
                     </div>
-                    {% comment %} <div class="mini-cursos" style="display: none;">
+                    <div class="mini-cursos" style="display: none;">
                         <div class="card">
                             <input type="checkbox" name="pricing" id="card1">
                             <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
+                                <h5>Consultoria mineral e ambiental. </h5>
+                                <span>Cassiane</span>
                             </label>
                         </div>
                         <div class="card">
                             <input type="checkbox" name="pricing" id="card1">
                             <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
+                                <h5>Planejamento</h5>
+                                <span>Ludmylla Bezerra/André Branches</span>
                             </label>
                         </div>
                         <div class="card">
                             <input type="checkbox" name="pricing" id="card1">
                             <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
+                                <h5>Reologia</h5>
+                                <span>Jean Louzada/Neres Almeida/Henrique Gonçalves</span>
                             </label>
                         </div>
                         <div class="card">
                             <input type="checkbox" name="pricing" id="card1">
                             <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
+                                <h5>Análise de Dados: Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs </h5>
+                                <span>Lucas Resende</span>
                             </label>
                         </div>
                         <div class="card">
                             <input type="checkbox" name="pricing" id="card1">
                             <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
+                                <h5>Fadiga de materiais utilizando o ANSYS Workbench. </h5>
+                                <span>Márcio Mafra</span>
                             </label>
                         </div>
                         <div class="card">
                             <input type="checkbox" name="pricing" id="card1">
                             <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
+                                <h5>Simulação de metamateriais.</h5>
+                                <span>Luiz Fernando</span>
                             </label>
                         </div>
                         <div class="card">
                             <input type="checkbox" name="pricing" id="card1">
                             <label for="card1">
-                                <h5>Mini-Curso de Engenharia de Materiais</h5>
-                                <span>Descrição do Mini-Curso</span>
+                                <h5>Nanotecnologia</h5>
+                                <span>Tatiana Mazzo</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos</h5>
+                                <span>Allex Raiol</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Procedimento de Outorga de Recursos Hídricos: Um Guia prático</h5>
+                                <span>Brenda Barros</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Introdução ao ArcGis Pro Aplicado à Exploração Mineral</h5>
+                                <span>Gabriel Amorim</span>
+                            </label>
+                        </div>
+                        <div class="card">
+                            <input type="checkbox" name="pricing" id="card1">
+                            <label for="card1">
+                                <h5>Aspectos Gerais da Sondagem desde ferramental, planejamento, execução até a validação.</h5>
+                                <span>Nattânia Santos/ Bruno Mateus/Milton Carvalho</span>
                             </label>
                         </div>
 
                         <button id="pagamentoBtn" class="button">Realizar Pagamento</button>
-                    </div> {% endcomment %}
+                    </div>
                     <div class="submissao-trabalho" style="display: none;">
                         <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
                         <a href="https://download1500.mediafire.com/ixfk96yxyiag5y55sxq6Wig_32vKO7VmxYLpbseJzIxFNjFjfmGV89Jf7y0gb5pEun6VCIvDMl5FjMDIYFjOm9SBSzaPWFIateQXdrQGABscEaaBPT7rw6hHGqXrJfY5zDr6W6IiL_l5QrZo1MdrrzLNtsHB7wqjDMeyzKqiGuWEg-M/fp6zgbsntbe3ynr/Modelo+de+Apresenta%C3%A7%C3%A3o+%28Palestras%29.pptx" download class="button">

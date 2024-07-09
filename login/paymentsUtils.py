@@ -2,15 +2,17 @@ import mercadopago
 from dotenv import load_dotenv
 from pathlib import os
 
-def attPrefferences(person_type):
+def attPrefferences(person_type, quantity = 1):
     load_dotenv()
     
     if person_type == 1:
-        value = 50.0
-    if person_type == 2:
         value = 70.0
+    if person_type == 2:
+        value = 90.0
     if person_type == 3:
-        value = 100.0
+        value = 120.0
+    
+    value = value * quantity
     
     sdk = mercadopago.SDK('APP_USR-3755386082060312-050219-532f45efc4eacac399ab6713407966b5-1792061375')
          
