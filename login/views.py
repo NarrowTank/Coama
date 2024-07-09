@@ -1,3 +1,4 @@
+import json
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
@@ -235,6 +236,7 @@ def promotion(request):
 @login_required(login_url='/auth/login/')
 def subscriptions(request):
     if request.method == 'POST':
+        
         courses = list(request.POST.keys())
         courses.pop(0)
         
@@ -244,11 +246,15 @@ def subscriptions(request):
         courses = []
         total = 0
         
+        checkIfAlreadySubscripted(request)
+        
         for index in range(len(names)):
             courses.append([names[index], time[index], values[index]])
             total += int(values[index])
             
         preferenceId = getCoursePrefferences(total)
+        
+        updateSubscription(request, names)
         
         context = {
             'courses' : courses,
@@ -276,3 +282,47 @@ def getCourseValues(courses):
     for course in courses:
         values.append(course.split('|')[2])
     return values
+
+def checkIfAlreadySubscripted(request):
+    person = Person.objects.get(user = request.user)
+    subscriptions = json.loads(person.subscripted_courses)
+    for name in subscriptions:
+        if subscriptions.get(name) == 'paid':
+            return redirect('login')
+        
+def updateSubscription(request, names):
+    person = Person.objects.get(user = request.user)
+    subscriptions = json.loads(person.subscripted_courses)
+    subscriptions = cleanUnpaidSubscriptions(subscriptions)
+            
+    for name in names:
+        subscriptions.update({name: 'not_paid'})
+        
+    person.subscripted_courses = json.dumps(subscriptions)
+    person.save()
+    
+@login_required(login_url='/auth/login/')
+def updateSuccessPaidSubscription(request):
+    person = Person.objects.get(user = request.user)
+    subscriptions = json.loads(person.subscripted_courses)
+    for name in subscriptions:
+        subscriptions.update({name: 'paid'})
+    person.subscripted_courses = json.dumps(subscriptions)
+    person.save()
+    redirect('area-do-usuario')
+    
+@login_required(login_url='/auth/login/')
+def updateFailedPaidSubscription(request):
+    person = Person.objects.get(user = request.user)
+    subscriptions = json.loads(person.subscripted_courses)
+    cleanUnpaidSubscriptions(subscriptions)
+    person.subscripted_courses = json.dumps(subscriptions)
+    person.save()
+    redirect('area-do-usuario')
+    
+def cleanUnpaidSubscriptions(subscriptions):
+    new_subscriptions = {}
+    for name in subscriptions:
+        if subscriptions.get(name) == 'paid':
+            new_subscriptions.update({name: 'paid'})
+    return new_subscriptions

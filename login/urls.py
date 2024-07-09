@@ -14,4 +14,6 @@ urlpatterns = [
     path('pendings/', views.paymentPendings, name="payment-pendings"),
     path('send-work/', views.updateWork, name='send-work'),
     path('subscription/', views.subscriptions, name='subscription'),
+    path('subscription-success/', views.updateSuccessPaidSubscription, name="subscription-success"),
+    path('subscription-failed/', views.updateFailedPaidSubscription, name="subscription-failed"),
 ]

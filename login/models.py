@@ -17,6 +17,7 @@ class Person(models.Model):
     date_added = models.DateTimeField(verbose_name="Dia em que foi cadastrado", auto_now_add=True, null=True)
     payed = models.BooleanField(verbose_name="Pago", default=False)
     work = models.FileField(verbose_name="Trabalho Submetido", upload_to="uploads/work/%Y/%m/%d/", blank=True, null=True)
+    subscripted_courses = models.TextField(verbose_name="Mini Cursos Inscritos", default={})
     
     def __str__(self) -> str:
         """Retorna um representação em string do modelo."""
