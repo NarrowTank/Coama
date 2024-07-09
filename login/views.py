@@ -7,7 +7,7 @@ from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
 
 from login.models import Person, Student, PosGradStudent, Professional
-from login.paymentsUtils import attPrefferences
+from login.paymentsUtils import attPrefferences, getCoursePrefferences
 from .forms import uploadFileForm
 
 def loginHandler(request):
@@ -235,5 +235,44 @@ def promotion(request):
 @login_required(login_url='/auth/login/')
 def subscriptions(request):
     if request.method == 'POST':
-        return HttpResponse(request.POST)
-    return HttpResponse('Nenhum selecionado')
+        courses = list(request.POST.keys())
+        courses.pop(0)
+        
+        names = getCourseNames(courses)
+        values = getCourseValues(courses)
+        time = getCourseTime(courses)
+        courses = []
+        total = 0
+        
+        for index in range(len(names)):
+            courses.append([names[index], time[index], values[index]])
+            total += int(values[index])
+            
+        preferenceId = getCoursePrefferences(total)
+        
+        context = {
+            'courses' : courses,
+            'preferenceId' : preferenceId,
+            'total' : total,
+        }
+        
+        return render(request, 'signup_payment.html', context)
+    return redirect('login')
+
+def getCourseNames(courses):
+    names = []
+    for course in courses:
+        names.append(course.split('|')[0])
+    return names
+
+def getCourseTime(courses):
+    time = []
+    for course in courses:
+        time.append(course.split('|')[1])
+    return time
+
+def getCourseValues(courses):
+    values = []
+    for course in courses:
+        values.append(course.split('|')[2])
+    return values
