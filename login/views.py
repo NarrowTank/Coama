@@ -342,3 +342,16 @@ def cleanUnpaidSubscriptions(subscriptions):
         if subscriptions.get(name) == 'paid':
             new_subscriptions.update({name: 'paid'})
     return new_subscriptions
+
+@login_required(login_url='/auth/login/')
+def updatePaymentSubscriptionSuccess(request):
+    person = Person.objects.get(user = request.user)
+    person.payed = True
+
+    subscriptions = json.loads(person.subscripted_courses)
+    for name in subscriptions:
+        subscriptions.update({name: 'paid'})
+    person.subscripted_courses = json.dumps(subscriptions)
+
+    person.save()
+    return redirect('area-do-usuario')
