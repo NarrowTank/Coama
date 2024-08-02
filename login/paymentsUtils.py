@@ -53,8 +53,9 @@ def getCoursePrefferences(total):
             },
         ],
         "back_urls": {
-            "subscription-success": "https://eventocoama.com.br/auth/subscription-success",
-            "subscription-failed": "https://eventocoama.com.br/auth/subscription-failure"
+            "success": "https://eventocoama.com.br/auth/subscription-success",
+            "failure": "https://eventocoama.com.br/auth/failure",
+            "pending": "https://eventocoama.com.br/auth/pendings"
         },
         "auto_return": "approved",
     }
@@ -78,7 +79,7 @@ def getCoursePrefferencesDesconto(total):
             },
         ],
         "back_urls": {
-            "payment-subscription-success": "https://eventocoama.com.br/auth/success",
+            "success": "https://eventocoama.com.br/auth/payment-subscription-success",
             "failure": "https://eventocoama.com.br/auth/failure",
             "pending": "https://eventocoama.com.br/auth/pendings"
         },
