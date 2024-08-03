@@ -49,8 +49,13 @@
 
     {% if payed == 'False' %}
     <div class="payment-box">
-        <h2 style="font-size: 20px">Faça o pagamento da incrição junto dos mini-cursos e receba 10% de desconto ou reserve sua vaga abaixo</h2>
+        <h2 style="font-size: 15px">Faça apenas o pagamento da incrição</h2>
         <div id="wallet_container"></div>
+
+        <div class="selection-courses-box">
+            <h2 style="font-size: 15px">Ou faça o pagamento da incrição com os mini-cursos e receba 10% de desconto</h2>
+            <button id="selection-courses">Selecione os mini-cursos</button>
+        </div>
     </div>
     {% endif %}
 
@@ -240,7 +245,7 @@
                                 </label>
                             </div>
 
-                            <input type="submit" value="Inscrever-se" id="submitBtn" class="button">
+                            <input type="submit" value="Inscrever-se" id="submitBtn" class="button" onclick="return validateForm();">
                         </form>
                     </div>
                     <div class="submissao-trabalho" style="display: none;">
@@ -415,7 +420,7 @@
                             </label>
                         </div>
 
-                        <input type="submit" value="Inscrever-se" id="submitBtn" class="button">
+                        <input type="submit" value="Inscrever-se" id="submitBtn" class="button" onclick="return validateForm();">
                     </form>
                     </div>
                     <div class="submissao-trabalho" style="display: none;">
@@ -466,6 +471,15 @@
             <button onclick="fecharDialog()">Fechar</button>
         </div>
     </div>
+
+    <div class="dialog-container" id="dialog-container-course">
+        <div class="dialog">
+            <h2>Atenção</h2>
+            <p>Selecione pelo menos um mini-curso.</p>
+            <button onclick="fecharDialogCourse()">Fechar</button>
+        </div>
+    </div>
+
     <script src="{% static "js/script.js" %}"></script>
     {% if payed == 'False' %}
     <script>

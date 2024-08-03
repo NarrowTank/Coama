@@ -487,6 +487,29 @@ i {
 }
 /*fim submissão de trabalho*/
 
+/*inicio payment-box*/
+#selection-courses{
+    background-color: #FEB609;
+    border: 1px solid #FEB609;
+    transition: background-color .5s;
+    cursor: pointer;
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: black;
+    font-size: 10px;
+    padding: 10px 50px;
+    font-weight: bold;
+    width: 250px;
+    margin: 1rem;
+}
+
+#selection-courses:hover{
+    background-color: black;
+    border: 1px solid #FEB609;
+    color: #FEB609;
+}
+
+/*fim payment-box*/
 .icone-footer {
     margin-left: 10px;
     margin-right: 10px;

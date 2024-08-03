@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="shortcut icon" href="{% static "/src/icon_fav.png" %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static "/css/login.css" %}">
+    <link rel="stylesheet" href="{% static 'css/user_style.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
@@ -41,13 +42,15 @@
             {% for name, time, value in courses %}
             <div style="background: white;padding: 10px;border-radius: 8px;margin-bottom: 20px;">
                 <h3>{{forloop.counter}}. {{name}}<br></h3>
-                <p>Duranção: {{time}}</p>
+                <p>Duração: {{time}}</p>
                 <p>Valor: R${{value}},00</p>
                 <br>
             </div>
             {% endfor %}
+            {% if payed %}
             <h4>Total: R${{total}},00</h4>
             <div id="wallet_container"></div>
+            {% endif %}
             
             {% if not payed %}
             <h3>No pagamento da inscrição mais os mini-cursos</h3>
