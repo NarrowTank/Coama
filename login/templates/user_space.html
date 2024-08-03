@@ -466,6 +466,16 @@
             <button onclick="fecharDialog()">Fechar</button>
         </div>
     </div>
+
+    <div class="dialog-container" id="dialog-container-mini-cursos">
+        <div class="dialog">
+            <h2>Atenção</h2>
+            <p>Realize o pagamento da inscrição para acessar a área de mini-cursos.</p>
+            <button onclick="fecharDialogMiniCursos()">Fechar</button>
+        </div>
+    </div>
+
+    
     <script src="{% static "js/script.js" %}"></script>
     {% if payed == 'False' %}
     <script>
@@ -490,6 +500,37 @@
         });
     </script>
     {% endif %}
+
+    <script>
+        var payed = "{{ payed }}";
+        var previousTarget = null; // Variável para armazenar o alvo anterior
+
+        function toggleContent(target) {
+            const contentDivs = document.querySelectorAll(".second-column > div");
+            
+            if (target === "mini-cursos" && payed === "False") {
+                document.getElementById("dialog-container-mini-cursos").style.display = "flex";
+                document.querySelector("." + previousTarget).style.display = "flex";
+                return; // Impede a exibição dos mini-cursos
+            }
+
+            // Esconde todos os conteúdos
+            contentDivs.forEach(div => {
+                div.style.display = "none";
+            });
+
+            // Exibe o conteúdo solicitado
+            document.querySelector("." + target).style.display = "flex";
+
+            // Se a tela for menor que 1040px, também aplicamos o mesmo estado de exibição ao segundo contêiner
+            if (window.innerWidth < 1040) {
+                document.querySelector(".container-main-mobile ." + target).style.display = "flex";
+            }
+
+            // Salva o target atual como o anterior, se o conteúdo foi exibido com sucesso
+            previousTarget = target;
+        }
+    </script>
 </body>
 
 

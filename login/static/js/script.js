@@ -1,13 +1,13 @@
-function toggleContent(target) {
-    const contentDivs = document.querySelectorAll(".second-column > div");
-    contentDivs.forEach(div => {
-        div.style.display = "none";
-    });
-    document.querySelector("." + target).style.display = "flex";
-    // Se a tela for menor que 1040px, também aplicamos o mesmo estado de exibição ao segundo contêiner
-    if (window.innerWidth < 1040) {
-        document.querySelector(".container-main-mobile ." + target).style.display = "flex";
-    }
+function abrirDialog() {
+    document.querySelector('.dialog-container').style.display = 'flex';
+}
+
+function fecharDialog() {
+    document.querySelector('.dialog-container').style.display = 'none';
+}
+
+function fecharDialogMiniCursos() {
+    document.getElementById("dialog-container-mini-cursos").style.display = 'none';
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -44,16 +44,6 @@ window.addEventListener("resize", function() {
         toggleContent(target);
     }
 });
-
-
-
-function abrirDialog() {
-    document.querySelector('.dialog-container').style.display = 'flex';
-}
-
-function fecharDialog() {
-    document.querySelector('.dialog-container').style.display = 'none';
-}
 
 var fileUpload = document.getElementById("fileUpload");
 var btnEnviar = document.getElementById("submitBtn");
