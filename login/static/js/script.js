@@ -55,6 +55,10 @@ function fecharDialog() {
     document.querySelector('.dialog-container').style.display = 'none';
 }
 
+function fecharDialogCourse() {
+    document.getElementById("dialog-container-course").style.display = 'none';
+}
+
 var fileUpload = document.getElementById("fileUpload");
 var btnEnviar = document.getElementById("submitBtn");
 btnEnviar.addEventListener("click", function () {
@@ -83,3 +87,31 @@ btnEnviarMobile.addEventListener("click", function () {
     }
 });
 
+var btnSelectionCourses = document.getElementById("selection-courses");
+btnSelectionCourses.addEventListener("click", function () {
+    document.querySelector(".dados-pessoais").style.display = "none";
+    document.querySelector(".container-main-mobile .dados-pessoais").style.display = "none";
+    document.querySelector(".container-main-mobile .mini-cursos").style.display = "flex";
+    document.querySelector(".mini-cursos").style.display = "flex";
+    document.querySelector(".selection-courses-box").style.display = "none";
+});
+
+function validateForm() {
+    const checkboxes = document.querySelectorAll('.mini-cursos input[type="checkbox"]');
+    let isAnyChecked = false;
+    
+    // Verifica se algum checkbox está marcado
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            isAnyChecked = true;
+        }
+    });
+
+    // Se nenhum checkbox estiver marcado, exibe uma mensagem de alerta
+    if (!isAnyChecked) {
+        document.getElementById("dialog-container-course").style.display = 'flex';
+        return false; // Impede o envio do formulário
+    }
+    
+    return true; // Permite o envio do formulário
+}

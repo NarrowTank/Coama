@@ -53,7 +53,33 @@ def getCoursePrefferences(total):
             },
         ],
         "back_urls": {
-            "success": "https://eventocoama.com.br/auth/success",
+            "success": "https://eventocoama.com.br/auth/subscription-success",
+            "failure": "https://eventocoama.com.br/auth/failure",
+            "pending": "https://eventocoama.com.br/auth/pendings"
+        },
+        "auto_return": "approved",
+    }
+
+    preference_response = sdk.preference().create(preference_data)
+    return preference_response["response"]["id"]
+
+def getCoursePrefferencesDesconto(total):
+    
+    
+    sdk = mercadopago.SDK('APP_USR-3755386082060312-050219-532f45efc4eacac399ab6713407966b5-1792061375')
+         
+    preference_data = {
+        "items": [
+            {
+                "id":"mini-courses-0",
+                "title": "Inscrição no Evento + Mini Cursos ",
+                "quantity": 1,
+                "currency_id": "BRL",
+                "unit_price": total
+            },
+        ],
+        "back_urls": {
+            "success": "https://eventocoama.com.br/auth/payment-subscription-success",
             "failure": "https://eventocoama.com.br/auth/failure",
             "pending": "https://eventocoama.com.br/auth/pendings"
         },

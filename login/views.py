@@ -8,7 +8,7 @@ from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
 
 from login.models import Person, Student, PosGradStudent, Professional
-from login.paymentsUtils import attPrefferences, getCoursePrefferences
+from login.paymentsUtils import attPrefferences, getCoursePrefferences, getCoursePrefferencesDesconto
 from .forms import uploadFileForm
 
 def loginHandler(request):
@@ -236,7 +236,7 @@ def promotion(request):
 @login_required(login_url='/auth/login/')
 def subscriptions(request):
     if request.method == 'POST':
-        
+
         courses = list(request.POST.keys())
         courses.pop(0)
         
@@ -253,13 +253,29 @@ def subscriptions(request):
             total += int(values[index])
             
         preferenceId = getCoursePrefferences(total)
+
+        # O trecho abaixo serve para criar um desconto
+        user_data = Person.objects.get(user = request.user)
+        value = 0
+        if user_data.person_type == 1:
+            value = 70.0
+        if user_data.person_type == 2:
+            value = 90.0
+        if user_data.person_type == 3:
+            value = 120.0
+        desconto = 0.9 * (total + value)
+        preferenceDesconto = getCoursePrefferencesDesconto(desconto)
+        # fim
         
         updateSubscription(request, names)
         
         context = {
             'courses' : courses,
             'preferenceId' : preferenceId,
+            'preferenceDesconto' : preferenceDesconto,
             'total' : total,
+            'desconto' : desconto,
+            'payed': user_data.payed,
         }
         
         return render(request, 'signup_payment.html', context)
@@ -326,3 +342,16 @@ def cleanUnpaidSubscriptions(subscriptions):
         if subscriptions.get(name) == 'paid':
             new_subscriptions.update({name: 'paid'})
     return new_subscriptions
+
+@login_required(login_url='/auth/login/')
+def updatePaymentSubscriptionSuccess(request):
+    person = Person.objects.get(user = request.user)
+    person.payed = True
+
+    subscriptions = json.loads(person.subscripted_courses)
+    for name in subscriptions:
+        subscriptions.update({name: 'paid'})
+    person.subscripted_courses = json.dumps(subscriptions)
+
+    person.save()
+    return redirect('area-do-usuario')

@@ -16,4 +16,5 @@ urlpatterns = [
     path('subscription/', views.subscriptions, name='subscription'),
     path('subscription-success/', views.updateSuccessPaidSubscription, name="subscription-success"),
     path('subscription-failed/', views.updateFailedPaidSubscription, name="subscription-failed"),
+    path('payment-subscription-success/', views.updatePaymentSubscriptionSuccess, name="payment-subscription-success"),
 ]
