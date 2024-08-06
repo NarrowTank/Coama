@@ -288,8 +288,8 @@ nav a {
     margin: 3% auto; /* Ajuste a margem para centralizar os cartões e adicionar espaço entre eles */
     padding: 10px; /* Adicione preenchimento interno aos cartões */
     cursor: pointer; /* Altere o cursor para indicar que os cartões são clicáveis */
-    min-height: 150px; /* Defina uma altura mínima para os cartões */
-}
+    min-height: 350px; /* Defina uma altura mínima para os cartões */
+} 
 input[type="checkbox"]{
     -webkit-appearance: none;
     appearance: none;
@@ -770,6 +770,15 @@ i {
 @media screen and (max-width: 430px) {
 
     /*incio TJ 430px*/
+
+    .card {
+        font-size: 11.7px;
+        min-height: 590px;
+    
+        }
+        h5 {
+            font-size: 14px;
+            }
 
     .tj {
         display: none;
