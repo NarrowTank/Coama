@@ -288,7 +288,7 @@ nav a {
     margin: 3% auto; /* Ajuste a margem para centralizar os cartões e adicionar espaço entre eles */
     padding: 10px; /* Adicione preenchimento interno aos cartões */
     cursor: pointer; /* Altere o cursor para indicar que os cartões são clicáveis */
-    min-height: 350px; /* Defina uma altura mínima para os cartões */
+    min-height: 380px; /* Defina uma altura mínima para os cartões */
 } 
 input[type="checkbox"]{
     -webkit-appearance: none;
