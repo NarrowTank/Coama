@@ -288,7 +288,7 @@ nav a {
     margin: 3% auto; /* Ajuste a margem para centralizar os cartões e adicionar espaço entre eles */
     padding: 10px; /* Adicione preenchimento interno aos cartões */
     cursor: pointer; /* Altere o cursor para indicar que os cartões são clicáveis */
-    min-height: 380px; /* Defina uma altura mínima para os cartões */
+    min-height: 350px; /* Defina uma altura mínima para os cartões */
 } 
 input[type="checkbox"]{
     -webkit-appearance: none;
@@ -360,7 +360,7 @@ input[type="checkbox"]:checked:after{
     padding: 10px 50px;
     font-weight: bold;
     width: 260px;
-    margin: 1rem;
+    margin: 8rem;
     align-self: center;
 }
 
@@ -725,8 +725,6 @@ i {
 
 }
 
-
-
 /*media query 768px Menu Login*/
 @media only screen and (max-width: 1040px) {
     .menu-login-esquerda {
@@ -772,12 +770,12 @@ i {
     /*incio TJ 430px*/
 
     .card {
-        font-size: 11.7px;
-        min-height: 590px;
-    
+        font-size: 11px;
+        min-height: 430px;
+        width: 90%;
         }
         h5 {
-            font-size: 14px;
+            font-size: 12px;
             }
 
     .tj {
@@ -801,7 +799,7 @@ i {
 .payment-box{
     width: 20%;
     padding: 1rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     position: fixed;
     background-color: #f3f3f3;
     z-index: 999;
@@ -809,16 +807,21 @@ i {
     right: 20px;
     border-radius: 10px;
     max-width: 500px;
-}
+    height: auto; /* Define a altura como automática, ajustando-se ao conteúdo */
+} 
 
 @media screen and (max-width: 1040px) {
     .payment-box{
+        width: 90%; /* Ajuste a largura para 90% da tela */
         padding: 1rem;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
         position: fixed;
         background-color: #f3f3f3;
         width: 100%;
         bottom: 0px;
-        left: 0px;
+        left: 0%; /* Alinha a caixa no meio da tela com margens laterais */
+        right: auto; /* Remove o alinhamento à direita */
+        max-width: none; /* Remove a largura máxima para permitir a largura de 90% */
+        
     }
 }
