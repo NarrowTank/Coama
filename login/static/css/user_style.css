@@ -360,7 +360,7 @@ input[type="checkbox"]:checked:after{
     padding: 10px 50px;
     font-weight: bold;
     width: 260px;
-    margin: 8rem;
+    margin: 10rem;
     align-self: center;
 }
 
