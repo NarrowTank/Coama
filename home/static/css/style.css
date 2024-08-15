@@ -530,8 +530,10 @@ nav a {
 }
 
 .patrocinadores-diamante img {
-    padding: 5px;
-    margin-inline: 30px;
+    display: flex;
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    align-items: center; /* Centraliza as imagens verticalmente */
+    gap: 30px; /* Espaçamento entre as imagens */
 }
 
 .icons-mining img {
@@ -828,11 +830,8 @@ nav a {
     }
 
     .patrocinadores-diamante img {
-        width: 70%;
-        display: block;
-        margin: 0 auto;
-        width: 70%;
-        padding-bottom: 20px;
+        max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do contêiner */
+        height: auto; /* Mantém a proporção da imagem */
     }
 
     .patrocinadores-text {
