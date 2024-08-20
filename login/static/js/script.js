@@ -45,8 +45,6 @@ window.addEventListener("resize", function() {
     }
 });
 
-
-
 function abrirDialog() {
     document.querySelector('.dialog-container').style.display = 'flex';
 }
