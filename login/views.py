@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
+from django.http import JsonResponse
 from login.models import Person, Student, PosGradStudent, Professional
 from login.paymentsUtils import attPrefferences, getCoursePrefferences, getCoursePrefferencesDesconto
 from .forms import uploadFileForm
@@ -111,6 +112,35 @@ def register_user_step(request):
         except:
             return render(request, 'signup_step_one.html', {'error' : 'Erro no cadastro do usuário'})
       
+def check_cpf(request):
+    if request.method == 'POST':
+        cpf_fields = ['cpf1', 'cpf2', 'cpf3', 'cpf4']
+        cpf_exists = {}
+        emails = {}
+
+        for cpf_field in cpf_fields:
+            cpf = request.POST.get(cpf_field)
+            if cpf:
+                user = Person.objects.filter(cpf=cpf).first()
+                if user:
+                    cpf_exists[cpf_field] = True
+                    emails[cpf_field] = user.email 
+                else:
+                    cpf_exists[cpf_field] = False
+                    emails[cpf_field] = None
+            else:
+                cpf_exists[cpf_field] = False
+                emails[cpf_field] = None
+
+        all_exist = all(cpf_exists.values())
+
+        if all_exist:
+            return JsonResponse({'success': True, 'emails': emails})
+        else:
+            return JsonResponse({'success': False, 'error': 'Um ou mais CPFs não estão em nosso sistema', 'emails': emails})
+    else:
+        return JsonResponse({'success': False, 'error': 'Método de solicitação inválido', 'emails': emails})
+
 @login_required(login_url='/auth/login/')
 def register_person_step(request):
     if request.method == 'GET':
@@ -204,10 +234,25 @@ def check_completion(request):
         django_logout(request)
         user.delete()
     
+
 def paymentSuccess(request):
-    person = Person.objects.get(user = request.user)
+    person = Person.objects.get(user=request.user)
+
     person.payed = True
     person.save()
+    
+    subject = 'Confirmação de Pagamento'
+    message = f'Olá {person.user.first_name},\n\nSeu pagamento foi confirmado com sucesso. Obrigado por sua compra!'
+
+    verified_emails = json.loads(request.POST.get('verifiedEmails', '{}'))
+    
+    recipient_list = list(verified_emails.values())
+    
+    recipient_list.append(person.user.email)
+
+    """ if recipient_list:
+        send_mail(subject, message, 'from@example.com', recipient_list) """
+    
     return redirect('area-do-usuario')
 
 def paymentFailure(request):
@@ -268,7 +313,16 @@ def subscriptions(request):
         # fim
         
         updateSubscription(request, names)
+
+        """ subject = 'Confirmação de Inscrição em Cursos'
+        message = f'Olá {user_data.user.first_name},\n\nVocê se inscreveu com sucesso nos seguintes cursos:\n'
+        for course in courses:
+            message += f"- {course[0]} ({course[1]}): R$ {course[2]}\n"
+        message += f'\nTotal: R$ {total}\nDesconto aplicado: R$ {desconto}\n\nObrigado por se inscrever!'
+        recipient_list = [user_data.user.email]
         
+        send_custom_email(subject, message, recipient_list) """
+
         context = {
             'courses' : courses,
             'preferenceId' : preferenceId,
@@ -355,3 +409,38 @@ def updatePaymentSubscriptionSuccess(request):
 
     person.save()
     return redirect('area-do-usuario')
+
+@login_required(login_url='/auth/login/')
+def getCPF(request):
+    if request.method == 'POST':
+        nome1 = request.POST.get('nome1')
+        cpf1 = request.POST.get('cpf1')
+        person1 = Person.objects.filter(cpf__contains=cpf1, complete_name__contains=nome1)
+        pessoa1 = [(p.complete_name, p.cpf) for p in person1]
+        
+        nome2 = request.POST.get('nome2')
+        cpf2 = request.POST.get('cpf2')
+        person2 = Person.objects.filter(cpf__contains=cpf2, complete_name__contains=nome2)
+        pessoa2 = [(p.complete_name, p.cpf) for p in person2]
+        
+        nome3 = request.POST.get('nome3')
+        cpf3 = request.POST.get('cpf3')
+        person3 = Person.objects.filter(cpf__contains=cpf3, complete_name__contains=nome3)
+        pessoa3 = [(p.complete_name, p.cpf) for p in person3]
+        
+        nome4 = request.POST.get('nome4')
+        cpf4 = request.POST.get('cpf4')
+        person4 = Person.objects.filter(cpf__contains=cpf4, complete_name__contains=nome4)
+        pessoa4 = [(p.complete_name, p.cpf) for p in person4]
+        
+        # Apenas para verificar se está retornando os dados corretos
+        print(pessoa1, pessoa2, pessoa3, pessoa4)
+
+        return redirect('area-do-usuario') 
+    
+    
+""" def send_custom_email(subject, message, recipient_list, from_email=None, fail_silently=False):
+    if from_email is None:
+        from_email = settings.DEFAULT_FROM_EMAIL
+
+    send_mail(subject, message, from_email, recipient_list, fail_silently=fail_silently) """
