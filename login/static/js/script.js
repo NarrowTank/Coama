@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             toggleContent(target);
         });
     });
+    
 });
 
 // Adicionando manipulador de evento de redimensionamento para sincronizar alterações quando a janela é redimensionada
@@ -44,8 +45,6 @@ window.addEventListener("resize", function() {
         toggleContent(target);
     }
 });
-
-
 
 function abrirDialog() {
     document.querySelector('.dialog-container').style.display = 'flex';
@@ -115,3 +114,4 @@ function validateForm() {
     
     return true; // Permite o envio do formulário
 }
+

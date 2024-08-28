@@ -52,10 +52,16 @@
             <div id="wallet_container"></div>
             {% endif %}
             
-            {% if not payed %}
+            {% if not combo %}
             <h3>No pagamento da inscrição mais os mini-cursos</h3>
             <h4>Total: R${{desconto}}0</h4>
             <div id="wallet_container_2"></div>
+            {% endif%}
+
+            {% if combo %}
+            <h3>No pagamento da inscrição mais os mini-cursos e COMBO</h3>
+            <h4>Total: R${{desconto}}0</h4>
+            <div id="wallet_container_3"></div>
             {% endif%}
         </div> 
     </div> 
@@ -97,7 +103,25 @@
                 },         
             },
         });
+
+        mp.bricks().create("wallet", "wallet_container_3", {
+            initialization: {
+                preferenceId: "{{ preferenceDescontoCombo }}",
+            },
+            customization: {
+                texts: {
+                    valueProp: 'security_safety',
+                },
+                checkout: {
+                    theme: {
+                        elementsColor: "#FEB609",
+                        headerColor: "#FEB609",
+                    },
+                },         
+            },
+        });
     </script>
+
 
 </body>
 

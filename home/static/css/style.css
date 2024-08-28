@@ -529,11 +529,18 @@ nav a {
     margin-inline: 30px;
 }
 
-.patrocinadores-diamante img {
-    display: flex;
+.patrocinadores-diamante {
+    display: flex; /* Utiliza flexbox para alinhar as imagens lado a lado */
     justify-content: center; /* Centraliza as imagens horizontalmente */
-    align-items: center; /* Centraliza as imagens verticalmente */
-    gap: 30px; /* Espaçamento entre as imagens */
+    align-items: center; /* Alinha as imagens verticalmente */
+    gap: 10px; /* Espaço entre as imagens, ajuste conforme necessário */
+}
+
+.patrocinadores-diamante img {
+    width: 40%; /* Ajusta a largura da imagem para 40% do contêiner */
+    height: auto; /* Mantém a proporção da altura */
+    display: block;
+    padding-bottom: 20px; /* Ajuste conforme necessário */
 }
 
 .icons-mining img {
@@ -830,8 +837,11 @@ nav a {
     }
 
     .patrocinadores-diamante img {
-        max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do contêiner */
-        height: auto; /* Mantém a proporção da imagem */
+        width: 70%;
+        display: block;
+        margin: 0 auto;
+        width: 70%;
+        padding-bottom: 20px;
     }
 
     .patrocinadores-text {

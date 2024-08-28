@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Person(models.Model):
     """Clase que define uma pessoa em geral"""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -50,4 +51,26 @@ class Professional(models.Model):
     data = models.ForeignKey(Person, on_delete=models.CASCADE)
     enterprise_name = models.CharField(verbose_name="Nome da Empresa", max_length=100)
     enterprise = models.CharField(verbose_name="Empresa", max_length=3, choices=ENTERPRISE_TYPE)
-    
+
+""" class Minicurso(models.Model):
+    nome = models.CharField(max_length=255)
+    ministrante = models.CharField(max_length=255)
+    turno = models.CharField(max_length=20)
+    carga_horaria = models.CharField(max_length=10)
+    vagas = models.IntegerField(default=0)
+    descricao = models.TextField() """
+
+#Add mod tudo abaixo
+class ComboRegistration(models.Model):
+    nome1 = models.CharField(max_length=100)
+    cpf1 = models.CharField(max_length=11)
+    nome2 = models.CharField(max_length=100, blank=True, null=True)
+    cpf2 = models.CharField(max_length=11, blank=True, null=True)
+    nome3 = models.CharField(max_length=100, blank=True, null=True)
+    cpf3 = models.CharField(max_length=11, blank=True, null=True)
+    nome4 = models.CharField(max_length=100, blank=True, null=True)
+    cpf4 = models.CharField(max_length=11, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.nome1}, {self.nome2}, {self.nome3}, {self.nome4}'
+
