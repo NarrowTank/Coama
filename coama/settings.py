@@ -121,7 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/usr/local/lsws/Example/html/coama/public/static'
+STATIC_ROOT = '/usr/local/lsws/Example/html/coama/login/static', '/usr/local/lsws/Example/html/coama/home/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
