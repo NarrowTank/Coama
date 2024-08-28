@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse
 from login.models import Person, Student, PosGradStudent, Professional
-from login.paymentsUtils import attPrefferences, getCoursePrefferences, getCoursePrefferencesDesconto
+from login.paymentsUtils import attPrefferences, getCoursePrefferences, getCoursePrefferencesDesconto, getCoursePrefferencesDescontoCombo
 from .forms import uploadFileForm
 
 def loginHandler(request):
@@ -281,59 +281,128 @@ def promotion(request):
 @login_required(login_url='/auth/login/')
 def subscriptions(request):
     if request.method == 'POST':
-
         courses = list(request.POST.keys())
-        courses.pop(0)
+        if not courses:
+            return redirect('login')  # Verifica se há cursos antes de prosseguir
+
+        courses.pop(0)  # Remove o primeiro item se não for relevante
         
-        names = getCourseNames(courses)
-        values = getCourseValues(courses)
-        time = getCourseTime(courses)
-        courses = []
+        # Verificar se a lista de cursos está vazia
+        if not courses:
+            return redirect('login')
+
+        try:
+            names = getCourseNames(courses)
+            values = getCourseValues(courses)
+            time = getCourseTime(courses)
+        except IndexError as e:
+            # Lidar com o erro de índice fora dos limites
+            print(f"Erro ao acessar os valores dos cursos: {e}")
+            return redirect('login')
+        
+        courses_list = []
         total = 0
         
         checkIfAlreadySubscripted(request)
         
         for index in range(len(names)):
-            courses.append([names[index], time[index], values[index]])
+            courses_list.append([names[index], time[index], values[index]])
             total += int(values[index])
             
         preferenceId = getCoursePrefferences(total)
 
-        # O trecho abaixo serve para criar um desconto
-        user_data = Person.objects.get(user = request.user)
+        # Aplicar desconto
+        user_data = Person.objects.get(user=request.user)
         value = 0
         if user_data.person_type == 1:
             value = 70.0
-        if user_data.person_type == 2:
+        elif user_data.person_type == 2:
             value = 90.0
-        if user_data.person_type == 3:
+        elif user_data.person_type == 3:
             value = 120.0
         desconto = 0.9 * (total + value)
         preferenceDesconto = getCoursePrefferencesDesconto(desconto)
-        # fim
         
         updateSubscription(request, names)
 
-        """ subject = 'Confirmação de Inscrição em Cursos'
-        message = f'Olá {user_data.user.first_name},\n\nVocê se inscreveu com sucesso nos seguintes cursos:\n'
-        for course in courses:
-            message += f"- {course[0]} ({course[1]}): R$ {course[2]}\n"
-        message += f'\nTotal: R$ {total}\nDesconto aplicado: R$ {desconto}\n\nObrigado por se inscrever!'
-        recipient_list = [user_data.user.email]
-        
-        send_custom_email(subject, message, recipient_list) """
-
         context = {
-            'courses' : courses,
-            'preferenceId' : preferenceId,
-            'preferenceDesconto' : preferenceDesconto,
-            'total' : total,
-            'desconto' : desconto,
+            'courses': courses_list,
+            'preferenceId': preferenceId,
+            'preferenceDesconto': preferenceDesconto,
+            'total': total,
+            'desconto': desconto,
             'payed': user_data.payed,
         }
         
         return render(request, 'signup_payment.html', context)
     return redirect('login')
+
+@login_required(login_url='/auth/login/')
+def subscriptions_combo(request):
+    if request.method == 'POST':
+        print("============================", request.POST.get('cpf1'))
+
+        courses = list(request.POST.keys())
+        if not courses:
+            return redirect('login')  # Verifica se há cursos antes de prosseguir
+
+        courses.pop(0)  # Remove o primeiro item se não for relevante
+        
+        # Verificar se a lista de cursos está vazia
+        if not courses:
+            return redirect('login')
+
+        try:
+            names = getCourseNames(courses)
+            values = getCourseValues(courses)
+            time = getCourseTime(courses)
+        except IndexError as e:
+            # Lidar com o erro de índice fora dos limites
+            print(f"Erro ao acessar os valores dos cursos: {e}")
+            return redirect('login')
+        
+        courses_list = []
+        total = 0
+        
+        checkIfAlreadySubscripted(request)
+        
+        for index in range(len(names)):
+            courses_list.append([names[index], time[index], values[index]])
+            total += int(values[index])
+            
+        
+        preferenceId = getCoursePrefferences(total)
+
+        # Aplicar desconto
+        user_data = Person.objects.get(user=request.user)
+        value = 0
+        if user_data.person_type == 1:
+            value = 70.0
+        elif user_data.person_type == 2:
+            value = 90.0
+        elif user_data.person_type == 3:
+            value = 120.0
+
+        desconto = 0.9 * (total + value)
+        preferenceDescontoCombo = getCoursePrefferencesDescontoCombo(desconto)
+
+        combo = 5 * desconto
+
+        updateSubscription(request, names)
+
+        context = {
+            'courses': courses_list,
+            'preferenceId': preferenceId,
+            'preferenceDescontoCombo': preferenceDescontoCombo,
+            'total': combo,
+            'desconto': combo,
+            'payed': user_data.payed,
+            'combo': True,
+        }
+        
+        return render(request, 'signup_payment.html', context)
+    return redirect('login')
+
 
 def getCourseNames(courses):
     names = []
@@ -398,6 +467,10 @@ def cleanUnpaidSubscriptions(subscriptions):
     return new_subscriptions
 
 @login_required(login_url='/auth/login/')
+def updatePaymentSubscriptionComboSuccess(request):
+    pass
+
+@login_required(login_url='/auth/login/')
 def updatePaymentSubscriptionSuccess(request):
     person = Person.objects.get(user = request.user)
     person.payed = True
@@ -434,7 +507,7 @@ def getCPF(request):
         pessoa4 = [(p.complete_name, p.cpf) for p in person4]
         
         # Apenas para verificar se está retornando os dados corretos
-        print(pessoa1, pessoa2, pessoa3, pessoa4)
+        print("=====================================================", pessoa1, pessoa2, pessoa3, pessoa4)
 
         return redirect('area-do-usuario') 
     
