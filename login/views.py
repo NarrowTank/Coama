@@ -510,7 +510,8 @@ def getCPF(request):
         print("=====================================================", pessoa1, pessoa2, pessoa3, pessoa4)
 
         return redirect('area-do-usuario') 
-    
+
+
     
 """ def send_custom_email(subject, message, recipient_list, from_email=None, fail_silently=False):
     if from_email is None:
