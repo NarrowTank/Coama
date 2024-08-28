@@ -73,3 +73,4 @@ class ComboRegistration(models.Model):
 
     def __str__(self):
         return f'{self.nome1}, {self.nome2}, {self.nome3}, {self.nome4}'
+
