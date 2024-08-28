@@ -198,7 +198,7 @@
                                 <label for="card2">
                                     <h5>Inovações em Reologia e Escoamento de Polpas</h5>
                                     <span>Ministrante: Jean Louzada/ Neres Almeida/ Henrique Gonçalves</span><br>
-                                    <span>Turno: Manhã</span><br>
+                                    <span>Turno: Tarde</span><br>
                                     <span>Carga Horária: 4h</span><br>
                                     <span>Vagas: 30</span><br><br>
                                     <span><strong>Descrição:</strong> Conceitos básicos de reologia, modelos reológicos, reometria rotacional e tubular,
@@ -260,7 +260,7 @@
                                 <label for="card6">
                                     <h5>Nanotecnologia e Desenvolvimento Sustentável</h5>
                                     <span>Ministrante: Tatiana Mazzo</span><br>
-                                    <span>Turno: Manhã</span><br>
+                                    <span>Turno: Tarde</span><br>
                                     <span>Carga Horária: 4h</span><br>
                                     <span>Vagas: 30</span><br><br>
                                     <span><strong>Descrição:</strong> O curso abordará desde os conceitos fundamentais, até as aplicações práticas em materiais avançados.
@@ -291,7 +291,7 @@
                                 <label for="card8">
                                     <h5>Procedimento de Outorga de Recursos Hídricos: Um Guia prático</h5>
                                     <span>Ministrante: Brenda Barros</span><br>
-                                    <span>Turno: Manhã</span><br>
+                                    <span>Turno: Tarde</span><br>
                                     <span>Carga Horária: 4h</span><br>
                                     <span>Vagas: 30</span><br><br>
                                     <span><strong>Descrição:</strong> O minicurso em questão tem como finalidade apresentar as modalidades de outorga de recursos hídricos,
@@ -364,23 +364,27 @@
                     
         
                             <input type="submit" value="Inscrever-se" id="submitBtn" class="button" onclick="return validateForm();">
-                            <input type="button" value="Combo" id="submitCombo" class="button">
+                            <input type="button" value="Combo" id="submitCombo" class="button" onclick="return validateForm();">
                         </form>
                         <script>
-                         document.getElementById('submitCombo').addEventListener('click', function(event) {
-                            event.preventDefault();
+                                document.getElementById('submitCombo').addEventListener('click', function(event) {
+                                event.preventDefault();
+                                if (validateForm()) {
+                                    let selectedCourses = [];
+                                    const checkboxes = document.querySelectorAll('.mini-cursos input[type="checkbox"]:checked');
 
-                            let selectedCourses = [];
-                            const checkboxes = document.querySelectorAll('.mini-cursos input[type="checkbox"]:checked');
+                                    checkboxes.forEach((checkbox) => {
+                                        selectedCourses.push(checkbox.name);
+                                    });
 
-                            checkboxes.forEach((checkbox) => {
-                                selectedCourses.push(checkbox.name); // Alterado de `checkbox.id` para `checkbox.name`
+                                    localStorage.setItem('selectedCourses', JSON.stringify(selectedCourses));
+                                    console.log(localStorage.getItem('selectedCourses'));
+
+                                    document.querySelector('.nav-item[data-target="combo"]').click();
+                                } else {
+                                    console.log('O formulário não é válido.');
+                                }
                             });
-
-                            localStorage.setItem('selectedCourses', JSON.stringify(selectedCourses));
-                            console.log(localStorage.getItem('selectedCourses'));
-                            document.querySelector('.nav-item[data-target="combo"]').click();
-                        });
                         </script>
                     </div>
                     
@@ -407,6 +411,7 @@
                         </form>
                     </div>
                     <div class="combo" style="display: none;">
+                        
                         <form id="cpf-form" action="{% url 'check-cpf' %}" method="post" class="combo-form">
                             {% csrf_token %}
                             <div class="box">
@@ -440,36 +445,55 @@
                                 <label for="cpf4">CPF 4:</label>
                                 <input type="text" id="cpf4" name="cpf4" required>
                             </div>
+                            <input type="hidden" id="comboValue" name="combo" value="false">
                     
                             <div class="selection-courses-box">
-                                <button id="confirm-selection" type="button" style="
-    background-color: #FEB609;
-    border: 1px solid #FEB609;
-    transition: background-color .5s;
-    cursor: pointer;
-    border-radius: 15px;
-    text-transform: uppercase;
-    color: black;
-    font-size: 10px;
-    padding: 10px 50px;
-    font-weight: bold;
-    width: 250px;
-    margin: 1rem;
-">Realizar pagamento</button>
+                                <button 
+                                    id="confirm-selection" 
+                                    type="button" 
+                                    style="
+                                        background-color: #FEB609;
+                                        border: 1px solid #FEB609;
+                                        transition: background-color .5s;
+                                        cursor: pointer;
+                                        border-radius: 15px;
+                                        text-transform: uppercase;
+                                        color: black;
+                                        font-size: 10px;
+                                        padding: 10px 50px;
+                                        font-weight: bold;
+                                        width: 250px;
+                                        margin: 1rem;"
+                                    onclick="return validateForm();"
+                                >
+                                Realizar pagamento
+                            </button>
                             </div>
                         </form>
                     </div>
                     
                     <script>
                         document.getElementById('confirm-selection').addEventListener('click', function() {
-
-                    
                             const form = document.getElementById('cpf-form');
                             if (!form) {
                                 console.error('Formulário não encontrado');
                                 return;
                             }
-                    
+                            const inputs = form.querySelectorAll('input');
+                            let isValid = true;
+                            let emptyFields = [];
+
+                            inputs.forEach(input => {
+                                if (input.value.trim() === '') {
+                                    isValid = false;
+                                    emptyFields.push(input.previousElementSibling.textContent.trim());
+                                }
+                            });
+
+                            if (!isValid) {
+                                alert('Por favor, preencha todos os campos obrigatórios: ');
+                                return;
+                            }
                             const formData = new FormData(form);
                     
                             formData.append('csrfmiddlewaretoken', document.querySelector('input[name="csrfmiddlewaretoken"]').value);
@@ -498,7 +522,8 @@
                                     localStorage.setItem('verifiedEmails', JSON.stringify(data.emails));
                                     registerCourses();
                                 } else {
-                                    console.error('Erro ao verificar CPF:', data.error || 'Erro desconhecido');
+                                    alert('Um ou mais CPFs não estão cadastrados no sistema:', data.error || 'Erro desconhecido');
+                                    console.error('Um dos CPFs não estão cadastrados no sistema', data.error || 'Erro desconhecido');
                                 }
                             })
                             .catch(error => {
@@ -510,7 +535,7 @@
                             console.log('Iniciando registro de cursos');
                             const subscriptionForm = document.createElement('form');
                             subscriptionForm.method = 'POST';
-                            subscriptionForm.action = '{% url "subscription" %}';
+                            subscriptionForm.action = '{% url "subscriptions_combo" %}';
                     
                             const csrfToken = document.createElement('input');
                             csrfToken.type = 'hidden';
@@ -650,7 +675,7 @@
                                     <h5>Inovações em Reologia e Escoamento de Polpas</h5>
                                    <span>Ministrante: Jean Louzada/ Neres Almeida/ Henrique Gonçalves</span>
                                         <br>
-                                        <span>Turno: Manhã
+                                        <span>Turno: Tarde
     
                                         </span>
                                         <br>
@@ -721,7 +746,7 @@
                                     <h5>Nanotecnologia e Desenvolvimento Sustentável</h5>
                                         <span>Ministrante: Tatiana Mazzo</span>
                                         <br>
-                                        <span>Turno: Manhã
+                                        <span>Turno: Tarde
                                         </span>
                                         <br>
                                         <span>Carga Horária: 4h
@@ -755,7 +780,7 @@
                                     <h5>Procedimento de Outorga de Recursos Hídricos: Um Guia prático</h5>
                                         <span>Ministrante: Brenda Barros</span>
                                         <br>
-                                        <span>Turno: Manhã
+                                        <span>Turno: Tarde
                                         </span>
                                         <br>
                                         <span>Carga Horária: 4h
@@ -894,4 +919,3 @@
 
 
 </html>
-
