@@ -60,6 +60,7 @@ class Professional(models.Model):
     vagas = models.IntegerField(default=0)
     descricao = models.TextField() """
 
+
 #Add mod tudo abaixo
 class ComboRegistration(models.Model):
     nome1 = models.CharField(max_length=100)
