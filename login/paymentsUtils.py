@@ -105,7 +105,8 @@ def getCoursePrefferencesDescontoCombo(total):
     
     
     sdk = mercadopago.SDK('APP_USR-3755386082060312-050219-532f45efc4eacac399ab6713407966b5-1792061375')
-         
+
+    #Add a quantidade de pessoas no combo e multiplica por 5 o valor do evento e minicurso
     preference_data = {
         "items": [
             {
