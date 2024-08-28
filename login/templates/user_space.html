@@ -79,8 +79,8 @@
                         <span class="menu">
                             <li class="nav-item" data-target="dados-pessoais">Dados Pessoais</li>
                             <li class="nav-item" data-target="mini-cursos">Minicursos</li> 
-                            <li class="nav-item" data-target="submissao-trabalho">Submissão de Trabalho</li>
-                            <li class="nav-item" data-target="combo">Combo</li>
+                            <li class="nav-item" data-target="submissao-trabalho">Submissão de Trabalho</li> 
+                            <li class="nav-item" data-target="combo">Combo</li> 
                             <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
                         </span>
                         <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
@@ -175,196 +175,219 @@
                     </div>
                     <div class="mini-cursos" style="display: none;">
                         <form action="{% url 'subscription' %}" method="POST" style="width: 100%;display: inherit;flex-direction: inherit;">
-                                {% csrf_token %}
-                                <div class="card">
-                                    <input type="checkbox" name="Consultoria Mineral e Ambiental: Uma Abordagem Prática|4h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Consultoria Mineral e Ambiental: Uma Abordagem Prática</h5>
-                                            <span>Ministrante: Cassiane Souza</span>
-                                            <br>
-                                            <span>Turno: Manhã 
-                                            </span>
-                                            <br>
-                                            <span>Carga Horária: 4h
-                                            <br>
-                                            </span>Vagas: 30
-                                            <br>
-                                            <br>
-                                               
-                                            <span> <strong>Descrição:</strong> Importância da Consultoria Mineral e Ambiental na indústria de mineração;
-                                                O Papel do Consultor Mineral e Ambiental;
-                                                Responsabilidades e tarefas típicas de um consultor;
-                                                Competências e habilidades necessárias;
-                                                Licenciamento Mineral e Ambiental na Prática;
-                                                Visão geral do processo de licenciamento;
-                                                Como lidar com Órgãos reguladores/fiscalizadores/licenciadores nas esferas Municipal, Estadual e Federal. </span>
-                                    </label>
-                                </div>
-                                <div class="card">
-                                    <input type="checkbox" name="Inovações em Reologia e Escoamento de Polpas|4h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Inovações em Reologia e Escoamento de Polpas</h5>
-                                       <span>Ministrante: Jean Louzada/ Neres Almeida/ Henrique Gonçalves</span>
-                                            <br>
-                                            <span>Turno: Manhã
+                            {% csrf_token %}
+                            
+                            <div class="card">
+                                <input type="checkbox" name="Consultoria Mineral e Ambiental: Uma Abordagem Prática|4h|40" id="card1">
+                                <label for="card1">
+                                    <h5>Consultoria Mineral e Ambiental: Uma Abordagem Prática</h5>
+                                    <span>Ministrante: Cassiane Souza</span><br>
+                                    <span>Turno: Manhã</span><br>
+                                    <span>Carga Horária: 4h</span><br>
+                                    <span>Vagas: 30</span><br><br>
+                                    <span><strong>Descrição:</strong> Importância da Consultoria Mineral e Ambiental na indústria de mineração;
+                                        O Papel do Consultor Mineral e Ambiental; Responsabilidades e tarefas típicas de um consultor;
+                                        Competências e habilidades necessárias; Licenciamento Mineral e Ambiental na Prática; Visão geral do processo de licenciamento;
+                                        Como lidar com Órgãos reguladores/fiscalizadores/licenciadores nas esferas Municipal, Estadual e Federal.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Inovações em Reologia e Escoamento de Polpas|4h|40" id="card2">
+                                <label for="card2">
+                                    <h5>Inovações em Reologia e Escoamento de Polpas</h5>
+                                    <span>Ministrante: Jean Louzada/ Neres Almeida/ Henrique Gonçalves</span><br>
+                                    <span>Turno: Tarde</span><br>
+                                    <span>Carga Horária: 4h</span><br>
+                                    <span>Vagas: 30</span><br><br>
+                                    <span><strong>Descrição:</strong> Conceitos básicos de reologia, modelos reológicos, reometria rotacional e tubular,
+                                        princípio da entropia máxima aplicado à reologia e ao escoamento de fluidos.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs|4h|40" id="card3">
+                                <label for="card3">
+                                    <h5>Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs</h5>
+                                    <span>Ministrante: Lucas Resende</span><br>
+                                    <span>Turno: Manhã</span><br>
+                                    <span>Carga Horária: 4h</span><br>
+                                    <span>Vagas: 25</span><br><br>
+                                    <span><strong>Descrição:</strong> Nesse minicurso iremos abordar os principais indicadores (KPIs) que devem ser analisados quando o assunto é uma operação eficiente.
+                                        Além disso, iremos abordar como esses KPIs são construídos através da coleta de dados por um sistema de Gestão Operacional de Mineração
+                                        e como podemos aplicar uma Linguagem de Consulta Estruturada (SQL) para obtenção desses dados a partir de um Banco de Dados Relacional.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Fadiga de materiais utilizando o ANSYS Workbench.|6h|40" id="card4">
+                                <label for="card4">
+                                    <h5>Fadiga de materiais utilizando o ANSYS Workbench.</h5>
+                                    <span>Ministrante: Márcio Mafra</span><br>
+                                    <span>Turno: Manhã/Tarde</span><br>
+                                    <span>Carga Horária: 6h</span><br>
+                                    <span>Vagas: 20</span><br><br>
+                                    <span><strong>Descrição:</strong> O curso vai abordar os fundamentos e definições da fadiga de materiais, bem como,
+                                        apresentar os recursos disponíveis no Ansys Mechanical Fatigue Tool e suas configurações.
+                                        Também serão apresentados uma introdução ao cálculo de fadiga de alto ciclo ou método SN,
+                                        descrição das propriedades de material/curva SN e limite de fadiga,
+                                        carregamentos de amplitude constante e variável, fatores de correção e sua aplicação,
+                                        obtenção de resultados para avaliação da fadiga como dano, vida e fator de segurança.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Simulação de metamateriais.|6h|40" id="card5">
+                                <label for="card5">
+                                    <h5>Simulação de metamateriais.</h5>
+                                    <span>Ministrante: Luiz Fernando</span><br>
+                                    <span>Turno: Manhã/Tarde</span><br>
+                                    <span>Carga Horária: 6h</span><br>
+                                    <span>Vagas: 20</span><br><br>
+                                    <span><strong>Descrição:</strong> O minicurso abordará os fundamentos e aplicações dos metamateriais acústicos.
+                                        Contém uma introdução e motivação para o assunto, as principais características e propriedades dos metamateriais,
+                                        com exemplos de casos de simulação e otimização.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Nanotecnologia|4h|40" id="card6">
+                                <label for="card6">
+                                    <h5>Nanotecnologia e Desenvolvimento Sustentável</h5>
+                                    <span>Ministrante: Tatiana Mazzo</span><br>
+                                    <span>Turno: Tarde</span><br>
+                                    <span>Carga Horária: 4h</span><br>
+                                    <span>Vagas: 30</span><br><br>
+                                    <span><strong>Descrição:</strong> O curso abordará desde os conceitos fundamentais, até as aplicações práticas em materiais avançados.
+                                        Serão apresentadas as técnicas de síntese e caracterização em escala nanométrica, com ênfase em métodos sustentáveis e práticas verdes.
+                                        Descubra como a nanotecnologia pode impulsionar novas tecnologias e ao mesmo tempo promover o desenvolvimento sustentável.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos|6h|40" id="card7">
+                                <label for="card7">
+                                    <h5>Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos</h5>
+                                    <span>Ministrante: Allex Raiol</span><br>
+                                    <span>Turno: Manhã/Tarde</span><br>
+                                    <span>Carga Horária: 6h</span><br>
+                                    <span>Vagas: 20</span><br><br>
+                                    <span><strong>Descrição:</strong> Este curso visa proporcionar uma compreensão abrangente e prática das técnicas de eletroresistividade
+                                        aplicadas em estudos geofísicos, desde o planejamento inicial até a interpretação final dos dados.
+                                        Os participantes sairão preparados para aplicar os conhecimentos adquiridos em projetos reais,
+                                        enfrentando os desafios e aproveitando as oportunidades que a eletroresistividade oferece no campo da geofísica.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Procedimento de Outorga de Recursos Hídricos: Um Guia prático|4h|40" id="card8">
+                                <label for="card8">
+                                    <h5>Procedimento de Outorga de Recursos Hídricos: Um Guia prático</h5>
+                                    <span>Ministrante: Brenda Barros</span><br>
+                                    <span>Turno: Tarde</span><br>
+                                    <span>Carga Horária: 4h</span><br>
+                                    <span>Vagas: 30</span><br><br>
+                                    <span><strong>Descrição:</strong> O minicurso em questão tem como finalidade apresentar as modalidades de outorga de recursos hídricos,
+                                        emitidos pela Secretaria do Estado de Meio Ambiente (SEMAS/PA), bem como o detalhamento da legislação específica existente,
+                                        requisitos e laudos técnicos necessários para a obtenção desse tipo de autorização.
+                                        Também será abordado o novo sistema de protocolos e processos, instituído pelo órgão.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Introdução ao ArcGis Pro Aplicado à Exploração Mineral|6h|40" id="card9">
+                                <label for="card9">
+                                    <h5>Introdução ao ArcGis Pro Aplicado à Exploração Mineral</h5>
+                                    <span>Ministrante: Gabriel Amorim</span><br>
+                                    <span>Turno: Manhã/Tarde</span><br>
+                                    <span>Carga Horária: 6h</span><br>
+                                    <span>Vagas: 30</span><br><br>
+                                    <span><strong>Descrição:</strong> Este curso tem por objetivo fazer uma introdução ao ArcGis Pro como ferramenta para o desenvolvimento de estudos na área de geociências,
+                                        desde o básico até conceitos mais complexos, como a aplicação de metodologias para a exploração mineral.
+                                        O participante aprenderá a utilizar ferramentas de SIG voltadas à mineração, agregando conhecimentos valiosos para o setor.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Conceitos Avançados de Soldagem: Teoria e Prática|4h|40" id="card10">
+                                <label for="card10">
+                                    <h5>Conceitos Avançados de Soldagem: Teoria e Prática</h5>
+                                    <span>Ministrante: Tácio Cezar</span><br>
+                                    <span>Turno: Tarde</span><br>
+                                    <span>Carga Horária: 4h</span><br>
+                                    <span>Vagas: 25</span><br><br>
+                                    <span><strong>Descrição:</strong> O minicurso abordará os conceitos mais avançados em soldagem, voltados à prática industrial,
+                                        desde os tipos de solda até os parâmetros de ajuste de máquina para cada material e tipo de junta.
+                                        Ideal para quem busca otimizar processos de soldagem, aumentando a produtividade e a qualidade final do produto.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Exploração Geológica com Enfoque em Reservas Minerais|4h|40" id="card11">
+                                <label for="card11">
+                                    <h5>Exploração Geológica com Enfoque em Reservas Minerais</h5>
+                                    <span>Ministrante: José Carlos</span><br>
+                                    <span>Turno: Tarde</span><br>
+                                    <span>Carga Horária: 4h</span><br>
+                                    <span>Vagas: 30</span><br><br>
+                                    <span><strong>Descrição:</strong> O minicurso tem como objetivo fornecer uma base sólida para o entendimento e aplicação das principais técnicas
+                                        de exploração geológica, com foco em reservas minerais. Serão abordados conceitos essenciais e boas práticas para avaliação,
+                                        amostragem e classificação de recursos minerais, aplicáveis desde a pesquisa até o planejamento de lavra.
+                                    </span>
+                                </label>
+                            </div>
+                    
+                            <div class="card">
+                                <input type="checkbox" name="Estudos sobre Solos: Técnicas de Amostragem e Análise|4h|40" id="card12">
+                                <label for="card12">
+                                    <h5>Estudos sobre Solos: Técnicas de Amostragem e Análise</h5>
+                                    <span>Ministrante: Ricardo Mendes</span><br>
+                                    <span>Turno: Tarde</span><br>
+                                    <span>Carga Horária: 4h</span><br>
+                                    <span>Vagas: 25</span><br><br>
+                                    <span><strong>Descrição:</strong> Este minicurso tem como foco a apresentação das principais técnicas de amostragem e análise de solos,
+                                        com aplicação direta em estudos ambientais e de mineração. O conteúdo abrange desde a coleta adequada de amostras,
+                                        até as técnicas laboratoriais e interpretação dos resultados obtidos, proporcionando ao participante uma visão ampla do estudo de solos.
+                                    </span>
+                                </label>
+                            </div>
+                    
         
-                                            </span>
-                                            <br>
-                                            <span>Carga Horária: 4h
-                                            <br>
-                                            </span>Vagas: 30
-                                            <br>
-                                            <br>
-                                            <span> <strong>Descrição:</strong> Conceitos básicos de reologia, modelos reológicos, reometria rotacional e tubular, princípio da entropia máxima aplicado à reologia e ao escoamento de fluidos.
-                                            </span>
-                                    </label>
-                                </div>
-                                <div class="card">
-                                    <input type="checkbox" name="Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs|4h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs </h5>
-                                        <span>Ministrante: Lucas Resende</span>
-                                        <br>
-                                        <span>Turno: Manhã
-                                        </span>
-                                        <br>
-                                        <span>Carga Horária: 4h
-                                        <br>
-                                        </span>Vagas: 25
-                                        <br>
-                                        <br>
-                                        <span> <strong>Descrição:</strong> Nesse minicurso iremos abortar os principais indicadores (KPIs) que devem ser analisados quando o assunto é uma operação eficiente.
-                                            Além disso iremos abordar como esses KPIs são construídos através da coleta de dados por um sistema de Gestão Operacional de Mineração e como podemos aplicar uma Linguagem de Consulta Estruturada (SQL) para obtenção desses dados a partir de um Banco de Dados Relacional. </span>
-                                    </label>
-                                </div>
-                                <div class="card">
-                                    <input type="checkbox" name="Fadiga de materiais utilizando o ANSYS Workbench.|4h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Fadiga de materiais utilizando o ANSYS Workbench.</h5>
-                                            <span>Ministrante: Márcio Mafra</span>
-                                            <br>
-                                            <span>Turno: Manhã/Tarde
-                                            </span>
-                                            <br>
-                                            <span>Carga Horária: 6h
-                                            <br>
-                                            </span>Vagas: 20
-                                            <br>
-                                            <br>
-                                            <span> <strong>Descrição:</strong> O curso vai abordar os fundamentos e definições da fadiga de materiais, bem como, apresentar os recursos disponíveis no Ansys Mechanical Fatigue Tool e suas configurações. Também serão apresentados uma introdução ao cálculo de fadiga de alto ciclo ou método SN, descrição das propriedades de material/curva SN e limite de fadiga, carregamentos de amplitude constante e variável, fatores de correção e sua aplicação, obtenção de resultados para avaliação da fadiga como dano, vida e fator de segurança. </span>
-                                    </label>
-                                </div>
-                                <div class="card">
-                                    <input type="checkbox" name="Simulação de metamateriais.|4h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Simulação de metamateriais.</h5>
-                                        <span>Ministrante: Luiz Fernando</span>
-                                        <br>
-                                        <span>Turno: Manhã/Tarde
-                                        </span>
-                                        <br>
-                                        <span>Carga Horária: 6h
-                                        <br>
-                                        </span>Vagas: 20
-                                        <br>
-                                        <br>
-                                        <span> <strong>Descrição:</strong> O minicurso abordará os fundamentos e aplicações dos metamateriais acústicos. Contém uma  introdução e motivação para o assunto, as principais características e propriedades dos metamateriais, com exemplos de casos de simulação e otimização. </span>
-                                    </label>
-                                </div>
-                                <div class="card">
-                                    <input type="checkbox" name="Nanotecnologia|4h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Nanotecnologia e Desenvolvimento Sustentável</h5>
-                                            <span>Ministrante: Tatiana Mazzo</span>
-                                            <br>
-                                            <span>Turno: Manhã
-                                            </span>
-                                            <br>
-                                            <span>Carga Horária: 4h
-                                            <br>
-                                            </span>Vagas: 30
-                                            <br>
-                                            <br>
-                                            <span> <strong>Descrição:</strong> O curso abordará desde os conceitos fundamentais, até as aplicações práticas em materiais avançados. Serão apresentadas as técnicas de síntese e caracterização em escala nanométrica, com ênfase em métodos sustentáveis e práticas verdes. Descubra como a nanotecnologia pode impulsionar novas tecnologias e ao mesmo tempo promover o desenvolvimento sustentável. </span>
-                                    </label>
-                                </div>
-                                <div class="card">
-                                    <input type="checkbox" name="Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos|6h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos</h5>
-                                            <span>Ministrante: Allex Raiol</span>
-                                            <br>
-                                            <span>Turno: Manhã/Tarde
-                                            </span>
-                                            <br>
-                                            <span>Carga Horária: 6h
-                                            <br>
-                                            </span>Vagas: 20
-                                            <br>
-                                            <br>
-                                            <span> <strong>Descrição:</strong> Este curso visa proporcionar uma compreensão abrangente e prática das técnicas de eletroresistividade aplicadas em estudos geofísicos, desde o planejamento inicial até a interpretação final dos dados. Os participantes sairão preparados para aplicar os conhecimentos adquiridos em projetos reais, enfrentando os desafios e aproveitando as oportunidades que a eletroresistividade oferece no campo da geofísica.  </span>
-                                    </label>
-                                </div>
-                                <div class="card">
-                                    <input type="checkbox" name="Procedimento de Outorga de Recursos Hídricos: Um Guia prático|4h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Procedimento de Outorga de Recursos Hídricos: Um Guia prático</h5>
-                                            <span>Ministrante: Brenda Barros</span>
-                                            <br>
-                                            <span>Turno: Manhã
-                                            </span>
-                                            <br>
-                                            <span>Carga Horária: 4h
-                                            <br>
-                                            </span>Vagas: 30
-                                            <br>
-                                            <br>
-                                            <span> <strong>Descrição:</strong> O minicurso em questão tem como finalidade apresentar as modalidades de outorga de recursos hídricos, emitidos pela Secretaria do Estado de Meio Ambiente (SEMAS/PA), bem como o detalhamento da legislação específica existente, requisitos e laudos técnicos necessários para a obtenção desse tipo de autorização.  Também será abordado o novo sistema de protocolos e processos, instituído pelo órgão. </span>
-                                    </label>
-                                </div>
-                                <div class="card">
-                                    <input type="checkbox" name="Introdução ao ArcGis Pro Aplicado à Exploração Mineral|6h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Introdução ao ArcGis Pro Aplicado à Exploração Mineral</h5>
-                                            <span>Ministrante: Gabriel Amorim</span>
-                                            <br>
-                                            <span>Turno: Manhã/Tarde
-                                            <br>
-                                            </span>Vagas: 20
-                                            <br>
-                                            <span>Carga Horária: 6h
-                                            </span>
-                                            <br>
-                                                <br>
-                                                <br>
-                                            <span> <strong>Descrição:</strong> No mini-curso de introdução ao ArcGis Pro aplicado à exploração mineral será apresentado a nova interface do software, funcionalidades básicas mais utilizadas para confecção de mapas e planejamento de atividades relacionadas a exploração mineral (Planejamento de Sondagem, Linhas para levantamento geofísico, Programação de Amostragem de solo, Sondagem a Trado e Perfis de mapeamento Geológico).
-                                            </span>
-                                    </label>
-                                </div>
-                                <div class="card">
-                                    <input type="checkbox" name="Aspectos Gerais da Sondagem desde ferramental, planejamento, execução até a validação.|6h|40" id="card1">
-                                    <label for="card1">
-                                        <h5>Aspectos Gerais da Sondagem desde ferramental, planejamento, execução até a validação.</h5>
-                                            
-                                        <span>Ministrante: Nattânia Santos/ Bruno Mateus/ Milton Carvalho</span>
-                                        <br>
-                                        <span>Turno: Manhã/Tarde
-                                        </span>
-                                        <br>
-                                        <span>Carga Horária: 6h
-                                        <br>
-                                        </span>Vagas: 15
-                                        <br>
-                                        <br>
-                                        <span> <strong>Descrição:</strong> O curso terá uma abordagem teórica e prática sobre o mundo da sondagem. Primeiramente entender o que são sondas, tipos e funcionamento, assim seus ferramentais, como ocorre a operação e a arte de 'pescar' o testemunho. 
-                                            Na parte prática iremos entender e avaliar as informações contidas nos boletins de sondagem, a fim de verificar a questão associadas a taxa de avanço e recuperação, bem como as implicações da diferença desses itens.
-                                        </span>
-                                    </label>
-                                </div>
-
                             <input type="submit" value="Inscrever-se" id="submitBtn" class="button" onclick="return validateForm();">
+                            <input type="button" value="Combo" id="submitCombo" class="button" onclick="return validateForm();">
                         </form>
+                        <script>
+                                document.getElementById('submitCombo').addEventListener('click', function(event) {
+                                event.preventDefault();
+                                if (validateForm()) {
+                                    let selectedCourses = [];
+                                    const checkboxes = document.querySelectorAll('.mini-cursos input[type="checkbox"]:checked');
+
+                                    checkboxes.forEach((checkbox) => {
+                                        selectedCourses.push(checkbox.name);
+                                    });
+
+                                    localStorage.setItem('selectedCourses', JSON.stringify(selectedCourses));
+                                    console.log(localStorage.getItem('selectedCourses'));
+
+                                    document.querySelector('.nav-item[data-target="combo"]').click();
+                                } else {
+                                    console.log('O formulário não é válido.');
+                                }
+                            });
+                        </script>
                     </div>
+                    
                     <div class="submissao-trabalho" style="display: none;">
                         <p>Para baixar os arquivos com exemplos de como devem ser formatados os trabalhos, clique nos botões abaixo:</p>
                         <a href="https://download1500.mediafire.com/ixfk96yxyiag5y55sxq6Wig_32vKO7VmxYLpbseJzIxFNjFjfmGV89Jf7y0gb5pEun6VCIvDMl5FjMDIYFjOm9SBSzaPWFIateQXdrQGABscEaaBPT7rw6hHGqXrJfY5zDr6W6IiL_l5QrZo1MdrrzLNtsHB7wqjDMeyzKqiGuWEg-M/fp6zgbsntbe3ynr/Modelo+de+Apresenta%C3%A7%C3%A3o+%28Palestras%29.pptx" download class="button">
@@ -387,9 +410,165 @@
                             <input type="submit" value="Enviar" id="submitBtn" class="button">
                         </form>
                     </div>
-                </div>
-    
-                
+                    <div class="combo" style="display: none;">
+                        
+                        <form id="cpf-form" action="{% url 'check-cpf' %}" method="post" class="combo-form">
+                            {% csrf_token %}
+                            <div class="box">
+                                <label for="nome1">Nome 1:</label>
+                                <input type="text" id="nome1" name="nome1" required>
+                                <br><br>
+                                <label for="cpf1">CPF 1:</label>
+                                <input type="text" id="cpf1" name="cpf1" required>
+                            </div>
+                    
+                            <div class="box">
+                                <label for="nome2">Nome 2:</label>
+                                <input type="text" id="nome2" name="nome2" required>
+                                <br><br>
+                                <label for="cpf2">CPF 2:</label>
+                                <input type="text" id="cpf2" name="cpf2" required>
+                            </div>
+                    
+                            <div class="box">
+                                <label for="nome3">Nome 3:</label>
+                                <input type="text" id="nome3" name="nome3" required>
+                                <br><br>
+                                <label for="cpf3">CPF 3:</label>
+                                <input type="text" id="cpf3" name="cpf3" required>
+                            </div>
+                    
+                            <div class="box">
+                                <label for="nome4">Nome 4:</label>
+                                <input type="text" id="nome4" name="nome4" required>
+                                <br><br>
+                                <label for="cpf4">CPF 4:</label>
+                                <input type="text" id="cpf4" name="cpf4" required>
+                            </div>
+                            <input type="hidden" id="comboValue" name="combo" value="false">
+                    
+                            <div class="selection-courses-box">
+                                <button 
+                                    id="confirm-selection" 
+                                    type="button" 
+                                    style="
+                                        background-color: #FEB609;
+                                        border: 1px solid #FEB609;
+                                        transition: background-color .5s;
+                                        cursor: pointer;
+                                        border-radius: 15px;
+                                        text-transform: uppercase;
+                                        color: black;
+                                        font-size: 10px;
+                                        padding: 10px 50px;
+                                        font-weight: bold;
+                                        width: 250px;
+                                        margin: 1rem;"
+                                    onclick="return validateForm();"
+                                >
+                                Realizar pagamento
+                            </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <script>
+                        document.getElementById('confirm-selection').addEventListener('click', function() {
+                            const form = document.getElementById('cpf-form');
+                            if (!form) {
+                                console.error('Formulário não encontrado');
+                                return;
+                            }
+                            const inputs = form.querySelectorAll('input');
+                            let isValid = true;
+                            let emptyFields = [];
+
+                            inputs.forEach(input => {
+                                if (input.value.trim() === '') {
+                                    isValid = false;
+                                    emptyFields.push(input.previousElementSibling.textContent.trim());
+                                }
+                            });
+
+                            if (!isValid) {
+                                alert('Por favor, preencha todos os campos obrigatórios: ');
+                                return;
+                            }
+                            const formData = new FormData(form);
+                    
+                            formData.append('csrfmiddlewaretoken', document.querySelector('input[name="csrfmiddlewaretoken"]').value);
+                    
+                            const selectedCourses = localStorage.getItem('selectedCourses');
+                            if (selectedCourses) {
+                                const coursesArray = JSON.parse(selectedCourses);
+                                coursesArray.forEach(course => {
+                                    formData.append(course, 'on');
+                                });
+                            } else {
+                                console.error('Nenhum curso selecionado.');
+                                return;
+                            }
+                    
+                            fetch(form.action, {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => {
+                                return response.json();
+                            })
+                            .then(data => {
+                    
+                                if (data.success === true) {
+                                    localStorage.setItem('verifiedEmails', JSON.stringify(data.emails));
+                                    registerCourses();
+                                } else {
+                                    alert('Um ou mais CPFs não estão cadastrados no sistema:', data.error || 'Erro desconhecido');
+                                    console.error('Um dos CPFs não estão cadastrados no sistema', data.error || 'Erro desconhecido');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erro na solicitação AJAX:', error);
+                            });
+                        });
+                    
+                        function registerCourses() {
+                            console.log('Iniciando registro de cursos');
+                            const subscriptionForm = document.createElement('form');
+                            subscriptionForm.method = 'POST';
+                            subscriptionForm.action = '{% url "subscriptions_combo" %}';
+                    
+                            const csrfToken = document.createElement('input');
+                            csrfToken.type = 'hidden';
+                            csrfToken.name = 'csrfmiddlewaretoken';
+                            csrfToken.value = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+                            subscriptionForm.appendChild(csrfToken);
+                    
+                            const selectedCourses = localStorage.getItem('selectedCourses');
+                            if (selectedCourses) {
+                                const coursesArray = JSON.parse(selectedCourses);
+                                coursesArray.forEach(course => {
+                                    const courseInput = document.createElement('input');
+                                    courseInput.type = 'hidden';
+                                    courseInput.name = course;
+                                    courseInput.value = 'on';
+                                    subscriptionForm.appendChild(courseInput);
+                                });
+                            } else {
+                                console.error('Nenhum curso selecionado.');
+                                return;
+                            }
+                    
+                            document.body.appendChild(subscriptionForm);
+                            subscriptionForm.submit();
+                        }
+                    </script>
+                    
+                    
+                    
+                </head>
+                <body>
+               
+                    
                     
         </div>
         </div>
@@ -496,7 +675,7 @@
                                     <h5>Inovações em Reologia e Escoamento de Polpas</h5>
                                    <span>Ministrante: Jean Louzada/ Neres Almeida/ Henrique Gonçalves</span>
                                         <br>
-                                        <span>Turno: Manhã
+                                        <span>Turno: Tarde
     
                                         </span>
                                         <br>
@@ -567,7 +746,7 @@
                                     <h5>Nanotecnologia e Desenvolvimento Sustentável</h5>
                                         <span>Ministrante: Tatiana Mazzo</span>
                                         <br>
-                                        <span>Turno: Manhã
+                                        <span>Turno: Tarde
                                         </span>
                                         <br>
                                         <span>Carga Horária: 4h
@@ -601,7 +780,7 @@
                                     <h5>Procedimento de Outorga de Recursos Hídricos: Um Guia prático</h5>
                                         <span>Ministrante: Brenda Barros</span>
                                         <br>
-                                        <span>Turno: Manhã
+                                        <span>Turno: Tarde
                                         </span>
                                         <br>
                                         <span>Carga Horária: 4h

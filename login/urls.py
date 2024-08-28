@@ -14,7 +14,11 @@ urlpatterns = [
     path('pendings/', views.paymentPendings, name="payment-pendings"),
     path('send-work/', views.updateWork, name='send-work'),
     path('subscription/', views.subscriptions, name='subscription'),
+    path('subscriptions_combo/', views.subscriptions_combo, name='subscriptions_combo'),
     path('subscription-success/', views.updateSuccessPaidSubscription, name="subscription-success"),
     path('subscription-failed/', views.updateFailedPaidSubscription, name="subscription-failed"),
     path('payment-subscription-success/', views.updatePaymentSubscriptionSuccess, name="payment-subscription-success"),
+    path('payment-subscription-success/', views.updatePaymentSubscriptionComboSuccess, name="payment-subscription-combo-success"),
+    path('combo/', views.getCPF, name='combo'),
+    path('check-cpf/', views.check_cpf, name='check-cpf'),
 ]

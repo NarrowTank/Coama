@@ -822,3 +822,61 @@ i {
         left: 0px;
     }
 }
+
+/* Estilização para o formulário de combo */
+.combo-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.combo-form .box {
+    width: 45%; /* Ajuste conforme necessário */
+    padding: 1rem;
+    margin-bottom: 20px; /* Espaçamento entre as caixas */
+}
+
+.combo-form .box label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.combo-form .box input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ddd; /* Ajuste a cor da borda conforme necessário */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra leve para o campo de texto */
+    font-size: 1rem;
+}
+
+/* Estilização para o botão de envio */
+.combo-form input[type="submit"] {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 20px; /* Bordas arredondadas */
+    background-color: #FEB609; /* Cor de fundo do botão */
+    color: #000;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center; /* Centraliza o botão horizontalmente dentro do contêiner flexível */
+}
+
+/* Estilização para o botão de envio ao passar o mouse */
+.combo-form input[type="submit"]:hover {
+    background-color: #000; /* Cor de fundo do botão ao passar o mouse */
+    color: #FEB609;
+}
+
+/* Centraliza o botão dentro do contêiner do formulário */
+.combo-form .button-container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    margin-top: 1rem; /* Espaçamento acima do botão */
+}
+
