@@ -110,8 +110,8 @@ def getCoursePrefferencesDescontoCombo(total):
         "items": [
             {
                 "id":"mini-courses-0",
-                "title": "Inscrição no Evento + Mini Cursos + COMBO ",
-                "quantity": 1,
+                "title": "COMBO de 5 pessoas: Evento + Minicursos ",
+                "quantity": 5,
                 "currency_id": "BRL",
                 "unit_price": total
             },
