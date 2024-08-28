@@ -124,6 +124,8 @@ def getCoursePrefferencesDescontoCombo(total):
         "auto_return": "approved",
     }
 
+    
+
     preference_response = sdk.preference().create(preference_data)
     return preference_response["response"]["id"]
 
