@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "9b1j0_bi&v%39e8i+@-w*rsx)2@sf%5g8yi%vowg@!b&ov3xm#"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['eventocoama.com.br']
 
 
 # Application definition
@@ -121,9 +121,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+STATIC_ROOT = '/usr/local/lsws/Example/html/coama/public/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# CREDENCIAIS SERVIÇO EMAIL
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_HOST_USER = 'your_email@gmail.com'
+#EMAIL_HOST_PASSWORD = 'your_email_password'
+#DEFAULT_FROM_EMAIL = 'your_email@gmail.com'
