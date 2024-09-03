@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="shortcut icon" href="{% static "/src/icon_fav.png" %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static "/css/login.css" %}">
+    <link rel="stylesheet" href="{% static 'css/user_style.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
@@ -41,15 +42,29 @@
             {% for name, time, value in courses %}
             <div style="background: white;padding: 10px;border-radius: 8px;margin-bottom: 20px;">
                 <h3>{{forloop.counter}}. {{name}}<br></h3>
-                <p>Duranção: {{time}}</p>
+                <p>Duração: {{time}}</p>
                 <p>Valor: R${{value}},00</p>
                 <br>
             </div>
             {% endfor %}
+            {% if payed %}
             <h4>Total: R${{total}},00</h4>
             <div id="wallet_container"></div>
+            {% endif %}
+            
+            {% if not combo %}
+            <h3>No pagamento da inscrição mais os mini-cursos</h3>
+            <h4>Total: R${{desconto}}0</h4>
+            <div id="wallet_container_2"></div>
+            {% endif%}
+
+            {% if combo %}
+            <h3>No pagamento da inscrição mais os mini-cursos e COMBO</h3>
+            <h4>Total: R${{desconto}}0</h4>
+            <div id="wallet_container_3"></div>
+            {% endif%}
         </div> 
-    </div>
+    </div> 
 
     <script>
         const mp = new MercadoPago('APP_USR-52210169-dc3c-4707-9b39-7d935200d689', {locale: 'pt-BR'});
@@ -71,7 +86,42 @@
                 },         
             },
         });
+
+        mp.bricks().create("wallet", "wallet_container_2", {
+            initialization: {
+                preferenceId: "{{ preferenceDesconto }}",
+            },
+            customization: {
+                texts: {
+                    valueProp: 'security_safety',
+                },
+                checkout: {
+                    theme: {
+                        elementsColor: "#FEB609",
+                        headerColor: "#FEB609",
+                    },
+                },         
+            },
+        });
+
+        mp.bricks().create("wallet", "wallet_container_3", {
+            initialization: {
+                preferenceId: "{{ preferenceDescontoCombo }}",
+            },
+            customization: {
+                texts: {
+                    valueProp: 'security_safety',
+                },
+                checkout: {
+                    theme: {
+                        elementsColor: "#FEB609",
+                        headerColor: "#FEB609",
+                    },
+                },         
+            },
+        });
     </script>
+
 
 </body>
 
