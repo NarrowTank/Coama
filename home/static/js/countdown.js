@@ -3,7 +3,7 @@ const hoursEl = document.getElementById("hours")
 const minutesEl = document.getElementById("minutes")
 const secondsEl = document.getElementById("seconds")
 
-const contador = "28 aug 2024 21:00:00";
+const contador = "22 sep 2024 21:00:00";
 
 
 function countdown(){
@@ -32,3 +32,4 @@ function formatTime(time){
 countdown();
 
 setInterval(countdown, 1000);
+
