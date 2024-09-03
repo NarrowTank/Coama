@@ -529,9 +529,18 @@ nav a {
     margin-inline: 30px;
 }
 
+.patrocinadores-diamante {
+    display: flex; /* Utiliza flexbox para alinhar as imagens lado a lado */
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    align-items: center; /* Alinha as imagens verticalmente */
+    gap: 10px; /* Espaço entre as imagens, ajuste conforme necessário */
+}
+
 .patrocinadores-diamante img {
-    padding: 5px;
-    margin-inline: 30px;
+    width: 40%; /* Ajusta a largura da imagem para 40% do contêiner */
+    height: auto; /* Mantém a proporção da altura */
+    display: block;
+    padding-bottom: 20px; /* Ajuste conforme necessário */
 }
 
 .icons-mining img {
