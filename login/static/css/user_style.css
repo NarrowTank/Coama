@@ -570,7 +570,7 @@ i {
     }
 
     .container-main{
-        display: none;
+        display: flex;
     }
 
     .container-main-mobile{
