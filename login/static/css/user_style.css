@@ -574,7 +574,7 @@ i {
     }
 
     .container-main-mobile{
-        display: flex;
+        display: none;
         height: 100vh;
     }
 
