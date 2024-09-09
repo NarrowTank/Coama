@@ -467,7 +467,7 @@
                                     onclick="return validateForm();"
                                 >
                                 Realizar pagamento
-                            </button>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -561,16 +561,9 @@
                             document.body.appendChild(subscriptionForm);
                             subscriptionForm.submit();
                         }
-                    </script>
-                    
-                    
-                    
-                </head>
-                <body>
-               
-                    
-                    
-        </div>
+                    </script>                                
+                </div>
+            </div>
         </div>
         <div class="container-main-mobile">  
                 <div class="second-column">
@@ -856,6 +849,67 @@
                             </label>
                         
                             <button id="submitBtnMobile" class="button">Enviar</button>
+                        </form>
+                    </div>
+                    <div class="combo" style="display: none;">
+                        
+                        <form id="cpf-form" action="{% url 'check-cpf' %}" method="post" class="combo-form">
+                            {% csrf_token %}
+                            <div class="box">
+                                <label for="nome1">Nome 1:</label>
+                                <input type="text" id="nome1" name="nome1" required>
+                                <br><br>
+                                <label for="cpf1">CPF 1:</label>
+                                <input type="text" id="cpf1" name="cpf1" required>
+                            </div>
+                    
+                            <div class="box">
+                                <label for="nome2">Nome 2:</label>
+                                <input type="text" id="nome2" name="nome2" required>
+                                <br><br>
+                                <label for="cpf2">CPF 2:</label>
+                                <input type="text" id="cpf2" name="cpf2" required>
+                            </div>
+                    
+                            <div class="box">
+                                <label for="nome3">Nome 3:</label>
+                                <input type="text" id="nome3" name="nome3" required>
+                                <br><br>
+                                <label for="cpf3">CPF 3:</label>
+                                <input type="text" id="cpf3" name="cpf3" required>
+                            </div>
+                    
+                            <div class="box">
+                                <label for="nome4">Nome 4:</label>
+                                <input type="text" id="nome4" name="nome4" required>
+                                <br><br>
+                                <label for="cpf4">CPF 4:</label>
+                                <input type="text" id="cpf4" name="cpf4" required>
+                            </div>
+                            <input type="hidden" id="comboValue" name="combo" value="false">
+                    
+                            <div class="selection-courses-box">
+                                <button 
+                                    id="confirm-selection" 
+                                    type="button" 
+                                    style="
+                                        background-color: #FEB609;
+                                        border: 1px solid #FEB609;
+                                        transition: background-color .5s;
+                                        cursor: pointer;
+                                        border-radius: 15px;
+                                        text-transform: uppercase;
+                                        color: black;
+                                        font-size: 10px;
+                                        padding: 10px 50px;
+                                        font-weight: bold;
+                                        width: 250px;
+                                        margin: 1rem;"
+                                    onclick="return validateForm();"
+                                >
+                                Realizar pagamento
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
