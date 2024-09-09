@@ -6,11 +6,11 @@ def attPrefferences(person_type, quantity = 1):
     load_dotenv()
     
     if person_type == 1:
-        value = 50.0
-    if person_type == 2:
         value = 70.0
+    if person_type == 2:
+        value = 90.0
     if person_type == 3:
-        value = 100.0
+        value = 120.0
     
     value = value * quantity
     
@@ -62,7 +62,7 @@ def getCoursePrefferences(total):
 
         preference_response = sdk.preference().create(preference_data)
 
-        print("Resposta da API:", preference_response)
+        # print("Resposta da API:", preference_response)
         
 
         if 'response' in preference_response and 'id' in preference_response['response']:
