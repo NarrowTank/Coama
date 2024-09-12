@@ -20,17 +20,23 @@ def loginHandler(request):
     if request.method == 'GET':
         return render(request, 'login.html')       
     if request.method == 'POST':
-        username = request.POST.get('login-username')
+        cpf = request.POST.get('login-cpf')
         senha = request.POST.get('login-senha')
         
-        user = authenticate(username=username.lower(), password=senha)
-        
-        if user:
-            django_login(request, user)
+        try:
+            person = Person.objects.get(cpf=cpf)
+            username = person.user.username
+            user = authenticate(username=username, password=senha)
             
-            return redirect('/auth/area-do-usuario/')
+            if user:
+                django_login(request, user)
+                return redirect('/auth/area-do-usuario/')
+        except Person.DoesNotExist:
+            pass
         
-        return render(request, 'login.html', {'error': 'Senha ou nome incorretos'})
+        return render(request, 'login.html', {'error': 'Senha ou CPF incorretos'})
+    
+
 
 def logoutHandler(request):
     django_logout(request)
@@ -510,7 +516,6 @@ def getCPF(request):
         print("=====================================================", pessoa1, pessoa2, pessoa3, pessoa4)
 
         return redirect('area-do-usuario') 
-
 
     
 """ def send_custom_email(subject, message, recipient_list, from_email=None, fail_silently=False):
