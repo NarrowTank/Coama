@@ -5,8 +5,21 @@
             {% csrf_token %}
             <img src="{% static "/src/icon_fav.png" %}" alt="logo oficial do evento">
             <h2>Login</h2>
-            <label for="login-username">Nome de Usuário:</label>
-            <input type="text" id="login-username" name="login-username" required>
+            <label for="login-cpf">Informe o CPF:</label>
+            <input type="text" id="login-cpf" name="login-cpf" oninput="formatCPF(this)" required>
+
+            <script>
+                function formatCPF(input) {
+                    let value = input.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+                    if (value.length <= 11) {
+                        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+                        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+                        value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+                    }
+                    input.value = value;
+                }
+            </script>
+            
             <label for="login-senha">Senha:</label>
             <div class="password-input-container">
                 <input type="password" id="login-senha" name="login-senha" style="text-transform: none;" required>
