@@ -41,6 +41,16 @@
                             src='{% static "src/tiktok.png" %}' alt="Icone Tiktok" class="icon"></a>
                     <a href="https://www.instagram.com/eventocoama/" target="_blank"><img
                             src='{% static "src/instagram.png" %}' alt="Icone Instagram" class="icon"></a>
+
+                <!-- Botão de logout com ícone -->
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                            <button type="submit" class="logout-button" style="height: 20px; width: 30px; margin-left: 30px;">
+                            <i class=""></i> Sair
+                            </button> 
+                        </form>
+                            {% endif %}
                 </div>
             </nav>
         </div>
