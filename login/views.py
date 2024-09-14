@@ -35,15 +35,41 @@ def loginHandler(request):
             pass
         
         return render(request, 'login.html', {'error': 'Senha ou CPF incorretos'})
-    
-
 
 def logoutHandler(request):
     django_logout(request)
     return redirect('/auth/login/')
 
 def newPassword(request):
-    return render(request, 'login.html', {'error': 'Recuperar senha'})
+    if request.method == 'POST':
+        cpf = request.POST.get('cpf')
+        nova_senha = request.POST.get('nova_senha')
+        confirmacao_senha = request.POST.get('confirmacao_senha')
+
+        if nova_senha != confirmacao_senha:
+            return render(request, 'redefinir.html', {
+                'error': 'As senhas não coincidem. Tente novamente.',
+                'show_reset_form': True,  
+                'cpf': cpf  
+            })
+
+        if cpf and nova_senha:
+            try:
+                person = Person.objects.get(cpf=cpf)
+                user = person.user
+                user.set_password(nova_senha)
+                user.save()
+                request.session['password_reset_success'] = True
+                return redirect('login')  
+            except Person.DoesNotExist:
+                return render(request, 'redefinir.html', {
+                    'error': 'CPF não encontrado. Por favor, verifique e tente novamente.',
+                    'show_reset_form': True, 
+                    'cpf': cpf  
+                })
+
+    return render(request, 'redefinir.html', {'error': 'Para redefinir a senha, informe o CPF e a nova senha:', 'show_reset_form': True})
+
 
 @login_required(login_url='/auth/login/')
 def userArea(request):
