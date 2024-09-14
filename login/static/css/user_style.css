@@ -901,3 +901,22 @@ i {
 .logout-button:hover {
     color: #FEB609;
 }
+
+/* Botão de redefinir */
+#reset-password-form button[type="submit"] {
+    margin-top: 15px; 
+    background-color: #FEB609; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#reset-password-form button[type="submit"]:hover {
+    background-color: #000; 
+    color: #FEB609;
+
+}
