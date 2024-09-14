@@ -906,7 +906,7 @@ i {
 #reset-password-form button[type="submit"] {
     margin-top: 15px; 
     background-color: #FEB609; 
-    color: white;
+    color: #000;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
