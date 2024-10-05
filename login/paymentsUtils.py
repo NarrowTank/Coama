@@ -6,11 +6,11 @@ def attPrefferences(person_type, quantity = 1):
     load_dotenv()
     
     if person_type == 1:
-        value = 70.0
+        value = 50.0
     if person_type == 2:
-        value = 90.0
+        value = 70.0
     if person_type == 3:
-        value = 120.0
+        value = 100.0
     
     value = value * quantity
     
