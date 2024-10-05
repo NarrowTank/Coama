@@ -347,12 +347,12 @@ def subscriptions(request):
         user_data = Person.objects.get(user=request.user)
         value = 0
         if user_data.person_type == 1:
-            value = 70.0
+            value = 50.0
         elif user_data.person_type == 2:
-            value = 90.0
+            value = 70.0
         elif user_data.person_type == 3:
-            value = 120.0
-        desconto = 0.9 * (total + value)
+            value = 100.0
+        desconto = (total + value)
         preferenceDesconto = getCoursePrefferencesDesconto(desconto)
         
         updateSubscription(request, names)
@@ -409,11 +409,11 @@ def subscriptions_combo(request):
         user_data = Person.objects.get(user=request.user)
         value = 0
         if user_data.person_type == 1:
-            value = 70.0
+            value = 50.0
         elif user_data.person_type == 2:
-            value = 90.0
+            value = 70.0
         elif user_data.person_type == 3:
-            value = 120.0
+            value = 100.0
 
         desconto = 0.9 * (total + value)
         preferenceDescontoCombo = getCoursePrefferencesDescontoCombo(desconto)
