@@ -533,7 +533,7 @@ nav a {
     display: flex; /* Utiliza flexbox para alinhar as imagens lado a lado */
     justify-content: center; /* Centraliza as imagens horizontalmente */
     align-items: center; /* Alinha as imagens verticalmente */
-    gap: 10px; /* Espaço entre as imagens, ajuste conforme necessário */
+    gap: 20px; /* Espaço entre as imagens, ajuste conforme necessário */
 }
 
 .patrocinadores-diamante img {
@@ -542,6 +542,24 @@ nav a {
     display: block;
     padding-bottom: 20px; /* Ajuste conforme necessário */
 }
+
+
+.patrocinadores-ouro {
+    display: flex; /* Utiliza flexbox para alinhar as imagens lado a lado */
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    align-items: center; /* Alinha as imagens verticalmente */
+    gap: 10px; /* Espaço entre as imagens */
+    background-color: black; /* Define o fundo preto */
+    padding: 20px; /* Adiciona um espaçamento interno */
+}
+
+.patrocinadores-ouro img {
+    width: 40%; /* Ajusta a largura da imagem para 40% do contêiner */
+    height: auto; /* Mantém a proporção da altura */
+    display: block;
+    padding-bottom: 20px; /* Ajuste conforme necessário */
+}
+
 
 .icons-mining img {
     width: 20px;
