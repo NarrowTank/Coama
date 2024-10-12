@@ -188,6 +188,18 @@
                         <form action="{% url 'subscription' %}" method="POST" style="width: 100%;display: inherit;flex-direction: inherit;">
                             {% csrf_token %}
                             
+                            <div class="card">
+                                <input type="checkbox" name="Separações magnética, eletrostática e por sorting.|3h|40" id="card1">
+                                <label for="card1">
+                                    <h5>Separações Magnética, Eletrostática e por Sorting</h5>
+                                    <span>Ministrante: Arthur Pinto Chaves</span><br>
+                                    <span>Turno: Manhã</span><br>
+                                    <span>Carga Horária: 3h</span><br>
+                                    <span>Vagas: 30</span><br><br>
+                                    <span><strong>Descrição:</strong> 
+                                    </span>
+                                </label>
+                            </div>
                     
                             <div class="card">
                                 <input type="checkbox" name="Inovações em Reologia e Escoamento de Polpas|4h|40" id="card2">
@@ -608,8 +620,21 @@
                             {% csrf_token %}
                            
                             <div class="card">
-                                <input type="checkbox" name="Inovações em Reologia e Escoamento de Polpas|4h|40" id="card1">
+                                <input type="checkbox" name="Separações magnética, eletrostática e por sorting.|3h|40" id="card1">
                                 <label for="card1">
+                                    <h5>Separações Magnética, Eletrostática e por Sorting</h5>
+                                    <span>Ministrante: Arthur Pinto Chaves</span><br>
+                                    <span>Turno: Manhã</span><br>
+                                    <span>Carga Horária: 3h</span><br>
+                                    <span>Vagas: 30</span><br><br>
+                                    <span><strong>Descrição:</strong> 
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="card">
+                                <input type="checkbox" name="Inovações em Reologia e Escoamento de Polpas|4h|40" id="card2">
+                                <label for="card2">
                                     <h5>Inovações em Reologia e Escoamento de Polpas</h5>
                                    <span>Ministrante: Jean Louzada/ Neres Almeida/ Henrique Gonçalves</span>
                                         <br>
@@ -627,8 +652,8 @@
                                 </label>
                             </div>
                             <div class="card">
-                                <input type="checkbox" name="Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs|4h|40" id="card1">
-                                <label for="card1">
+                                <input type="checkbox" name="Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs|4h|40" id="card3">
+                                <label for="card3">
                                     <h5>Melhorias Operacionais na Mineração: Aplicação de Tecnologia (SQL) para otimização de KPIs </h5>
                                     <span>Ministrante: Lucas Resende</span>
                                     <br>
@@ -645,8 +670,8 @@
                                 </label>
                             </div>
                             <div class="card">
-                                <input type="checkbox" name="Fadiga de materiais utilizando o ANSYS Workbench.|4h|40" id="card1">
-                                <label for="card1">
+                                <input type="checkbox" name="Fadiga de materiais utilizando o ANSYS Workbench.|4h|40" id="card4">
+                                <label for="card4">
                                     <h5>Fadiga de materiais utilizando o ANSYS Workbench.</h5>
                                         <span>Ministrante: Márcio Mafra</span>
                                         <br>
@@ -662,8 +687,8 @@
                                 </label>
                             </div>
                             <div class="card">
-                                <input type="checkbox" name="Simulação de metamateriais.|4h|40" id="card1">
-                                <label for="card1">
+                                <input type="checkbox" name="Simulação de metamateriais.|4h|40" id="card5">
+                                <label for="card5">
                                     <h5>Simulação de metamateriais.</h5>
                                     <span>Ministrante: Luiz Fernando</span>
                                     <br>
@@ -679,8 +704,8 @@
                                 </label>
                             </div>
                             <div class="card">
-                                <input type="checkbox" name="Nanotecnologia|4h|40" id="card1">
-                                <label for="card1">
+                                <input type="checkbox" name="Nanotecnologia|4h|40" id="card6">
+                                <label for="card6">
                                     <h5>Nanotecnologia e Desenvolvimento Sustentável</h5>
                                         <span>Ministrante: Tatiana Mazzo</span>
                                         <br>
@@ -696,8 +721,8 @@
                                 </label>
                             </div>
                             <div class="card">
-                                <input type="checkbox" name="Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos|6h|40" id="card1">
-                                <label for="card1">
+                                <input type="checkbox" name="Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos|6h|40" id="card7">
+                                <label for="card7">
                                     <h5>Domínio da Eletroresistividade: Planejamento e Execução de Estudos Geofísicos</h5>
                                         <span>Ministrante: Allex Raiol</span>
                                         <br>
@@ -713,8 +738,8 @@
                                 </label>
                             </div>
                             <div class="card">
-                                <input type="checkbox" name="Procedimento de Outorga de Recursos Hídricos: Um Guia prático|4h|40" id="card1">
-                                <label for="card1">
+                                <input type="checkbox" name="Procedimento de Outorga de Recursos Hídricos: Um Guia prático|4h|40" id="card8">
+                                <label for="card8">
                                     <h5>Procedimento de Outorga de Recursos Hídricos: Um Guia prático</h5>
                                         <span>Ministrante: Brenda Barros</span>
                                         <br>
@@ -730,8 +755,8 @@
                                 </label>
                             </div>
                             <div class="card" style="display: none;">
-                                <input type="checkbox" name="Introdução ao ArcGis Pro Aplicado à Exploração Mineral|6h|40" id="card1" style="display: none;" disabled>
-                                <label for="card1">
+                                <input type="checkbox" name="Introdução ao ArcGis Pro Aplicado à Exploração Mineral|6h|40" id="card9" style="display: none;" disabled>
+                                <label for="card9">
                                     <h5>Introdução ao ArcGis Pro Aplicado à Exploração Mineral</h5>
                                         <span>Ministrante: Gabriel Amorim</span>
                                         <br>
@@ -749,8 +774,8 @@
                                 </label>
                             </div>
                             <div class="card" style="display: none;">
-                                <input type="checkbox" name="Aspectos Gerais da Sondagem desde ferramental, planejamento, execução até a validação.|6h|40" id="card1">
-                                <label for="card1">
+                                <input type="checkbox" name="Aspectos Gerais da Sondagem desde ferramental, planejamento, execução até a validação.|6h|40" id="card10">
+                                <label for="card10">
                                     <h5>Aspectos Gerais da Sondagem desde ferramental, planejamento, execução até a validação.</h5>
                                         
                                     <span>Ministrante: Nattânia Santos/ Bruno Mateus/ Milton Carvalho</span>
