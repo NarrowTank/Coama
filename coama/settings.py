@@ -27,7 +27,7 @@ SECRET_KEY = "9b1j0_bi&v%39e8i+@-w*rsx)2@sf%5g8yi%vowg@!b&ov3xm#"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['eventocoama.com.br']
+ALLOWED_HOSTS = ['eventocoama.com.br', 'www.eventocoama.com.br']
 
 
 # Application definition
