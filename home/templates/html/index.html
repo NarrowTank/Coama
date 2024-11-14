@@ -106,32 +106,13 @@
     <script src="{% static '/js/script.js' %}"></script>
     <!--fim menu rolagem-->
     <!--countdown-->
-    <h1 class="contador">Faltam</h1>
-    <div class="countdown-container">
-        <div class="countdown-el days-c">
-            <p class="text" id="days">0</p>
-            <span>dias</span>
-        </div>
-
-        <div class="countdown-el hours-c">
-            <p class="text" id="hours">0</p>
-            <span>horas</span>
-        </div>
-
-        <div class="countdown-el minutes-c">
-            <p class="text" id="minutes">0</p>
-            <span>minutos</span>
-        </div>
-
-        <div class="countdown-el seconds-c">
-            <p class="text" id="seconds">0</p>
-            <span>segundos</span>
-        </div>
+    <div class="evento-encerrado">
+        <h1 class="contador">
+            <span class="evento-encerrado-texto">Evento encerrado!</span>
+        </h1>
+        <p class="contador-subtitulo">Nos encontramos novamente em 2026 para o IV Coama.</p>
     </div>
-    <h1 class="contador">Para o Evento</h1>
-    <div class="button-container">
-        <button class="custom-button"><a href="{% url "login" %}" class="botao-cursos">Inscreva-se</a></button>
-    </div>
+
     <script src="{% static '/js/countdown.js' %}"></script>
     <!--fim countdown-->
     <main>
